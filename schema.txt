@@ -1,0 +1,8 @@
+Dataset: da scegliere tra quelli proposti dal prof
+AST: libreria ast
+SBT: da implementare tramite visita in profondità dell'ast
+Tokenizer: da implementare
+Embedding + Position: utilizzare nn.Embedding
+Transformer: implementare utilizzando la versione del prof (o nn)
+Codifica output: de-tokenizzazione da vocabolario con linguaggio naturale (implementarlo)
+Valutazione e test finale: da implementare

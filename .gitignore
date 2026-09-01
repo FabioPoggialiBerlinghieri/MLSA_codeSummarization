@@ -1,0 +1,10 @@
+# Ambiente virtuale UV / Python
+.venv/
+__pycache__/
+*.pyc
+
+# PyCharm / JetBrains
+.idea/
+
+# File di ambiente
+.env

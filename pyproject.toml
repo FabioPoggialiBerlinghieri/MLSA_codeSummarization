@@ -1,0 +1,16 @@
+[project]
+name = "mlsa-codesummarization"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "FabioPoggialiBerlinghieri", email = "fabio.poggiali@edu.unifi.it" }
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+mlsa-codesummarization = "mlsa_codesummarization:main"
+
+[build-system]
+requires = ["uv_build>=0.12.7,<0.13.0"]
+build-backend = "uv_build"
