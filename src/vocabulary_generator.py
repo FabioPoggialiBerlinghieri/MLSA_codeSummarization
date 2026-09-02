@@ -4,7 +4,7 @@ import kagglehub
 import pandas as pd
 from pyarrow._dataset import Dataset
 
-import SBT_Parse as a
+import SBTParse as a
 
 class PythonVocabularyGenerator:
     def __init__(self, codes: list[str], len_max: int = 30000) -> None:
@@ -29,7 +29,7 @@ class PythonVocabularyGenerator:
     def generate(self) -> dict[str, int]:
         voc = []
         for code in self.codes:
-            voc.extend(a.SBT_Parse().parse(code))
+            voc.extend(a.SBTParse().parse(code))
         occ_dict = dict.fromkeys(voc, 0)
 
         # Contiamo le occorrenze

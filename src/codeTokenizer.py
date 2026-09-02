@@ -1,6 +1,6 @@
 import ast
 from typing import Dict, List
-import SBT_Parse as a
+import SBTParse as a
 
 class InvalidUknownIdentifierException(Exception):
     pass
@@ -41,7 +41,7 @@ class CodeTokenizer:
         self.__check_unkownidentifier()
 
     def tokenize(self, text: str) -> List[int]:
-        sbt = a.SBT_Parse().parse(text)
+        sbt = a.SBTParse().parse(text)
         return self.__word2idx(sbt)
 
     def __word2idx(self, words: List[str]) -> List[int]:

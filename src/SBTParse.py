@@ -1,6 +1,6 @@
 import ast
 
-class SBT_Parse:
+class SBTParse:
 
     def parse(self, code_tree) -> list[str]:
         return self.__dfs(ast.parse(code_tree))
