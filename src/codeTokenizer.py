@@ -1,85 +1,62 @@
 import ast
 from typing import Dict, List
+import SBT_Parse as a
 
+class InvalidUknownIdentifierException(Exception):
+    pass
+
+class InvalidMainKeywordsException(Exception):
+    pass
 
 class CodeTokenizer:
 
-    def __init__(self, vocabulary: Dict[str, int] = None):
+    def __init__(self, vocabulary: Dict[str, int] = None, main_keywords: List[str] = None, uknown_identifier: str = "UKN") -> None:
         self.vocabulary = vocabulary
+        self.main_keywords = main_keywords
+        self.uknown_identifier = uknown_identifier
+
+        self.__check_unkownidentifier()
+        self.__check_missmatch_vocabulary_main_keywords()
+
+    def __check_missmatch_vocabulary_main_keywords(self) -> None:
+        for main_keyword in self.main_keywords:
+            if (main_keyword + "_" + self.uknown_identifier) not in self.vocabulary.keys():
+                raise InvalidMainKeywordsException("missmatch between main_keyword ", main_keyword, " and vocabulary")
+
+    def __check_unkownidentifier(self):
+        if self.uknown_identifier not in self.vocabulary.keys():
+            raise InvalidUknownIdentifierException("uknown identifier must be a key in the vocabulary")
 
     def set_vocabulary(self, vocabulary: Dict[str, int]) -> None:
         self.vocabulary = vocabulary
+        self.__check_missmatch_vocabulary_main_keywords()
+        self.__check_unkownidentifier()
+
+    def set_main_keywords(self, main_keywords: List[str]) -> None:
+        self.main_keywords = main_keywords
+        self.__check_missmatch_vocabulary_main_keywords()
+
+    def set_uknown_identifier(self, uknown_identifier: str) -> None:
+        self.uknown_identifier = uknown_identifier
+        self.__check_unkownidentifier()
 
     def tokenize(self, text: str) -> List[int]:
-        code_tree = ast.parse(text)
-        sbt = ASTToSBT().parse(code_tree).split()
+        sbt = a.SBT_Parse().parse(text)
         return self.__word2idx(sbt)
 
     def __word2idx(self, words: List[str]) -> List[int]:
         tokens = []
-        for word in words:
+        for (word, i) in zip(words, range(len(words))):
+            # se la parola non è nel vocabolario, si sostituisce con un token speciale
+            # es: nome_fun_sconosciuto ---> FunctionDef_UNK
             if word not in self.vocabulary:
-                if word.split("?")[0] in self.vocabulary:
-                    tokens.append(self.vocabulary[word.split("?")[0]])
+                if words[i-2] in self.main_keywords:
+                    tokens.append(self.vocabulary[words[i-2] + "_" + self.uknown_identifier])
+                elif words[i-4] in self.main_keywords and word == words[i - 2]:
+                    tokens.append(self.vocabulary[words[i-4] + "_" + self.uknown_identifier])
                 else:
-                    tokens.append(self.vocabulary["UNK"])
+                    tokens.append(self.vocabulary[self.uknown_identifier])
             else:
                 tokens.append(self.vocabulary[word])
         return tokens
 
-class ASTToSBT:
-
-    def parse(self, code_tree) -> str:
-        return self.__dfs(code_tree)
-
-
-    def __dfs(self, node) -> str:
-        if isinstance(node, ast.Name):
-            return self.__node_to_string(type(node), node.id)
-        if isinstance(node, ast.Constant):
-            return self.__node_to_string(type(node), repr(node.value))
-        if isinstance(node, ast.arg):
-            return self.__node_to_string(type(node), node.arg)
-
-        if isinstance(node, ast.Attribute):
-            node_label = node.attr
-        elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
-            node_label = node.name
-        elif isinstance(node, ast.keyword):
-            node_label = node.arg if node.arg else "**kwargs"
-        elif isinstance(node, ast.alias):
-            node_label = f"{node.name}->{node.asname}" if node.asname else node.name
-        else:
-            node_label = type(node).__name__
-
-        dfs = self.__node_to_string(type(node), node_label, start=True)
-
-        for child in ast.iter_child_nodes(node):
-            dfs += self.__dfs(child)
-
-        dfs += self.__node_to_string(type(node), node_label, start=False)
-        return dfs
-
-
-    def __node_to_string(self, nodeType, name: str, start: bool = True) -> str:
-        if nodeType == ast.Name:
-            return f" ( Var?{name} ) Var?{name}"
-        if nodeType == ast.Constant:
-            return f" ( Constant?{name} ) Constant?{name}"
-        if nodeType == ast.arg:
-            return f" ( Argument?{name} ) Argument?{name}"
-
-        parenthesis = "(" if start else ")"
-
-        if nodeType in (ast.FunctionDef, ast.AsyncFunctionDef):
-            return f" {parenthesis} Function?{name}"
-        if nodeType == ast.ClassDef:
-            return f" {parenthesis} Class?{name}"
-        if nodeType == ast.Attribute:
-            return f" {parenthesis} Attr?{name}"
-        if nodeType == ast.keyword:
-            return f" {parenthesis} Kwarg?{name}"
-        if nodeType == ast.alias:
-            return f" {parenthesis} Import?{name}"
-
-        return f" {parenthesis} {nodeType.__name__}"
