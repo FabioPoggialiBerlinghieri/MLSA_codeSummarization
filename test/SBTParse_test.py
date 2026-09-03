@@ -2,7 +2,7 @@ import unittest
 import SBTParse as SBT
 
 
-class STBParseTest(unittest.TestCase):
+class SBTParseTest(unittest.TestCase):
 
     def setUp(self):
         self.sbt_p = SBT.SBTParse()
