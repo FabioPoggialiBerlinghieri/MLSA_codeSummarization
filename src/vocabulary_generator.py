@@ -1,8 +1,6 @@
 import itertools
 
-import kagglehub
-import pandas as pd
-from pyarrow._dataset import Dataset
+#from pyarrow._dataset import Dataset
 
 import SBTParse as a
 
@@ -22,7 +20,7 @@ class PythonVocabularyGenerator:
         }
 
         if len(self.special_tokens) > len_max:
-            raise ValueError("Vocabulary max length must be at least ", len(self.special_tokens))
+            raise ValueError(f"Vocabulary max length must be at least {len(self.special_tokens) + 1}")
 
         self.LEN_MAX = len_max
 
