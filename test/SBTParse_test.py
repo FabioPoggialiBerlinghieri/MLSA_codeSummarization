@@ -1,7 +1,6 @@
 import unittest
 import SBTParse as SBT
 
-
 class SBTParseTest(unittest.TestCase):
 
     def setUp(self):
@@ -15,25 +14,25 @@ class SBTParseTest(unittest.TestCase):
                 return i
         self.fail(f"Subsequence {sub_sequence} not found in SBT.\n SBT: {main_list}")
 
-    def test_stb_variable_parsing(self):
+    def test_sbt_variable_parsing(self):
         code = "x"
         result = self.sbt_p.parse(code)
         expected = ["(", "Name", "(", "x", ")", "x", ")", "Name"]
         self.find_sequence_in_sbt(expected, result)
 
-    def test_stb_constant_parsing(self):
+    def test_sbt_constant_parsing(self):
         code = "3"
         result = self.sbt_p.parse(code)
         expected = ["(", "Constant", "(", "3", ")", "3", ")", "Constant"]
         self.find_sequence_in_sbt(expected, result)
 
-    def test_stb_arg_parsing(self):
+    def test_sbt_arg_parsing(self):
         code = "def foo(x):\n    pass"
         result = self.sbt_p.parse(code)
         expected = ["(", "arg", "(", "x", ")", "x", ")", "arg"]
         self.find_sequence_in_sbt(expected, result)
 
-    def test_stb_attribute_parsing(self):
+    def test_sbt_attribute_parsing(self):
         code = "x.size"
         result = self.sbt_p.parse(code)
 
@@ -42,7 +41,7 @@ class SBTParseTest(unittest.TestCase):
 
         self.assertLess(self.find_sequence_in_sbt(start, result), self.find_sequence_in_sbt(end, result))
 
-    def test_stb_function_parsing(self):
+    def test_sbt_function_parsing(self):
         code = "def foo(x):\n    pass"
         result = self.sbt_p.parse(code)
 
@@ -51,7 +50,7 @@ class SBTParseTest(unittest.TestCase):
 
         self.assertLess(self.find_sequence_in_sbt(start, result), self.find_sequence_in_sbt(end, result))
 
-    def test_stb_async_function_parsing(self):
+    def test_sbt_async_function_parsing(self):
         code = "async def foo(x):\n    pass"
         result = self.sbt_p.parse(code)
 
@@ -60,7 +59,7 @@ class SBTParseTest(unittest.TestCase):
 
         self.assertLess(self.find_sequence_in_sbt(start, result), self.find_sequence_in_sbt(end, result))
 
-    def test_stb_class_parsing(self):
+    def test_sbt_class_parsing(self):
         code = "class Foo:\n    pass"
         result = self.sbt_p.parse(code)
 
@@ -69,7 +68,7 @@ class SBTParseTest(unittest.TestCase):
 
         self.assertLess(self.find_sequence_in_sbt(start, result), self.find_sequence_in_sbt(end, result))
 
-    def test_stb_keyword_parsing(self):
+    def test_sbt_keyword_parsing(self):
         code = "print(x, end=' ')"
         result = self.sbt_p.parse(code)
 
@@ -78,7 +77,7 @@ class SBTParseTest(unittest.TestCase):
 
         self.assertLess(self.find_sequence_in_sbt(start, result), self.find_sequence_in_sbt(end, result))
 
-    def test_stb_keyword_parsing_kwargs(self):
+    def test_sbt_keyword_parsing_kwargs(self):
         code = "func(**opinion)"
         result = self.sbt_p.parse(code)
 
@@ -87,7 +86,7 @@ class SBTParseTest(unittest.TestCase):
 
         self.assertLess(self.find_sequence_in_sbt(start, result), self.find_sequence_in_sbt(end, result))
 
-    def test_stb_alias_parsing(self):
+    def test_sbt_alias_parsing(self):
         code = "import math"
         result = self.sbt_p.parse(code)
 
@@ -96,7 +95,7 @@ class SBTParseTest(unittest.TestCase):
 
         self.assertLess(self.find_sequence_in_sbt(start, result), self.find_sequence_in_sbt(end, result))
 
-    def test_stb_alias_with_asname_parsing(self):
+    def test_sbt_alias_with_asname_parsing(self):
         code = "import math as m"
         result = self.sbt_p.parse(code)
 
