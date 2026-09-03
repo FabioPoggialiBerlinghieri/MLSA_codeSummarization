@@ -2,7 +2,20 @@ Dataset: da scegliere tra quelli proposti dal prof
 AST: libreria ast
 SBT: da implementare tramite visita in profondità dell'ast
 Tokenizer: da implementare
+
+
 Embedding + Position: utilizzare nn.Embedding
 Transformer: implementare utilizzando la versione del prof (o nn)
+
+
+OPTIMUSPY livello iniziale:
+
+1) nn.Embedding
+2) positional Encoding: funzione seno coseno
+2) Transformer "base" --> encoder self-attention + decoder self-attention --> cross-attention (1 HEAD)
+
+
+
+
 Codifica output: de-tokenizzazione da vocabolario con linguaggio naturale (implementarlo)
 Valutazione e test finale: da implementare
