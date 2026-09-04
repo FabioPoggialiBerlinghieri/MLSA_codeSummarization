@@ -18,6 +18,8 @@ class AttentionTest(unittest.TestCase):
         self.W_V = self.attention.W_V.weight
         self.b_V = self.attention.W_V.bias
 
+        # in this tests L_q = 1
+
     def test_init_state(self):
         # input : B x L x Input = 1 x 3 x 2
         inputs = torch.tensor([[[1,2],[2,-1],[-1,3]]]).float()
@@ -135,15 +137,7 @@ class AttentionTest(unittest.TestCase):
         with self.assertRaises(ValueError) as e:
             self.attention(wrong_query)
 
-        self.assertEqual(f"Expected query to be a 3D tensor (B, 1, Input), but received a {wrong_query.dim()}D tensor.",
-                         str(e.exception))
-
-        wrong_query = torch.tensor([[[1, 2], [0, 1]]]).float()
-
-        with self.assertRaises(ValueError) as e:
-            self.attention(wrong_query)
-
-        self.assertEqual(f"Expected query sequence length to be 1 (B, 1, Input), but received {wrong_query.shape[1]} at dimension 1.",
+        self.assertEqual(f"Expected query to be a 3D tensor (B, L_q, Input), but received a {wrong_query.dim()}D tensor.",
                          str(e.exception))
 
         wrong_query = torch.tensor([[[1]]]).float()
@@ -169,7 +163,7 @@ class AttentionTest(unittest.TestCase):
         with self.assertRaises(ValueError) as e:
             self.attention(query, mask=wrong_mask)
 
-        self.assertEqual(f"Expected mask to be a 3D tensor (B, 1, L), but received a {wrong_mask.dim()}D tensor.",
+        self.assertEqual(f"Expected mask to be a 3D tensor (B, L_q, L), but received a {wrong_mask.dim()}D tensor.",
                          str(e.exception))
 
         wrong_mask = torch.tensor([[[1, 0, 1], [0, 1, 0]]]).float()
@@ -178,7 +172,7 @@ class AttentionTest(unittest.TestCase):
             self.attention(query, mask=wrong_mask)
 
         self.assertEqual(
-            f"Expected mask sequence length to be 1 (B, 1, L), but received {wrong_mask.shape[1]} at dimension 1.",
+            f"Expected mask sequence length to be 1 (B, L_q, L), but received {wrong_mask.shape[1]} at dimension 1.",
             str(e.exception))
 
         wrong_mask = torch.tensor([[[1, 0]]]).float()
