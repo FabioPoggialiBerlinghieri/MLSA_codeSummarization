@@ -15,7 +15,6 @@ class Attention(nn.Module):
         self.k = None
         self.v = None
         self.q = None
-        self.alphas = None
 
     def init_state(self, inputs: torch.Tensor):
         # input : B x L x Input
@@ -26,7 +25,7 @@ class Attention(nn.Module):
         self.k = self.W_K(inputs)
         self.v = self.W_V(inputs)
 
-    def forward(self, query: torch.Tensor):
+    def forward(self, query: torch.Tensor, mask=None):
         # query : B x 1 x Input
         assert query.dim() == 3
         assert query.shape[1] == 1
@@ -36,7 +35,10 @@ class Attention(nn.Module):
         self.q = self.W_Q(query)
 
         # Score B x L x D_Model * B x D_Model x 1 = B x L x 1
-        score = torch.bmm(self.k, self.q.permute(0, 2, 1)) / np.sqrt(self.d_model)
+        scores = torch.bmm(self.k, self.q.permute(0, 2, 1)) / np.sqrt(self.d_model)
+
+        if mask is not None:
+            scores = scores.masked_fill(mask == 0, -1e9)
 
         # Context: B x 1 x L * B x L x D_Model = B x 1 x D_Model
-        return torch.bmm(F.softmax(score.permute(0, 2, 1)), self.v)
+        return torch.bmm(F.softmax(scores.permute(0, 2, 1)), self.v)
