@@ -30,7 +30,7 @@ class SelfAttentionEncoder(nn.Module):
     def __check_forward_params(self, inputs: torch.Tensor, mask: torch.Tensor | None = None) -> None:
         # input : B x L x Input
         if inputs.dim() != 3:
-            raise ValueError(f"Expected a 3D tensor (B, L, Input), received a {inputs.dim()}D tensor.")
+            raise ValueError(f"Expected a 3D tensor(B, L, Input), received a {inputs.dim()}D tensor.")
         if inputs.shape[-1] != self.input_dim:
             raise ValueError(f"Incorrect input dimension: expected {self.input_dim}, received {inputs.shape[-1]}.")
 
