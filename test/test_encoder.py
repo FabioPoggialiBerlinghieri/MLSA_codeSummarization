@@ -46,12 +46,19 @@ class MyTestCase(unittest.TestCase):
                                r"Expected mask to be a 3D tensor \(B, L, L\), but received a 2D tensor\.",
                                lambda : self.encoder.forward(self.input, incorrect_mask))
 
-    #TODO: sistemare il messaggio di errore
     def test_forwardOutputDimension_InconsistentMask(self):
         incorrect_mask = torch.Tensor([[[1, 1, 1], [1, 1, 1], [0, 0, 1], [0, 0, 1]]])
-        self.assertRaisesRegex(ValueError,
-                               r"Expected mask to have shape \(B, 4, 4\), but received 3\.",
-                               lambda : self.encoder.forward(self.input, incorrect_mask))
+        with self.assertRaises(ValueError) as e:
+            self.encoder.forward(self.input, incorrect_mask)
+        self.assertEqual(f"Expected mask to have shape (B, {self.input.shape[1]}, {self.input.shape[1]}), but received {incorrect_mask.shape}.",
+                         str(e.exception))
+
+        incorrect_mask = torch.Tensor([[[1, 1, 1, 0], [1, 1, 1, 1], [0, 0, 1, 0]]])
+        with self.assertRaises(ValueError) as e:
+            self.encoder.forward(self.input, incorrect_mask)
+        self.assertEqual(
+            f"Expected mask to have shape (B, {self.input.shape[1]}, {self.input.shape[1]}), but received {incorrect_mask.shape}.",
+            str(e.exception))
 
 
 if __name__ == '__main__':
