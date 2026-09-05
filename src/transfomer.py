@@ -16,16 +16,18 @@ class Transformer(nn.Module):
         self.decoder = Decoder(d_model, feature_dim, feature_dim)
         self.max_output_length = max_output_length
 
-    def forward(self, inputs: torch.Tensor, labels: torch.Tensor | None = None, mask : torch.Tensor | None = None ) -> torch.Tensor:
+    def forward(self, inputs: torch.Tensor,  inputs_seq_lengths: torch.Tensor,
+                labels: torch.Tensor | None = None, labels_seq_lengths: torch.Tensor | None = None) -> torch.Tensor:
         self.__check_forward_params(inputs, labels)
 
         # outputs encoder: B x L x D_Model
-        outputs_encoder = self.encoder(inputs, mask)
+        outputs_encoder = self.encoder(inputs, inputs_seq_lengths)
         self.decoder.init_state(outputs_encoder)
 
         if self.training:
             # output : B x L_label x Output
-            outputs_decoder = self.decoder(torch.cat([inputs[:, -1:, :], labels[:, :-1, :]], dim=1))
+            outputs_decoder = self.decoder(torch.cat([inputs[:, -1:, :], labels[:, :-1, :]], dim=1),
+                                           labels_seq_lengths)
         else:
             current_sequence = inputs[:, -1:, :]
 

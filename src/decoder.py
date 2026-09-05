@@ -2,6 +2,9 @@ from attention import Attention
 import torch
 import torch.nn as nn
 
+from paddingMask import PaddingMask
+
+
 class Decoder(nn.Module):
     def __init__(self, d_model: int, input_dim: int, output_dim: int, ff_dim: int | None = None) -> None:
         super().__init__()
@@ -27,7 +30,7 @@ class Decoder(nn.Module):
 
         self.cross_attention.init_state(state)
 
-    def forward(self, inputs: torch.Tensor) -> torch.Tensor:
+    def forward(self, inputs: torch.Tensor, seq_lengths: torch.Tensor | None = None) -> torch.Tensor:
         # input : B x L x Input
         if inputs.dim() != 3:
             raise ValueError(f"Expected input to be of size 3, but found {inputs.dim()}")
@@ -36,7 +39,7 @@ class Decoder(nn.Module):
                 f"Incorrect input dimension: expected {self.input_dim}, received {inputs.shape[-1]}.")
 
         # mask : B x L x L
-        mask = self.__create_mask(inputs)
+        mask = self.__create_mask(inputs, seq_lengths) if self.training else None
 
         self.self_attention.init_state(inputs)
         # context : B x L x D
@@ -48,5 +51,7 @@ class Decoder(nn.Module):
         # output : B x L x Output
         return self.ff(context)
 
-    def __create_mask(self, inputs: torch.Tensor) -> torch.Tensor:
-        return torch.tril(torch.ones(inputs.size(0), inputs.size(1), inputs.size(1)))
+    def __create_mask(self, inputs: torch.Tensor, seq_lengths: torch.Tensor) -> torch.Tensor:
+        no_cheating_mask = torch.tril(torch.ones(inputs.size(0), inputs.size(1), inputs.size(1)))
+        paddingMask = PaddingMask.generate_mask(inputs.shape[0], seq_lengths, inputs.shape[-2])
+        return no_cheating_mask * paddingMask

@@ -4,7 +4,7 @@ import torch
 from encoder import SelfAttentionEncoder
 
 
-class MyTestCase(unittest.TestCase):
+class EncoderTest(unittest.TestCase):
 
     def setUp(self) -> None:
         self.d_model = 3
