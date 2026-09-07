@@ -11,7 +11,7 @@ class TestVocabularyGenerator(unittest.TestCase):
 
     def test_generate_singleCodeDefaultMaxLength(self):
         self.vocgen.codes = ["a = x*x"]
-        expectedElements = self.firstCodeTokens | {"UKN"} | self.special_tokens.keys()
+        expectedElements = self.firstCodeTokens | {"[PAD]", "[UNK]"} | self.special_tokens.keys()
         expectedIndexes = set([i for i in range(len(expectedElements))])
 
         voc = self.vocgen.generate()
@@ -20,16 +20,16 @@ class TestVocabularyGenerator(unittest.TestCase):
         self.assertEqual(expectedIndexes, set(voc.values()))
         self.assertEqual(len(expectedElements), len(voc))
 
-        self.assertTrue(voc["("] == len(self.special_tokens) + 1)
-        self.assertTrue(voc[")"] == len(self.special_tokens) + 2)
+        self.assertTrue(voc["("] == len(self.special_tokens) + 2)
+        self.assertTrue(voc[")"] == len(self.special_tokens) + 3)
 
         self.assertTrue(voc[")"] < voc["x"] and voc["("] < voc["x"])
         self.assertTrue(voc["x"] < voc["Assign"])
 
     def test_generate_singleCodeFixedMaxLength(self):
         self.vocgen.codes = ["x = a + y"]
-        self.vocgen.LEN_MAX = 13
-        expectedElements = {"(", ")", "Name", "UKN"} | self.special_tokens.keys()
+        self.vocgen.LEN_MAX = 14
+        expectedElements = {"(", ")", "Name", "[PAD]", "[UNK]"} | self.special_tokens.keys()
         expectedIndexes = set([i for i in range(len(expectedElements))])
 
         voc = self.vocgen.generate()
@@ -38,14 +38,14 @@ class TestVocabularyGenerator(unittest.TestCase):
         self.assertEqual(expectedElements, voc.keys())
         self.assertEqual(expectedIndexes, set(voc.values()))
 
-        self.assertTrue(voc["("] == len(self.special_tokens) + 1)
-        self.assertTrue(voc[")"] == len(self.special_tokens) + 2)
+        self.assertTrue(voc["("] == len(self.special_tokens) + 2)
+        self.assertTrue(voc[")"] == len(self.special_tokens) + 3)
 
         self.assertTrue(voc[")"] < voc["Name"] and voc["("] < voc["Name"])
 
     def test_generate_multipleCode(self):
         secondCodeTokens = {"Return", "b"}
-        expectedElements = self.firstCodeTokens | {"UKN"} | secondCodeTokens | self.special_tokens.keys()
+        expectedElements = self.firstCodeTokens | {"[PAD]", "[UNK]"} | secondCodeTokens | self.special_tokens.keys()
         expectedIndexes = set([i for i in range(len(expectedElements))])
 
         voc = self.vocgen.generate()
@@ -54,15 +54,15 @@ class TestVocabularyGenerator(unittest.TestCase):
         self.assertEqual(expectedIndexes, set(voc.values()))
         self.assertEqual(len(expectedElements), len(voc))
 
-        self.assertTrue(voc["("] == len(self.special_tokens) + 1)
-        self.assertTrue(voc[")"] == len(self.special_tokens) + 2)
+        self.assertTrue(voc["("] == len(self.special_tokens) + 2)
+        self.assertTrue(voc[")"] == len(self.special_tokens) + 3)
 
         self.assertTrue(voc[")"] < voc["b"] and voc["("] < voc["b"])
 
 
     def test_generate_emptyCodeList(self):
         self.vocgen = vg.PythonVocabularyGenerator([])
-        self.assertEqual(self.vocgen.special_tokens | {"UKN": len(self.vocgen.special_tokens)}, self.vocgen.generate())
+        self.assertEqual(self.vocgen.special_tokens | {"[PAD]" : 0, "[UNK]": 1}, self.vocgen.generate())
 
     def test_invalidMaxLength(self):
         self.assertRaisesRegex(ValueError,

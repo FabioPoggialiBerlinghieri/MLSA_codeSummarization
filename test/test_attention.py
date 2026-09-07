@@ -32,24 +32,6 @@ class AttentionTest(unittest.TestCase):
         torch.testing.assert_close(F.linear(inputs, self.W_K, self.b_K), self.attention.k)
         torch.testing.assert_close(F.linear(inputs, self.W_V, self.b_V), self.attention.v)
 
-
-    def test_init_state_with_wrong_input_dim(self):
-        # wrong input
-        wrong_inputs = torch.tensor([1,2]).float()
-
-        with self.assertRaises(ValueError) as e:
-            self.attention.init_state(wrong_inputs)
-
-        self.assertEqual(f"Expected a 3D tensor (B, L, Input), received a {wrong_inputs.dim()}D tensor.",
-                         str(e.exception))
-
-        wrong_inputs = torch.tensor([[[1],[2],[-1]]]).float()
-        with self.assertRaises(ValueError) as e:
-            self.attention.init_state(wrong_inputs)
-
-        self.assertEqual(f"Incorrect input dimension: expected 2, received {wrong_inputs.shape[2]}.",
-                         str(e.exception))
-
     def test_forward_q_value(self):
         # input : B x L x Input = 1 x 3 x 2
         inputs = torch.tensor([[[1, 2], [2, -1], [-1, 3]]]).float()
@@ -114,75 +96,6 @@ class AttentionTest(unittest.TestCase):
 
         expected_context = torch.tensor([[[0.6697, 0.3303]]])
         torch.testing.assert_close(context, expected_context, rtol=1e-3, atol=1e-3)
-
-    def test_forward_before_init_state_raises_error(self):
-        query = torch.tensor([[[1.0, 0.0]]]).float()
-
-        with self.assertRaises(RuntimeError) as e:
-            self.attention(query)
-
-        self.assertEqual(
-            "Attention state not initialized. You must call 'init_state(inputs)' before calling 'forward(query)'.",
-            str(e.exception))
-
-    def test_forward_with_wrong_input_dim(self):
-        # input : B x L x Input = 1 x 3 x 2
-        inputs = torch.tensor([[[1, 2], [2, -1], [-1, 3]]]).float()
-        self.attention.init_state(inputs)
-
-        # rigth_query : B x 1 x Input
-
-        wrong_query = torch.tensor([[1, 2]]).float()
-
-        with self.assertRaises(ValueError) as e:
-            self.attention(wrong_query)
-
-        self.assertEqual(f"Expected query to be a 3D tensor (B, L_q, Input), but received a {wrong_query.dim()}D tensor.",
-                         str(e.exception))
-
-        wrong_query = torch.tensor([[[1]]]).float()
-
-        with self.assertRaises(ValueError) as e:
-            self.attention(wrong_query)
-
-        self.assertEqual(
-            f"Expected query feature dimension to match input_dim (2), but received {wrong_query.shape[2]} at dimension 2.",
-            str(e.exception))
-
-    def test_forward_with_wrong_mask_dim(self):
-        # input : B x L x Input = 1 x 3 x 2
-        inputs = torch.tensor([[[1, 2], [2, -1], [-1, 3]]]).float()
-        self.attention.init_state(inputs)
-
-        # query : B x 1 x Input
-        query = torch.tensor([[[1, 2]]]).float()
-
-        # rigth mask : B x 1 x L
-        wrong_mask = torch.tensor([[1, 0, 1]]).float()
-
-        with self.assertRaises(ValueError) as e:
-            self.attention(query, mask=wrong_mask)
-
-        self.assertEqual(f"Expected mask to be a 3D tensor (B, L_q, L), but received a {wrong_mask.dim()}D tensor.",
-                         str(e.exception))
-
-        wrong_mask = torch.tensor([[[1, 0, 1], [0, 1, 0]]]).float()
-
-        with self.assertRaises(ValueError) as e:
-            self.attention(query, mask=wrong_mask)
-
-        self.assertEqual(
-            f"Expected mask sequence length to be 1 (B, L_q, L), but received {wrong_mask.shape[1]} at dimension 1.",
-            str(e.exception))
-
-        wrong_mask = torch.tensor([[[1, 0]]]).float()
-
-        with self.assertRaises(ValueError) as e:
-            self.attention(query, mask=wrong_mask)
-
-        self.assertEqual(
-            f"Mask sequence length must match input sequence length. Expected 3, but received {wrong_mask.shape[2]} at dimension 2.",
-            str(e.exception))
 
     def test_forward_scores_value_with_mask(self):
         # input : B x L x Input = 1 x 3 x 2

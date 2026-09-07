@@ -1,6 +1,18 @@
-import ast
-from typing import Dict, List
+from transformers import BertTokenizer
+from typing import cast
 import SBTParse as a
+
+from abc import ABC, abstractmethod
+
+class Tokenizer(ABC):
+
+    def __init__(self, vocabulary: dict[str, int]):
+        self.vocabulary = vocabulary
+
+    @abstractmethod
+    def tokenize(self, input: str) -> list[int]:
+        pass
+
 
 class InvalidUknownIdentifierException(Exception):
     pass
@@ -8,10 +20,10 @@ class InvalidUknownIdentifierException(Exception):
 class InvalidMainKeywordsException(Exception):
     pass
 
-class CodeTokenizer:
+class CodeTokenizer(Tokenizer):
 
-    def __init__(self, vocabulary: Dict[str, int] = None, main_keywords: List[str] = None, uknown_identifier: str = "UKN") -> None:
-        self.vocabulary = vocabulary
+    def __init__(self, vocabulary: dict[str, int], main_keywords: list[str] = None, uknown_identifier: str = "UNK") -> None:
+        super().__init__(vocabulary)
         self.main_keywords = main_keywords
         self.uknown_identifier = uknown_identifier
 
@@ -29,15 +41,15 @@ class CodeTokenizer:
             raise InvalidMainKeywordsException(f"missmatch between main_keyword {wrong_elements} and vocabulary")
 
     def __check_unkownidentifier(self) -> None:
-        if self.uknown_identifier not in self.vocabulary.keys():
+        if "[" + self.uknown_identifier + "]" not in self.vocabulary.keys():
             raise InvalidUknownIdentifierException("uknown identifier must be a key in the vocabulary")
 
-    def tokenize(self, code: str) -> List[int]:
+    def tokenize(self, input: str) -> list[int]:
         """ Tokenize an indented Python source code string into a list of tokens """
-        sbt = a.SBTParse().parse(code)
+        sbt = a.SBTParse().parse(input)
         return self.word2idx(sbt)
 
-    def word2idx(self, words: List[str]) -> List[int]:
+    def word2idx(self, words: list[str]) -> list[int]:
         """ Translate a list of words into a list of indices (tokens) """
         tokens = []
         for (word, i) in zip(words, range(len(words))):
@@ -49,7 +61,16 @@ class CodeTokenizer:
                 elif i > 3 and words[i-4] in self.main_keywords and word == words[i - 2]:
                     tokens.append(self.vocabulary[words[i-4] + "_" + self.uknown_identifier])
                 else:
-                    tokens.append(self.vocabulary[self.uknown_identifier])
+                    tokens.append(self.vocabulary["[" + self.uknown_identifier + "]"])
             else:
                 tokens.append(self.vocabulary[word])
         return tokens
+
+class EnglishTextTokenizer(Tokenizer):
+
+    def __init__(self, vocabulary: dict[str, int]) -> None:
+        super().__init__(vocabulary)
+        self.tokenizer = BertTokenizer(vocabulary)
+
+    def tokenize(self, input: str) -> list[int]:
+        return cast(list[int], self.tokenizer.convert_tokens_to_ids(self.tokenizer.tokenize(input)))

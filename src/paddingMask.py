@@ -1,11 +1,8 @@
 import torch
 
-
 class PaddingMask:
 
     @staticmethod
-    def generate_mask(batch_size: int, seq_lengths: torch.Tensor, max_length: int) -> torch.Tensor:
-        pos = torch.arange(max_length, device=seq_lengths.device)
-        mask_2d = pos < seq_lengths.unsqueeze(1)
-        mask_3d = mask_2d.unsqueeze(1).expand(-1, max_length, -1).float()
-        return mask_3d
+    def generate_padding_mask(x: torch.Tensor) -> torch.Tensor:
+        mask = (x != 0).int()
+        return mask.unsqueeze(1).repeat(1, x.size(1), 1).long()

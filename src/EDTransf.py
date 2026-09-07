@@ -1,15 +1,11 @@
-from ast import Tuple
-
 import torch
 from torch import nn
-
 from positionalEncoding import PositionalEncoding
 from transfomer import Transformer
 
-
 class EDTransf(nn.Module):
 
-    def __init__(self, d_model: int, input_max_len: int, input_vocabulary_size: int, embedding_dim: int, output_max_len: int) -> None:
+    def __init__(self, embedding_dim: int, d_model: int, input_max_len: int, input_vocabulary_size: int, output_max_len: int, output_vocabulary_size: int) -> None:
         super().__init__()
         self.d_model = d_model
         self.embedding_dim = embedding_dim
@@ -19,26 +15,25 @@ class EDTransf(nn.Module):
             PositionalEncoding(self.input_max_len, self.embedding_dim)
         )
         self.transformer = Transformer(d_model, self.embedding_dim, output_max_len)
-        self.linear = nn.Linear(self.embedding_dim, 1)
+        # for each element of output seq we have a probabilistic distribution for a vocabulary size classification
+        self.linear = nn.Linear(self.embedding_dim, output_vocabulary_size)
 
-    def forward(self, inputs: torch.Tensor, labels : torch.Tensor | None = None) -> torch.Tensor:
+    def forward(self, inputs : torch.Tensor, input_mask : torch.Tensor,
+                labels : torch.Tensor | None = None, labels_mask : torch.Tensor | None = None ) -> torch.Tensor:
 
-        # input : B x L_i x 1
-        if inputs.shape[-2] != self.input_max_len:
-            raise ValueError("Invalid input length")
+        # inputs: B x L_in x 1 (code token)
+        # labels: B x L_label x 1 (summ token)
 
-        # seq_length : B
-        inputs_seq_lengths, labels_seq_lengths = self.__create_seq_lengths(inputs, labels)
-
-        # preprocessed: B x L_i x Emb_d
+        # preprocessed: B x L_i x D_emb
         preprocessed_inputs = self.preprocess(inputs)
+        # preprocessed: B x L_label x D_emb
         preprocessed_labels = self.preprocess(labels) if labels is not None else None
 
-        # output: B x L_o x Emb_d
-        outputs = self.transformer(preprocessed_inputs, inputs_seq_lengths, preprocessed_labels, labels_seq_lengths)
+        # output: B x L_label x D_emb
+        outputs = self.transformer(preprocessed_inputs, input_mask, preprocessed_labels, labels_mask)
 
-        # B x L_o x 1
-        return self.linear(outputs)
+        # B x L_label x output_vocabulary_size
+        outputs = self.linear(outputs)
 
-    def __create_seq_lengths(self, inputs: torch.Tensor, labels: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
-        return (inputs > 0).sum(dim=1), (labels > 0).sum(dim=1)
+        # cross entropy want this parameters order
+        return outputs.permute(0, 2, 1)

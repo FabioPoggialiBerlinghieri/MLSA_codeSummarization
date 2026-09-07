@@ -19,3 +19,6 @@ OPTIMUSPY livello iniziale:
 
 Codifica output: de-tokenizzazione da vocabolario con linguaggio naturale (implementarlo)
 Valutazione e test finale: da implementare
+
+
+prendere i dati dal dataset ->
