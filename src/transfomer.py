@@ -21,7 +21,7 @@ class Transformer(nn.Module):
         # outputs encoder: B x L_in x D_Model
         outputs_encoder = self.encoder(inputs, inputs_mask)
         # input mask must be of size: B x L_out x L_in
-        inputs_mask = inputs_mask[:, 0:1, :].repeat(1, labels.shape[1], 1) if labels is not None else None
+        #inputs_mask = inputs_mask[:, 0:1, :].repeat(1, labels.shape[1], 1) if labels is not None else None
         self.decoder.init_state(outputs_encoder, inputs_mask)
 
         if self.training:
