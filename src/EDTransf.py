@@ -36,7 +36,7 @@ class EDTransf(nn.Module):
             outputs = self.transformer(preprocessed_inputs, input_mask, current_seq_preprocessed)
             outputs = self.linear(outputs)
             outputs = torch.argmax(outputs, dim=-1)
-            outputs = outputs[:, -1]
+            outputs = outputs[:, -1:]
             current_seq = torch.cat([current_seq, outputs], dim=-1)
 
         return current_seq
