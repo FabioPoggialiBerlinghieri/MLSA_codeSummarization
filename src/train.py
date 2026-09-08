@@ -17,6 +17,7 @@ def train(model,
           train_loader,
           val_loader,
           epochs=20, device="cpu"):
+    print(device)
     model.to(device)
     for epoch in range(1, epochs+1):
         training_loss = 0.0
