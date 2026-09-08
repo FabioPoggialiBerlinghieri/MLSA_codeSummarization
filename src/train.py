@@ -31,11 +31,11 @@ def train(model,
             inputs = inputs.to(device)
             inputs_mask = PaddingMask.generate_padding_mask(inputs).to(device)
             targets = targets.to(device)
-            targets_mask = PaddingMask.generate_padding_mask(targets).to(device)
+            targets_mask = PaddingMask.generate_padding_mask(targets[:, :-1]).to(device)
 
-            output = model(inputs, inputs_mask, targets[:, :-1, :], targets_mask[:, :-1, :])
+            output = model(inputs, inputs_mask, targets[:, :-1], targets_mask)
 
-            loss = loss_fn(output, targets[:, 1:, :])
+            loss = loss_fn(output, targets[:, 1:])
             loss.backward() # backpropagation, compute gradients
             optimizer.step() # apply gradients
             training_loss += loss.data.item() * inputs.size(0)
@@ -52,9 +52,11 @@ def train(model,
               inputs = inputs.to(device)
               inputs_mask = PaddingMask.generate_padding_mask(inputs).to(device)
               targets = targets.to(device)
-              output = model(inputs, inputs_mask, targets[:, :-1, :], targets_mask[:, :-1, :])
+              targets_mask = PaddingMask.generate_padding_mask(targets[:, :-1]).to(device)
 
-              loss = loss_fn(output, targets[:, 1:, :])
+              output = model(inputs, inputs_mask, targets[:, :-1], targets_mask)
+
+              loss = loss_fn(output, targets[:, 1:])
               valid_loss += loss.data.item() * inputs.size(0)
               correct = torch.eq(torch.max(F.softmax(output, dim=1), dim=1)[1], targets)
               num_correct += torch.sum(correct).item()
