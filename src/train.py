@@ -58,7 +58,7 @@ def train(model,
 
               loss = loss_fn(output, targets[:, 1:])
               valid_loss += loss.data.item() * inputs.size(0)
-              correct = torch.eq(torch.max(F.softmax(output, dim=1), dim=1)[1], targets)
+              correct = torch.eq(torch.max(F.softmax(output, dim=1), dim=1)[1], targets[:, 1:])
               num_correct += torch.sum(correct).item()
               num_examples += correct.shape[0]
           valid_loss /= len(val_loader.dataset)
