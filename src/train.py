@@ -17,7 +17,6 @@ def train(model,
           train_loader,
           val_loader,
           epochs=20, device="cpu"):
-    print(device)
     model.to(device)
     for epoch in range(1, epochs+1):
         training_loss = 0.0
@@ -120,7 +119,7 @@ code = code_padding_handler.padding(codeTokenizer.tokenize(code))
 
 optimusPy.eval()
 with torch.no_grad():
-    code = torch.tensor([code]).to(device)
+    code = torch.tensor([code], device=device)
     mask = PaddingMask.generate_padding_mask(code).to(device)
     summ = optimusPy(code, mask)
     summ_ids = torch.argmax(summ, dim=-1)

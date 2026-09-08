@@ -34,7 +34,7 @@ class Decoder(nn.Module):
 
         # add no cheating mask to padding mask
         if labels_mask is not None:
-            labels_mask = labels_mask * torch.tril(torch.ones(labels.size(0), labels.size(1), labels.size(1)))
+            labels_mask = labels_mask * torch.tril(torch.ones(labels.size(0), labels.size(1), labels.size(1), device=labels.device))
 
         # context : B x L_label x D_model
         context = self.self_attention(labels, labels_mask)
