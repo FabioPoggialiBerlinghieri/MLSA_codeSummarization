@@ -124,7 +124,7 @@ optimusPy.eval()
 with torch.no_grad():
     code = torch.tensor([code], device=device)
     mask = PaddingMask.generate_padding_mask(code).to(device)
-    summ_ids = optimusPy.predict(code, mask, torch.Tensor(englishTokenizer.tokenize("[CLS]")))
+    summ_ids = optimusPy.predict(code, mask, torch.Tensor([englishTokenizer.tokenize("[CLS]")]))
 
 summ_list = summ_ids[0].tolist()
 summ = englishTokenizer.detokenize(summ_list)
