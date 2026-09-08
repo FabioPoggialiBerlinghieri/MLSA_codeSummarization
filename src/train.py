@@ -83,7 +83,7 @@ train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=64, shuffle
 val_loader = torch.utils.data.DataLoader(validation_dataset, batch_size=64, shuffle=True)
 
 optimizer = optim.Adam(optimusPy.parameters(), lr=0.001)
-loss = nn.CrossEntropyLoss()
+loss = nn.CrossEntropyLoss(ignore_index=0)
 
 if torch.cuda.is_available():
   device = torch.device('cuda')
