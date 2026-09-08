@@ -74,11 +74,9 @@ with open("../data/english_vocab.json", "r") as f:
 optimusPy = e.EDTransf(512, 1024, 512, len(code_vocabulary), 128, len(english_vocabulary))
 
 train_dataframe = pd.read_json("../data/dataset_train.json", orient='records')
-train_dataframe = train_dataframe[:100]
 train_dataset = CodeDataset(torch.tensor(train_dataframe["code"], dtype=torch.long), torch.tensor(train_dataframe["text"], dtype=torch.long))
 
 validation_dataframe = pd.read_json("../data/dataset_validation.json", orient='records')
-validation_dataframe = validation_dataframe[:100]
 validation_dataset = CodeDataset(torch.tensor(validation_dataframe["code"], dtype=torch.long), torch.tensor(validation_dataframe["text"], dtype=torch.long))
 
 train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=64, shuffle=True)
@@ -95,7 +93,7 @@ print("device:", device)
 
 optimusPy.to(device)
 
-train(optimusPy, optimizer, loss, train_loader, val_loader, epochs=4, device=device)
+train(optimusPy, optimizer, loss, train_loader, val_loader, epochs=10, device=device)
 
 # PRIMO TEST
 
