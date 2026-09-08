@@ -33,7 +33,7 @@ with open("../data/english_vocab.json", "w") as f:
     json.dump(english_vocabulary, f, indent=4)
 
 englishTokenizer = tc.EnglishTextTokenizer(english_vocabulary)
-text_padding_handler = paddingHandler.PaddingHandler(128)
+text_padding_handler = paddingHandler.PaddingHandler(128 + 1) # CLS + label
 
 tok_dataset = dataset.apply(
     lambda row: tokenize_pad(row["code"], row["text"]),
