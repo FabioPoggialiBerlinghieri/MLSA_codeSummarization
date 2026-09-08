@@ -1,13 +1,14 @@
 import json
-
 import pandas as pd
 import torch
 import torch.nn.functional as F
 from torch import optim, nn
-
 import EDTransf as e
+import paddingHandler
 from dataset import CodeDataset
 from paddingMask import PaddingMask
+from vocabulary_generator import PythonVocabularyGenerator
+import tokenizer as tc
 
 
 def train(model,
@@ -51,9 +52,8 @@ def train(model,
               inputs = inputs.to(device)
               inputs_mask = PaddingMask.generate_padding_mask(inputs)
               targets = targets.to(device)
-              targets_mask = PaddingMask.generate_padding_mask(targets)
 
-              output = model(inputs, inputs_mask, targets, targets_mask)
+              output = model(inputs, inputs_mask)
 
               loss = loss_fn(output, targets)
               valid_loss += loss.data.item() * inputs.size(0)
@@ -91,7 +91,39 @@ if torch.cuda.is_available():
   device = torch.device('cuda')
 else:
   device = torch.device('cpu')
+print("device:", device)
 
 optimusPy.to(device)
 
-train(optimusPy, optimizer, loss, train_loader, val_loader, epochs=2, device=device)
+train(optimusPy, optimizer, loss, train_loader, val_loader, epochs=4, device=device)
+
+# PRIMO TEST
+
+code = "x = x + 1"
+
+with open("../data/code_vocab.json", "w") as f:
+    json.dump(code_vocabulary, f, indent=4)
+
+main_keywords = PythonVocabularyGenerator.get_main_keywords()
+codeTokenizer = tc.CodeTokenizer(code_vocabulary, main_keywords)
+code_padding_handler = paddingHandler.PaddingHandler(512)
+
+with open("../data/english_vocab.json", "w") as f:
+    json.dump(english_vocabulary, f, indent=4)
+
+englishTokenizer = tc.EnglishTextTokenizer(english_vocabulary)
+text_padding_handler = paddingHandler.PaddingHandler(128)
+
+# tokenization and padding
+code = code_padding_handler.padding(codeTokenizer.tokenize(code))
+
+optimusPy.eval()
+with torch.no_grad():
+    code = torch.tensor([code])
+    mask = PaddingMask.generate_padding_mask(code)
+    summ = optimusPy(code, mask)
+    summ_ids = torch.argmax(summ, dim=-1)
+
+summ_list = summ_ids[0].tolist()
+summ = englishTokenizer.detokenize(summ_list)
+print("E il nostro primo commento di x = x + 1 e':", summ)

@@ -43,25 +43,29 @@ class VocabularyGenerator(ABC):
 
 class PythonVocabularyGenerator(VocabularyGenerator):
 
+    special_tokens = {
+        "Name_UNK": 2,  # Nomi di variabili o chiamate a funzione (se non l'hai rinominato in Variable)
+        "Constant_UNK": 3,  # Valori letterali (numeri come 2, 3.14, o stringhe come "Hello")
+        "arg_UNK": 4,  # Parametri passati a una funzione
+        "FunctionDef_UNK": 5,  # Nomi di funzioni definite
+        "AsyncFunctionDef_UNK": 6,  # Nomi di funzioni asincrone
+        "ClassDef_UNK": 7,  # Nomi di classi
+        "Attribute_UNK": 8,  # Attributi di oggetti (es. 'render' in self.render)
+        "keyword_UNK": 9,  # Argomenti passati per nome (kwargs)
+        "alias_UNK": 10,  # Nomi di moduli importati (es. import pandas as pd)
+    }
+
     def __init__(self, codes: list[str], len_max: int = 30000) -> None:
-        super().__init__(codes, len_max, {
-            "Name_UNK" : 2,              # Nomi di variabili o chiamate a funzione (se non l'hai rinominato in Variable)
-            "Constant_UNK" : 3,          # Valori letterali (numeri come 2, 3.14, o stringhe come "Hello")
-            "arg_UNK" : 4,               # Parametri passati a una funzione
-            "FunctionDef_UNK" : 5,       # Nomi di funzioni definite
-            "AsyncFunctionDef_UNK" : 6,  # Nomi di funzioni asincrone
-            "ClassDef_UNK" : 7,          # Nomi di classi
-            "Attribute_UNK" : 8,         # Attributi di oggetti (es. 'render' in self.render)
-            "keyword_UNK" : 9,           # Argomenti passati per nome (kwargs)
-            "alias_UNK" : 10,              # Nomi di moduli importati (es. import pandas as pd)
-        })
+
+        super().__init__(codes, len_max, PythonVocabularyGenerator.special_tokens)
 
     def generate(self) -> dict[str, int]:
         return super().generate_with_strategy(lambda x: a.SBTParse().parse(x))
 
-    def get_main_keywords(self) -> list[str]:
+    @staticmethod
+    def get_main_keywords() -> list[str]:
         main_keywords = []
-        for word in self.special_tokens.keys():
+        for word in PythonVocabularyGenerator.special_tokens.keys():
             main_keywords.append(word.split("_")[0])
         return main_keywords
 

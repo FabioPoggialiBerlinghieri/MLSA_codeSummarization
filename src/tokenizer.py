@@ -74,3 +74,6 @@ class EnglishTextTokenizer(Tokenizer):
 
     def tokenize(self, input: str) -> list[int]:
         return cast(list[int], self.tokenizer.convert_tokens_to_ids(self.tokenizer.tokenize(input)))
+
+    def detokenize(self, tokens: list[int]) -> str:
+        return ' '.join(self.tokenizer.convert_ids_to_tokens(tokens))
