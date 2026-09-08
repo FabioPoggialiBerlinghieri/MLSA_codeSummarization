@@ -26,7 +26,7 @@ class Transformer(nn.Module):
 
         if self.training:
             # output : B x L_label x D_emb
-            outputs_decoder = self.decoder(labels[:, :-1, :],labels_mask)
+            outputs_decoder = self.decoder(labels,labels_mask)
         else:
             current_sequence = inputs[:, -1:, :]
 
