@@ -29,9 +29,9 @@ def train(model,
             print(f'target shape: {targets.shape}')
 
             inputs = inputs.to(device)
-            inputs_mask = PaddingMask.generate_padding_mask(inputs)
+            inputs_mask = PaddingMask.generate_padding_mask(inputs).to(device)
             targets = targets.to(device)
-            targets_mask = PaddingMask.generate_padding_mask(targets)
+            targets_mask = PaddingMask.generate_padding_mask(targets).to(device)
 
             output = model(inputs, inputs_mask, targets, targets_mask)
 
@@ -50,7 +50,7 @@ def train(model,
               inputs, targets = batch
 
               inputs = inputs.to(device)
-              inputs_mask = PaddingMask.generate_padding_mask(inputs)
+              inputs_mask = PaddingMask.generate_padding_mask(inputs).to(device)
               targets = targets.to(device)
 
               output = model(inputs, inputs_mask)
@@ -119,8 +119,8 @@ code = code_padding_handler.padding(codeTokenizer.tokenize(code))
 
 optimusPy.eval()
 with torch.no_grad():
-    code = torch.tensor([code])
-    mask = PaddingMask.generate_padding_mask(code)
+    code = torch.tensor([code]).to(device)
+    mask = PaddingMask.generate_padding_mask(code).to(device)
     summ = optimusPy(code, mask)
     summ_ids = torch.argmax(summ, dim=-1)
 
