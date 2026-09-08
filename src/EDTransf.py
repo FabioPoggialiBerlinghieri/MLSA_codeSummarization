@@ -10,10 +10,15 @@ class EDTransf(nn.Module):
         self.d_model = d_model
         self.embedding_dim = embedding_dim
         self.input_max_len = input_max_len
-        self.preprocess = nn.Sequential(
+        self.preprocess_inputs = nn.Sequential(
             nn.Embedding(input_vocabulary_size, self.embedding_dim),
             PositionalEncoding(self.input_max_len, self.embedding_dim)
         )
+        self.preprocess_labels = nn.Sequential(
+            nn.Embedding(output_vocabulary_size, self.embedding_dim),
+            PositionalEncoding(self.input_max_len, self.embedding_dim)
+        )
+
         self.transformer = Transformer(d_model, self.embedding_dim, output_max_len)
         # for each element of output seq we have a probabilistic distribution for a vocabulary size classification
         self.linear = nn.Linear(self.embedding_dim, output_vocabulary_size)
@@ -25,9 +30,9 @@ class EDTransf(nn.Module):
         # labels: B x L_label x 1 (summ token)
 
         # preprocessed: B x L_i x D_emb
-        preprocessed_inputs = self.preprocess(inputs)
+        preprocessed_inputs = self.preprocess_inputs(inputs)
         # preprocessed: B x L_label x D_emb
-        preprocessed_labels = self.preprocess(labels) if labels is not None else None
+        preprocessed_labels = self.preprocess_labels(labels) if labels is not None else None
 
         # output: B x L_label x D_emb
         outputs = self.transformer(preprocessed_inputs, input_mask, preprocessed_labels, labels_mask)
