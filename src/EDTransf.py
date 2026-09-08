@@ -10,6 +10,7 @@ class EDTransf(nn.Module):
         self.d_model = d_model
         self.embedding_dim = embedding_dim
         self.input_max_len = input_max_len
+        self.output_max_len = output_max_len
         self.preprocess_inputs = nn.Sequential(
             nn.Embedding(input_vocabulary_size, self.embedding_dim),
             PositionalEncoding(self.input_max_len, self.embedding_dim)
