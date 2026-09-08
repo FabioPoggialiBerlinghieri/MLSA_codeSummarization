@@ -97,7 +97,10 @@ train(optimusPy, optimizer, loss, train_loader, val_loader, epochs=10, device=de
 
 # PRIMO TEST
 
-code = "x = x + 1"
+code = """
+def rectangle_perimeter(l,b):
+    return l*(l+b)
+"""
 
 with open("../data/code_vocab.json", "w") as f:
     json.dump(code_vocabulary, f, indent=4)
