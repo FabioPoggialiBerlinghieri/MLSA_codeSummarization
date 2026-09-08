@@ -44,7 +44,6 @@ class EDTransf(nn.Module):
     def forward(self, inputs : torch.Tensor, input_mask : torch.Tensor,
                 labels : torch.Tensor, labels_mask : torch.Tensor) -> torch.Tensor:
 
-        assert self.training
         # inputs: B x L_in x 1 (code token)
         # labels: B x L_label x 1 (summ token)
 
