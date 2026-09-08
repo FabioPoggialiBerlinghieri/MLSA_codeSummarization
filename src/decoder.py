@@ -32,9 +32,13 @@ class Decoder(nn.Module):
 
         self.self_attention.init_state(labels)
 
+        tril_mask = torch.tril(torch.ones(labels.size(0), labels.size(1), labels.size(1), device=labels.device))
+
         # add no cheating mask to padding mask
         if labels_mask is not None:
-            labels_mask = labels_mask * torch.tril(torch.ones(labels.size(0), labels.size(1), labels.size(1), device=labels.device))
+            labels_mask = labels_mask * tril_mask
+        else:
+            labels_mask = tril_mask
 
         # context : B x L_label x D_model
         context = self.self_attention(labels, labels_mask)

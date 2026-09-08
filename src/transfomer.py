@@ -24,21 +24,8 @@ class Transformer(nn.Module):
         #inputs_mask = inputs_mask[:, 0:1, :].repeat(1, labels.shape[1], 1) if labels is not None else None
         self.decoder.init_state(outputs_encoder, inputs_mask)
 
-        if self.training:
-            # output : B x L_label x D_emb
-            outputs_decoder = self.decoder(labels,labels_mask)
-        else:
-            current_sequence = inputs[:, -1:, :]
-
-            for i in range(self.output_max_len):
-                out = self.decoder(current_sequence)
-
-                # B x 1 x D_emb
-                next = out[:, -1:, :]
-                current_sequence = torch.cat([current_sequence, next], dim=1)
-
-            outputs_decoder = current_sequence[:, 1:, :]
-            # output : B x L_label x D_emb
+        # output : B x L_label x D_emb
+        outputs_decoder = self.decoder(labels,labels_mask)
 
         return outputs_decoder
 
