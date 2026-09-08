@@ -17,7 +17,7 @@ class EDTransf(nn.Module):
         )
         self.preprocess_labels = nn.Sequential(
             nn.Embedding(output_vocabulary_size, self.embedding_dim),
-            PositionalEncoding(self.input_max_len, self.embedding_dim)
+            PositionalEncoding(self.output_max_len, self.embedding_dim)
         )
 
         self.transformer = Transformer(d_model, self.embedding_dim, output_max_len)
