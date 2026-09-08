@@ -99,7 +99,8 @@ train(optimusPy, optimizer, loss, train_loader, val_loader, epochs=10, device=de
 
 code = """
 def rectangle_perimeter(l,b):
-    return l*(l+b)
+    perimeter = l*(l+b)
+    return perimeter
 """
 
 with open("../data/code_vocab.json", "w") as f:
