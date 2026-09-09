@@ -18,6 +18,14 @@ class SelfAttentionEncoder(nn.Module):
             nn.Linear(self.ff_dim, d_model),
         )
 
+        self.norm1 = nn.LayerNorm(d_model)
+        self.norm2 = nn.LayerNorm(d_model)
+
+        # should be a parameter
+        dropout = 0.1
+        self.dropout1 = nn.Dropout(dropout)
+        self.dropout2 = nn.Dropout(dropout)
+
     def forward(self, inputs: torch.Tensor, inputs_mask: torch.Tensor) -> torch.Tensor:
 
         # input: B x L_in x D_model
@@ -28,5 +36,11 @@ class SelfAttentionEncoder(nn.Module):
         # context: B x L_in x D_Model
         context = self.attention(inputs, inputs_mask)
 
+        # dropout + skip conn
+        context = self.norm1(self.dropout1(context) + inputs)
+
         # output:  B x L_in x D_Model
-        return self.ff(context)
+        outputs = self.ff(context)
+
+        # dropout + skip conn
+        return self.norm2(self.dropout2(outputs) + context)

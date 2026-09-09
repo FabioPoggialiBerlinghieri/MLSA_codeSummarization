@@ -18,6 +18,15 @@ class Decoder(nn.Module):
             nn.Linear(self.ff_dim, d_model),
         )
 
+        self.norm1 = nn.LayerNorm(d_model)
+        self.norm2 = nn.LayerNorm(d_model)
+        self.norm3 = nn.LayerNorm(d_model)
+
+        dropout = 0.1
+        self.dropout1 = nn.Dropout(dropout)
+        self.dropout2 = nn.Dropout(dropout)
+        self.dropout3 = nn.Dropout(dropout)
+
         self.inputs_mask = None
 
     def init_state(self, state: torch.Tensor, inputs_mask: torch.Tensor) -> None:
@@ -45,9 +54,19 @@ class Decoder(nn.Module):
         # context : B x L_label x D_Model
         context = self.self_attention(labels, labels_mask)
 
+        # dropout + skip conn
+        context = self.norm1(self.dropout1(context) + labels)
+
         # cross attention needs input mask
         # context : B x L_label x D_Model
+        context_input = context
         context = self.cross_attention(context, self.inputs_mask)
 
+        # dropout + skip conn
+        context = self.norm2(self.dropout2(context) + context_input)
+
         # output : B x L_label x D_Model
-        return self.ff(context)
+        output = self.ff(context)
+
+        # dropout + skip conn
+        return self.norm3(self.dropout3(output) + context)
