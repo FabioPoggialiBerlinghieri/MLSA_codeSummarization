@@ -141,7 +141,7 @@ code = code_padding_handler.padding(codeTokenizer.tokenize(code))
 optimusPy.eval()
 with torch.no_grad():
     code = torch.tensor(code, device=device)
-    mask = PaddingMask.generate_padding_mask(code).to(device)
+    mask = PaddingMask.generate_padding_mask(code).squeeze(1).to(device)
     cls = englishTokenizer.tokenize("[CLS]")[0]
     sep = englishTokenizer.tokenize("[SEP]")[0]
     summ_ids = optimusPy.predict(code, mask, cls, sep)

@@ -49,6 +49,7 @@ class EDTransf(nn.Module):
 
             # current_seq_preprocessed: B x L_label x D_emb
             current_seq_preprocessed = self.preprocess_labels(current_seq)
+            print(current_seq_preprocessed.shape)
 
             # outputs: B x L_label x D_emb
             outputs = self.transformer(preprocessed_inputs, input_mask, current_seq_preprocessed)
@@ -69,7 +70,7 @@ class EDTransf(nn.Module):
                 break
 
         # generate_len (upperbound max_output_len)
-        return current_seq.squeeze(0)
+        return current_seq
 
     def forward(self, inputs : torch.Tensor, input_mask : torch.Tensor,
                 labels : torch.Tensor, labels_mask : torch.Tensor) -> torch.Tensor:
