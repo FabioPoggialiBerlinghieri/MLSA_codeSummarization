@@ -5,14 +5,13 @@ from paddingMask import PaddingMask
 
 class SelfAttentionEncoder(nn.Module):
 
-    def __init__(self, d_model: int, input_dim: int, ff_dim: int | None = None) -> None:
+    def __init__(self, d_model: int, ff_dim: int | None = None) -> None:
         super().__init__()
 
         self.d_model = d_model
-        self.input_dim = input_dim
         self.ff_dim = d_model if ff_dim is None else ff_dim
 
-        self.attention = Attention(d_model, input_dim)
+        self.attention = Attention(d_model)
         self.ff = nn.Sequential(
             nn.Linear(d_model, self.ff_dim),
             nn.ReLU(),
@@ -20,7 +19,10 @@ class SelfAttentionEncoder(nn.Module):
         )
 
     def forward(self, inputs: torch.Tensor, inputs_mask: torch.Tensor) -> torch.Tensor:
-        # input: B x L_in x D_emb
+
+        # input: B x L_in x D_model
+        # input_mask: B x L_in
+
         self.attention.init_state(inputs)
 
         # context: B x L_in x D_Model

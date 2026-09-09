@@ -10,7 +10,7 @@ class DecoderTest(unittest.TestCase):
         self.output_dim = 2
         self.input = torch.Tensor([[[2, 5], [6, 23], [0, 2940], [10, 11]]])
         self.mask = torch.Tensor([[[1,1,1,1], [1,1,1,1], [1,1,1,1], [0,0,1,0]]])
-        self.decoder = Decoder(self.d_model, self.input_dim, self.output_dim)
+        self.decoder = Decoder(self.d_model)
 
     def test_forwardOutputDimension(self):
         pass

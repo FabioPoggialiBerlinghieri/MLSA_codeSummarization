@@ -4,7 +4,7 @@ import torch.nn as nn
 
 class Attention(nn.Module):
 
-    def __init__(self, d_model: int, input_dim: int = None):
+    def __init__(self, d_model: int, input_dim: int | None = None) -> None:
         super().__init__()
         self.d_model = d_model
         self.input_dim = d_model if input_dim is None else input_dim
@@ -16,13 +16,13 @@ class Attention(nn.Module):
         self.q = None
         self.scores = None
 
-    def init_state(self, inputs: torch.Tensor):
+    def init_state(self, inputs: torch.Tensor) -> None:
         # input : B x L x D_input
         # dim k, v: B x L x D_Model
         self.k = self.W_K(inputs)
         self.v = self.W_V(inputs)
 
-    def forward(self, query: torch.Tensor, mask: torch.Tensor =None):
+    def forward(self, query: torch.Tensor, mask: torch.Tensor | None = None) -> torch.Tensor:
         # q : B x L_q x D_Model
         self.q = self.W_Q(query)
 

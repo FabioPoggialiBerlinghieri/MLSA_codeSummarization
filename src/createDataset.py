@@ -7,7 +7,8 @@ from datasets import load_dataset
 def tokenize_pad(code: str, text: str) -> tuple[list[int], list[int]]:
 
     return (code_padding_handler.padding(codeTokenizer.tokenize(code)),
-            text_padding_handler.padding(englishTokenizer.tokenize('[CLS]') + englishTokenizer.tokenize(text)))
+            text_padding_handler.padding(englishTokenizer.tokenize('[CLS]') + englishTokenizer.tokenize(text)
+                                        + englishTokenizer.tokenize('[SEP]')))
 
 # Dataset di prova: dimensioni piccole
 # Carica il dataset MBPP
