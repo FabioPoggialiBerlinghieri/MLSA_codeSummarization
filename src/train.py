@@ -101,7 +101,7 @@ train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=64, shuffle
 val_loader = torch.utils.data.DataLoader(validation_dataset, batch_size=64, shuffle=True)
 
 optimizer = optim.Adam(optimusPy.parameters(), lr=0.001)
-loss = nn.CrossEntropyLoss(ignore_index=0)
+loss = nn.CrossEntropyLoss(ignore_index=0) #ignore padding
 
 if torch.cuda.is_available():
   device = torch.device('cuda')
@@ -140,11 +140,11 @@ code = code_padding_handler.padding(codeTokenizer.tokenize(code))
 
 optimusPy.eval()
 with torch.no_grad():
-    code = torch.tensor([code], device=device)
+    code = torch.tensor(code, device=device)
     mask = PaddingMask.generate_padding_mask(code).to(device)
-    cls_tokens = englishTokenizer.tokenize("[CLS]")
-    cls_tensor = torch.tensor([cls_tokens], dtype=torch.long, device=device)
-    summ_ids = optimusPy.predict(code, mask, cls_tensor)
+    cls = englishTokenizer.tokenize("[CLS]")[0]
+    sep = englishTokenizer.tokenize("[SEP]")[0]
+    summ_ids = optimusPy.predict(code, mask, cls, sep)
 
 summ_list = summ_ids[0].tolist()
 summ = englishTokenizer.detokenize(summ_list)
