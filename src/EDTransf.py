@@ -38,9 +38,9 @@ class EDTransf(nn.Module):
         # inputs: B (=1) x L_in
         # inputs_mask: B (=1) x L_in
         # current_seq: B (=1) x L_lab (=1)
-        inputs = inputs.unsqueeze(0)
-        input_mask = input_mask.unsqueeze(0)
-        current_seq = torch.tensor(cls).unsqueeze(0).unsqueeze(0)
+        inputs = inputs.unsqueeze(0).to(inputs.device)
+        input_mask = input_mask.unsqueeze(0).to(input_mask.device)
+        current_seq = torch.tensor(cls).unsqueeze(0).unsqueeze(0).to(inputs.device)
 
         # preprocessed_inputs: B x L_in x D_emb
         preprocessed_inputs = self.preprocess_inputs(inputs)
