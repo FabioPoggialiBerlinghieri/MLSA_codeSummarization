@@ -111,7 +111,7 @@ print("device:", device)
 
 optimusPy.to(device)
 
-train(optimusPy, optimizer, loss, train_loader, val_loader, epochs=10, device=device)
+train(optimusPy, optimizer, loss, train_loader, val_loader, epochs=200, device=device)
 
 #---------------------
 # PRIMO TEST
