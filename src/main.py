@@ -1,4 +1,3 @@
-import argparse
 import json
 import os
 import sys
@@ -13,24 +12,8 @@ import paddingHandler
 from createDataset import code_padding_handler, text_padding_handler, code_vocabulary
 from dataset import CodeDataset
 from tokenizer import CodeTokenizer, EnglishTextTokenizer
-from vocabulary_generator import VocabularyGenerator, EnglishVocabularyGenerator, PythonVocabularyGenerator
+from vocabulary_generator import EnglishVocabularyGenerator, PythonVocabularyGenerator
 
-parser = argparse.ArgumentParser(description="TBD")
-
-parser.add_argument('--config', type=str, required=True, help="YAML file path")
-
-parser.add_argument('--max-code-len', type=int, default=None, help="Max code length")
-parser.add_argument('--max-sum-len', type=int, default=None, help="Max text length")
-parser.add_argument('--save-every', type=int, default=None, help="Save model weights every n epochs")
-parser.add_argument('--resume', type=str, default=None, help="Resume file path")
-
-args = parser.parse_args()
-
-config_filepath = args.config
-max_code_len = args.max_code_len
-max_text_len = args.max_sum_len
-save_every = args.save_every
-resume = args.resume
 
 class VocabularyStoreHandler:
 
@@ -42,7 +25,15 @@ class VocabularyStoreHandler:
 
         return vocabulary
 
-class CodeDatasetHandler:
+    @staticmethod
+    def load_vocabulary(voc_path):
+        if not os.path.exists(voc_path):
+            raise FileNotFoundError(f"Can't find vocabulary file: {voc_path}")
+
+        with open(voc_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+
+class DatasetHandler:
 
     def __init__(self, config_filepath, max_code_len, max_sum_len):
 
