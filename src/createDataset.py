@@ -34,7 +34,7 @@ with open("../data/english_vocab.json", "w") as f:
     json.dump(english_vocabulary, f, indent=4)
 
 englishTokenizer = tc.EnglishTextTokenizer(english_vocabulary)
-text_padding_handler = paddingHandler.PaddingHandler(128 + 1) # CLS + label
+text_padding_handler = paddingHandler.PaddingHandler(1 + 128) # CLS + label
 
 tok_dataset = dataset.apply(
     lambda row: tokenize_pad(row["code"], row["text"]),
@@ -47,8 +47,6 @@ tok_dataset.to_json("../data/dataset_train.json", orient="records", indent=2)
 
 
 dataset = load_dataset("google-research-datasets/mbpp", split="validation").to_pandas()
-snippets = dataset["code"]
-texts = dataset["text"]
 
 tok_dataset = dataset.apply(
     lambda row: tokenize_pad(row["code"], row["text"]),

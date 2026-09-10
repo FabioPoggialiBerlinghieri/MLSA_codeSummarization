@@ -92,5 +92,5 @@ class EDTransf(nn.Module):
         # B x L_label x output_vocabulary_size
         outputs = self.linear(outputs)
 
-        # cross entropy want this parameters order
+        # cross entropy wants this parameters order
         return outputs.permute(0, 2, 1)

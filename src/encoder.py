@@ -1,7 +1,6 @@
 import torch.nn as nn
 import torch
 from attention import Attention
-from paddingMask import PaddingMask
 
 class SelfAttentionEncoder(nn.Module):
 
