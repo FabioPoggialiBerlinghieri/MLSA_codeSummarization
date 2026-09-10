@@ -1,27 +1,26 @@
 import argparse
 import json
-import torch
-import os
+import evaluate as e
 import paddingHandler
+import tokenizer as tc
+import torch
+import yaml
 from EDTransf import EDTransf
 from paddingMask import PaddingMask
 from vocabulary_generator import PythonVocabularyGenerator
-import tokenizer as tc
+
+bleu = e.load("bleu")
+meteor = e.load("meteor")
+rouge = e.load("rouge")
 
 parser = argparse.ArgumentParser(description="TBD")
-parser.add_argument('--input', type=str, required=True, help="Input code: a file .py or a directly a string code")
 parser.add_argument('--checkpoint', type=str, required=True, help="Path best bleu weight file")
+parser.add_argument('--split', type=str, default=None, help="Dataset split")
 
 args = parser.parse_args()
 
-code = ""
-if os.path.isfile(args.input):
-    with open(args.input, "r") as f:
-        code = f.read()
-else:
-    code = args.input
-
 checkpoint_path = args.checkpoint
+split = args.split
 
 saved_data = torch.load(checkpoint_path, map_location='cpu')
 config = saved_data['config'] # dentro il check point ci deve essere il riferimento
@@ -32,12 +31,13 @@ model = EDTransf(embedding_dim=config['model']['embedding_dim'],
                  output_max_len=config['model']['output_max_len'],
                  output_vocabulary_size=config['model']['output_vocabulary_size'])
 
-# model.load_state_dict(saved_data['model_state_dict'])
+model.load_state_dict(saved_data['model_state_dict'])
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = model.to(device)
 
 model.eval()
+dataset = CodeDatasetHandler(config).load_dataset(split) # mettere opzionali i campi max
 
 with open(config['model']['python_voc_path'], "r") as f:
     code_vocabulary = json.load(f)
@@ -52,20 +52,33 @@ with open(config['model']['english_voc_path'], "r") as f:
 englishTokenizer = tc.EnglishTextTokenizer(english_vocabulary)
 text_padding_handler = paddingHandler.PaddingHandler(config['model']['max_sum_len'])
 
-# tokenization and padding
-code = code_padding_handler.padding(codeTokenizer.tokenize(code))
+# testing
+generate_summs = []
+target_sentences = []
 
-model.eval()
-with torch.no_grad():
-    code = torch.tensor(code, device=device)
-    mask = PaddingMask.generate_padding_mask(code).squeeze(1).to(device)
-    cls = englishTokenizer.tokenize("[CLS]")[0]
-    sep = englishTokenizer.tokenize("[SEP]")[0]
-    summ_ids = model.predict(code, mask, cls, sep)
+for sample in dataset:
+    code, target = sample
+    with torch.no_grad():
+        code = torch.tensor(code, device=device)
+        mask = PaddingMask.generate_padding_mask(code).squeeze(1).to(device)
+        cls = englishTokenizer.tokenize("[CLS]")[0]
+        sep = englishTokenizer.tokenize("[SEP]")[0]
+        summ_ids = model.predict(code, mask, cls, sep)
 
-summ_list = summ_ids[0].tolist()
-summ = englishTokenizer.detokenize(summ_list)
-summ_sentence = summ.replace("[CLS]", "").replace("[SEP]", "").replace("[PAD]", "").strip()
+    summ_list = summ_ids[0].tolist()
+    summ = englishTokenizer.detokenize(summ_list)
+    summ_sentence = summ.replace("[CLS]", "").replace("[SEP]", "").replace("[PAD]", "").strip()
+    generate_summs.append(summ_sentence)
 
-print("Input code:\n", code)
-print("Summarization sentence:\n", summ_sentence)
+    target = englishTokenizer.detokenize(target)
+    target_sentence = target.replace("[CLS]", "").replace("[SEP]", "").replace("[PAD]", "").strip()
+    target_sentences.append([target_sentence])
+
+# compute metrix
+blue_result = bleu.compute(predictions=generate_summs, references=target_sentences)
+meteor_result = meteor.compute(predictions=generate_summs, references=target_sentences)
+rouge_result = rouge.compute(predictions=generate_summs, references=target_sentences)
+
+print(blue_result)
+print(meteor_result)
+print(rouge_result)
