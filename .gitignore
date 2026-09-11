@@ -8,3 +8,6 @@ __pycache__/
 
 # File di ambiente
 .env
+
+# models
+models/
