@@ -6,8 +6,8 @@ from main import DatasetHandler
 from paddingMask import PaddingMask
 
 bleu = e.load("bleu")
-meteor = e.load("meteor")
-rouge = e.load("rouge")
+# meteor = e.load("meteor")
+# rouge = e.load("rouge")
 
 class ModelEvaluator:
 
@@ -41,8 +41,8 @@ class ModelEvaluator:
 
         # compute metrix
         blue_result = bleu.compute(predictions=generate_summs, references=target_sentences)
-        meteor_result = meteor.compute(predictions=generate_summs, references=target_sentences)
-        rouge_result = rouge.compute(predictions=generate_summs, references=target_sentences)
+        meteor_result = None #meteor.compute(predictions=generate_summs, references=target_sentences)
+        rouge_result = None #rouge.compute(predictions=generate_summs, references=target_sentences)
 
         return blue_result, meteor_result, rouge_result
 
