@@ -1,19 +1,17 @@
-dataset_link: username/dataset-name
-dataset_train_path: train.json
-dataset_val_path: val.json
-dataset_test_path: test.json
-python_voc_path: python_voc.json
-english_voc_path: english_voc.json
+dataset_link: google-research-datset/mbpp
+dataset_train_path: ../data/dataset_train.json
+dataset_val_path: ../data/dataset_validation.json
+dataset_test_path: ../data/dataset_test.json
+python_voc_path: ../data/code_vocab.json
+english_voc_path: ../data/english_vocab.json
 first_time: true
-embedding_dim: 256
 learning_rate: 0.001
 epochs: 20
-batch_size: 32
-checkpoint_path: checkpoint_latest.pt
-best_loss_path: checkpoint_best.pt
+batch_size: 64
+checkpoint_path: ../models/checkpoint_latest.pt
+best_loss_path: ../models/checkpoint_best_loss.pt
+best_bleu_path: ../models/checkpoint_best_bleu.pt
 model:
-  embedding_dim: 256
-  input_max_len: 128
-  input_vocabulary_size: 5000
-  output_max_len: 64
-  output_vocabulary_size: 5000
+  embedding_dim: 512
+  input_vocabulary_size: 30000
+  output_vocabulary_size: 30000

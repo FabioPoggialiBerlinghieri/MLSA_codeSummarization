@@ -44,6 +44,10 @@ class ModelTrainer:
             device = torch.device('cpu')
         print("device:", device)
 
+        model_config = self.dataset_handler.config_yaml['model']
+        model_config['max_code_len'] = self.input_max_len
+        model_config['max_text_len'] = self.output_max_len
+
         self.model.to(device)
 
         learning_rate = self.dataset_handler.config_yaml['learning_rate']
