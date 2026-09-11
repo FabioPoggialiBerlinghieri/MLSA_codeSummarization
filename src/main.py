@@ -9,6 +9,8 @@ import paddingHandler
 from dataset import CodeDataset
 from tokenizer import CodeTokenizer, EnglishTextTokenizer
 from vocabulary_generator import EnglishVocabularyGenerator, PythonVocabularyGenerator
+from tqdm import tqdm
+tqdm.pandas(desc="dataset tokenization")
 
 class VocabularyStoreHandler:
 
@@ -92,9 +94,13 @@ class DatasetHandler:
 
     def __tokenize_pad(self, code: str, text: str) -> tuple[list[int], list[int]]:
 
-        return (self.code_padding_handler.padding(self.codeTokenizer.tokenize(code)),
-                self.text_padding_handler.padding(self.englishTokenizer.tokenize('[CLS]') + self.englishTokenizer.tokenize(text)
-                                             + self.englishTokenizer.tokenize('[SEP]')))
+        try:
+            return (self.code_padding_handler.padding(self.codeTokenizer.tokenize(code)),
+                    self.text_padding_handler.padding(
+                        self.englishTokenizer.tokenize('[CLS]') + self.englishTokenizer.tokenize(text)
+                        + self.englishTokenizer.tokenize('[SEP]')))
+        except Exception:
+            return (None, None)
 
     def create_dataset(self):
 
@@ -137,6 +143,9 @@ class DatasetHandler:
                 result_type="expand"
             )
             tok_dataset.columns = [self.config_yaml['dataset_x'], self.config_yaml['dataset_y']]
+
+            # delete none sample
+            tok_dataset = tok_dataset.dropna()
 
             tok_dataset.to_json(path, orient="records", indent=2)
 

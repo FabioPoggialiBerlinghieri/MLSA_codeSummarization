@@ -18,7 +18,10 @@ class VocabularyGenerator(ABC):
     def generate_with_strategy(self, tokenizer_fn) -> dict[str, int]:
         voc = []
         for code in self.codes:
-            voc.extend(tokenizer_fn(code))
+            try:
+                voc.extend(tokenizer_fn(code))
+            except Exception:
+                continue
         occ_dict = dict.fromkeys(voc, 0)
 
         # Contiamo le occorrenze
