@@ -51,7 +51,10 @@ class ModelEvaluator:
 
     def summarize(self, code):
         code = self.dataset_handler.codeTokenizer.tokenize(code)
-        target = self.dataset_handler.englishTokenizer.tokenize("") # no target
+        code = self.dataset_handler.code_padding_handler.padding(code)
+        target = self.dataset_handler.englishTokenizer.tokenize("") # no
+        target = self.dataset_handler.code_padding_handler.padding(target)
+
         sample = (code, target)
         sample = torch.tensor(sample)
         summ_sentence, _ = SampleEvaluator.eval_sample(sample, self.model,
