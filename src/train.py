@@ -176,7 +176,7 @@ class ModelTrainer:
                 epoch,training_loss, valid_loss, num_correct / num_examples, bleu_result))
 
     def __push(self):
-        subprocess.run(["git", "add", "."], check=True)
+        subprocess.run(["git", "add", "-A"], check=True)
         subprocess.run(["git", "commit", "-m", "'Update weights'"], check=True)
         subprocess.run(["git", "push"], check=True)
 
