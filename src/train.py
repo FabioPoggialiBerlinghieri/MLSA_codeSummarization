@@ -143,6 +143,7 @@ class ModelTrainer:
                     'model_state_dict': self.model.state_dict()
                 }
                 torch.save(checkpoint_loss, self.dataset_handler.config_yaml['best_loss_path'])
+                # git push
                 print(f"New best loss saved ({valid_loss}) ...")
 
             sample_batch = next(iter(val_loader))
@@ -166,6 +167,7 @@ class ModelTrainer:
                     'model_state_dict': self.model.state_dict()
                 }
                 torch.save(checkpoint_loss, self.dataset_handler.config_yaml['best_bleu_path'])
+                # git push
                 print(f"New best bleu saved ({best_bleu}) ...")
 
 

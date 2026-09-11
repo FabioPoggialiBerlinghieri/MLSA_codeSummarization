@@ -4,6 +4,7 @@ import torch
 from EDTransf import EDTransf
 from main import DatasetHandler, VocabularyStoreHandler
 from paddingMask import PaddingMask
+from tokenizer import CodeTokenizer
 
 bleu = e.load("bleu")
 # meteor = e.load("meteor")
@@ -49,7 +50,9 @@ class ModelEvaluator:
         return blue_result, meteor_result, rouge_result
 
     def summarize(self, code):
-        sample = (code, "")
+        code = self.dataset_handler.codeTokenizer.tokenize(code)
+        target = self.dataset_handler.englishTokenizer.tokenize("") # no target
+        sample = (code, target)
         summ_sentence, _ = SampleEvaluator.eval_sample(sample, self.model,
                                                                      self.dataset_handler.englishTokenizer, self.device)
         return summ_sentence
