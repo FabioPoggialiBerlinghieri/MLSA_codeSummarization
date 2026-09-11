@@ -77,8 +77,8 @@ class DatasetHandler:
         else:
             path = self.dataset_test_path
         dataframe = pd.read_json(path, orient='records')
-        return CodeDataset(torch.tensor(dataframe["code"], dtype=torch.long),
-                           torch.tensor(dataframe["text"], dtype=torch.long))
+        return CodeDataset(torch.tensor(dataframe[self.config_yaml['dataset_x']], dtype=torch.long),
+                           torch.tensor(dataframe[self.config_yaml['dataset_y']], dtype=torch.long))
 
     def set_yaml_path(self, yaml_path):
         self.yaml_path = yaml_path
@@ -101,8 +101,8 @@ class DatasetHandler:
         # create vocabulary
         dataset = load_dataset(self.dataset_link, self.dataset_config, split="train").to_pandas()
 
-        snippets = dataset["code"]
-        texts = dataset["text"]
+        snippets = dataset[self.config_yaml['dataset_x']]
+        texts = dataset[self.config_yaml['dataset_y']]
         code_vocabulary_generator = PythonVocabularyGenerator(snippets)
         text_vocabulary_generator = EnglishVocabularyGenerator(texts)
 
@@ -132,11 +132,11 @@ class DatasetHandler:
             dataset = load_dataset(self.dataset_link, self.dataset_config, split=target).to_pandas()
 
             tok_dataset = dataset.apply(
-                lambda row: self.__tokenize_pad(row["code"], row["docstring"]),
+                lambda row: self.__tokenize_pad(row[self.config_yaml['dataset_x']], row[self.config_yaml['dataset_y']]),
                 axis=1,
                 result_type="expand"
             )
-            tok_dataset.columns = ["code", "docstring"]
+            tok_dataset.columns = [self.config_yaml['dataset_x'], self.config_yaml['dataset_y']]
 
             tok_dataset.to_json(path, orient="records", indent=2)
 

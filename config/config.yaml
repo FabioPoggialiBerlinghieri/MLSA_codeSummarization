@@ -1,5 +1,7 @@
 dataset_link: google/code_x_glue_ct_code_to_text
 dataset_config: python
+dataset_x: code
+dataset_y: docstring
 dataset_train_path: ../data/dataset_train.json
 dataset_val_path: ../data/dataset_validation.json
 dataset_test_path: ../data/dataset_test.json
