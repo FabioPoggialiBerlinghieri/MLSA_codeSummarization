@@ -1,14 +1,19 @@
+dataset_link: username/dataset-name
+dataset_train_path: train.json
+dataset_val_path: val.json
+dataset_test_path: test.json
+python_voc_path: python_voc.json
+english_voc_path: english_voc.json
+first_time: true
+embedding_dim: 256
+learning_rate: 0.001
+epochs: 20
+batch_size: 32
+checkpoint_path: checkpoint_latest.pt
+best_loss_path: checkpoint_best.pt
 model:
   embedding_dim: 256
-
-  input_max_len: 512
-  output_max_len: 128
-
-  input_vocabulary_size: 10000
-  output_vocabulary_size: 8000
-
-  python_voc_path: "../data/code_vocab.json"
-  english_voc_path: "../data/english_vocab.json"
-
-data:
-  batch_size: 32
+  input_max_len: 128
+  input_vocabulary_size: 5000
+  output_max_len: 64
+  output_vocabulary_size: 5000

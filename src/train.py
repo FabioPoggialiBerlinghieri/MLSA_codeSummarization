@@ -1,21 +1,17 @@
-import json
 import sys
 
-import pandas as pd
-import torch
 import yaml
 from torch import optim, nn
-from torch.nn.modules.loss import _Loss
-from torch.optim import Optimizer
 from torch.utils.data import DataLoader
-
 from EDTransf import EDTransf
+from eval_model import SampleEvaluator
 from main import VocabularyStoreHandler, DatasetHandler
 from paddingMask import PaddingMask
-
 import argparse
 import torch
+import evaluate as e
 
+bleu = e.load("bleu")
 
 class ModelTrainer:
 
@@ -30,12 +26,11 @@ class ModelTrainer:
         self.validation_dataset = None
         self.model = None
 
-
     def initialize_model(self):
         self.train_dataset = self.dataset_handler.load_dataset("train")
         self.validation_dataset = self.dataset_handler.load_dataset("val")
 
-        embedding_dim = self.dataset_handler.config_yaml['embedding_dim']
+        embedding_dim = self.dataset_handler.config_yaml['model']['embedding_dim']
         python_voc = VocabularyStoreHandler.load_vocabulary(self.dataset_handler.python_voc_path)
         code_voc = VocabularyStoreHandler.load_vocabulary(self.dataset_handler.english_voc_path)
 
@@ -61,12 +56,15 @@ class ModelTrainer:
         train_loader = DataLoader(dataset=self.train_dataset, batch_size=batch_size, shuffle=True)
         val_loader = DataLoader(dataset=self.validation_dataset, batch_size=batch_size, shuffle=True)
 
+        best_loss = float('inf')
+        best_bleu = 0
+
         for epoch in range(1, epochs + 1):
             training_loss = 0.0
             valid_loss = 0.0
             self.model.train()  # train status for the mode
 
-            for batch in train_loader:
+            for step, batch in enumerate(train_loader):
                 optimizer.zero_grad()  # clear gradients for next train
                 inputs, targets = batch
                 print(f'input shape: {inputs.shape}')
@@ -84,12 +82,25 @@ class ModelTrainer:
                 loss.backward()  # backpropagation, compute gradients
                 optimizer.step()  # apply gradients
                 training_loss += loss.data.item() * inputs.size(0)
+
+                if step % save_every == 0 and step > 0:
+                    checkpoint_latest = {
+                        'config': self.dataset_handler.config_yaml,
+                        'model_state_dict': self.model.state_dict(),
+                        'optimizer_state_dict': optimizer.state_dict(),
+                        'epoch': epoch,
+                        'step': step
+                    }
+                    torch.save(checkpoint_latest, self.dataset_handler.config_yaml['checkpoint_path'])
+                    print("Checkpoint saved...")
+
             training_loss /= len(self.train_dataset)
 
             with torch.no_grad():  # we are not updating the model
                 self.model.eval()  # the status of the model is in eval
                 num_correct = 0
                 num_examples = 0
+
                 for batch in val_loader:
                     inputs, targets = batch
 
@@ -114,17 +125,44 @@ class ModelTrainer:
                     num_examples += torch.sum(valid_tokens_mask).item()
                 valid_loss /= len(self.validation_dataset)
 
-            print('Epoch: {}, Training Loss: {:.4f}, Validation Loss: {:.4f}, accuracy = {:.4f}'.format(epoch,
-                                                                                                        training_loss,
-                                                                                                        valid_loss,
-                                                                                                        num_correct / num_examples))
+            if valid_loss < best_loss:
+                best_loss = valid_loss
+                checkpoint_loss = {
+                    'config': self.dataset_handler.config_yaml,
+                    'model_state_dict': self.model.state_dict()
+                }
+                torch.save(checkpoint_loss, self.dataset_handler.config_yaml['best_loss_path'])
+                print(f"New best loss saved ({valid_loss}) ...")
+
+            sample_batch = next(iter(val_loader))
+            inputs, targets = sample_batch
+
+            generate_summs = []
+            target_sentences = []
+
+            for i in range(inputs.size(0)):
+                sample = (inputs[i], targets[i])
+                summ_sentence, target_sentence = SampleEvaluator.eval_sample(sample, self.model, self.dataset_handler.englishTokenizer, device)
+                generate_summs.append(summ_sentence)
+                target_sentences.append([target_sentence])
+
+            bleu_result = bleu.compute(predictions=generate_summs, references=target_sentences)['bleu']
+
+            if bleu_result > best_bleu:
+                best_bleu = bleu_result
+                checkpoint_loss = {
+                    'config': self.dataset_handler.config_yaml,
+                    'model_state_dict': self.model.state_dict()
+                }
+                torch.save(checkpoint_loss, self.dataset_handler.config_yaml['best_bleu_path'])
+                print(f"New best bleu saved ({best_bleu}) ...")
 
 
+            print('Epoch: {}, Training Loss: {:.4f}, Validation Loss: {:.4f}, accuracy = {:.4f}, bleu = {:.4f}'.format(
+                epoch,training_loss, valid_loss, num_correct / num_examples, bleu_result))
 
 parser = argparse.ArgumentParser(description="TBD")
-
 parser.add_argument('--config', type=str, required=True, help="YAML file path")
-
 parser.add_argument('--max-code-len', type=int, default=None, help="Max code length")
 parser.add_argument('--max-sum-len', type=int, default=None, help="Max text length")
 parser.add_argument('--save-every', type=int, default=None, help="Save model weights every n epochs")
@@ -138,7 +176,15 @@ max_text_len = args.max_sum_len
 save_every = args.save_every
 resume = args.resume
 
-dataset_handler = DatasetHandler(config_filepath, max_code_len, max_text_len)
+config_filepath = config_filepath
+try:
+    with open(config_filepath, 'r') as file:
+        config_yaml = yaml.safe_load(file)
+except FileNotFoundError:
+    print(f"Fatal error: '{config_filepath}' does not exist!")
+    sys.exit(1)
+
+dataset_handler = DatasetHandler(config_yaml, max_code_len, max_text_len)
 model_trainer = ModelTrainer(dataset_handler)
 model_trainer.initialize_model()
 model_trainer.train(save_every)

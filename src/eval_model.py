@@ -1,17 +1,72 @@
 import argparse
-import json
 import evaluate as e
-import paddingHandler
-import tokenizer as tc
 import torch
-import yaml
 from EDTransf import EDTransf
+from main import DatasetHandler
 from paddingMask import PaddingMask
-from vocabulary_generator import PythonVocabularyGenerator
 
 bleu = e.load("bleu")
 meteor = e.load("meteor")
 rouge = e.load("rouge")
+
+class ModelEvaluator:
+
+    def __init__(self, saved_data, dataset_handler, split):
+        self.saved_data = saved_data
+
+        self.config = saved_data['config']  # dentro il check point ci deve essere il riferimento
+
+        self.model = EDTransf(embedding_dim=self.config['model']['embedding_dim'],
+                         input_max_len=self.config['model']['input_max_len'],
+                         input_vocabulary_size=self.config['model']['input_vocabulary_size'],
+                         output_max_len=self.config['model']['output_max_len'],
+                         output_vocabulary_size=self.config['model']['output_vocabulary_size'])
+
+        self.model.load_state_dict(saved_data['model_state_dict'])
+
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.model = self.model.to(self.device)
+
+        self.dataset_handler = dataset_handler
+        self.dataset = dataset_handler.load_dataset(split)  # mettere opzionali i campi max
+
+    def evaluate(self):
+        generate_summs = []
+        target_sentences = []
+
+        for sample in self.dataset:
+            summ_sentence, target_sentence = SampleEvaluator.eval_sample(sample, self.model, self.dataset_handler.englishTokenizer, self.device)
+            generate_summs.append(summ_sentence)
+            target_sentences.append([target_sentence])
+
+        # compute metrix
+        blue_result = bleu.compute(predictions=generate_summs, references=target_sentences)
+        meteor_result = meteor.compute(predictions=generate_summs, references=target_sentences)
+        rouge_result = rouge.compute(predictions=generate_summs, references=target_sentences)
+
+        return blue_result, meteor_result, rouge_result
+
+class SampleEvaluator:
+
+    @staticmethod
+    def eval_sample(sample, model, tokenizer, device) -> tuple[str, str]:
+        code, target = sample
+        with torch.no_grad():
+            code = code.to(device)
+            mask = PaddingMask.generate_padding_mask(code).squeeze(1).to(device)
+            cls = tokenizer.tokenize("[CLS]")[0]
+            sep = tokenizer.tokenize("[SEP]")[0]
+            summ_ids = model.predict(code, mask, cls, sep)
+
+        summ_list = summ_ids[0].tolist()
+        summ = tokenizer.detokenize(summ_list)
+        summ_sentence = summ.replace("[CLS]", "").replace("[SEP]", "").replace("[PAD]", "").strip()
+
+        target = tokenizer.detokenize(target)
+        target_sentence = target.replace("[CLS]", "").replace("[SEP]", "").replace("[PAD]", "").strip()
+        return summ_sentence, target_sentence
+
+
 
 parser = argparse.ArgumentParser(description="TBD")
 parser.add_argument('--checkpoint', type=str, required=True, help="Path best bleu weight file")
@@ -23,62 +78,16 @@ checkpoint_path = args.checkpoint
 split = args.split
 
 saved_data = torch.load(checkpoint_path, map_location='cpu')
-config = saved_data['config'] # dentro il check point ci deve essere il riferimento
 
-model = EDTransf(embedding_dim=config['model']['embedding_dim'],
-                 input_max_len=config['model']['input_max_len'],
-                 input_vocabulary_size=config['model']['input_vocabulary_size'],
-                 output_max_len=config['model']['output_max_len'],
-                 output_vocabulary_size=config['model']['output_vocabulary_size'])
+dataset_handler = DatasetHandler(
+    saved_data['config'],
+    saved_data['config']['model']['input_max_len'],
+    saved_data['config']['model']['output_max_len']
+)
 
-model.load_state_dict(saved_data['model_state_dict'])
+model_evaluator = ModelEvaluator(saved_data, dataset_handler, split)
+bleu_result, meteor_result, rouge_result = model_evaluator.evaluate()
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = model.to(device)
-
-model.eval()
-dataset = CodeDatasetHandler(config).load_dataset(split) # mettere opzionali i campi max
-
-with open(config['model']['python_voc_path'], "r") as f:
-    code_vocabulary = json.load(f)
-
-main_keywords = PythonVocabularyGenerator.get_main_keywords()
-codeTokenizer = tc.CodeTokenizer(code_vocabulary, main_keywords)
-code_padding_handler = paddingHandler.PaddingHandler(config['model']['max_code_len'])
-
-with open(config['model']['english_voc_path'], "r") as f:
-    english_vocabulary = json.load(f)
-
-englishTokenizer = tc.EnglishTextTokenizer(english_vocabulary)
-text_padding_handler = paddingHandler.PaddingHandler(config['model']['max_sum_len'])
-
-# testing
-generate_summs = []
-target_sentences = []
-
-for sample in dataset:
-    code, target = sample
-    with torch.no_grad():
-        code = torch.tensor(code, device=device)
-        mask = PaddingMask.generate_padding_mask(code).squeeze(1).to(device)
-        cls = englishTokenizer.tokenize("[CLS]")[0]
-        sep = englishTokenizer.tokenize("[SEP]")[0]
-        summ_ids = model.predict(code, mask, cls, sep)
-
-    summ_list = summ_ids[0].tolist()
-    summ = englishTokenizer.detokenize(summ_list)
-    summ_sentence = summ.replace("[CLS]", "").replace("[SEP]", "").replace("[PAD]", "").strip()
-    generate_summs.append(summ_sentence)
-
-    target = englishTokenizer.detokenize(target)
-    target_sentence = target.replace("[CLS]", "").replace("[SEP]", "").replace("[PAD]", "").strip()
-    target_sentences.append([target_sentence])
-
-# compute metrix
-blue_result = bleu.compute(predictions=generate_summs, references=target_sentences)
-meteor_result = meteor.compute(predictions=generate_summs, references=target_sentences)
-rouge_result = rouge.compute(predictions=generate_summs, references=target_sentences)
-
-print(blue_result)
+print(bleu_result)
 print(meteor_result)
 print(rouge_result)

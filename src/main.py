@@ -9,7 +9,6 @@ import yaml
 from datasets import load_dataset
 
 import paddingHandler
-from createDataset import code_padding_handler, text_padding_handler, code_vocabulary
 from dataset import CodeDataset
 from tokenizer import CodeTokenizer, EnglishTextTokenizer
 from vocabulary_generator import EnglishVocabularyGenerator, PythonVocabularyGenerator
@@ -35,19 +34,10 @@ class VocabularyStoreHandler:
 
 class DatasetHandler:
 
-    def __init__(self, config_filepath, max_code_len, max_sum_len):
-
-        self.config_filepath = config_filepath
-        try:
-            with open(self.config_filepath, 'r') as file:
-                self.config_yaml = yaml.safe_load(file)
-        except FileNotFoundError:
-            print(f"Fatal error: '{config_filepath}' does not exist!")
-            sys.exit(1)
-
-        self.max_code_len = max_code_len if max_code_len is not None else self.config_yaml['max_code_len']
-        self.max_sum_len = max_sum_len if max_sum_len is not None else self.config_yaml['max_sum_len']
-        self.modified = self.max_code_len != self.config_yaml['max_code_len'] or self.max_sum_len != self.config_yaml['max_sum_len']
+    def __init__(self, config_yaml, max_code_len, max_sum_len):
+        self.config_yaml = config_yaml
+        self.max_code_len = max_code_len
+        self.max_sum_len = max_sum_len
 
         self.dataset_link = self.config_yaml['dataset_link']
 
@@ -58,6 +48,7 @@ class DatasetHandler:
         self.python_voc_path = self.config_yaml['python_voc_path']
         self.english_voc_path = self.config_yaml['english_voc_path']
 
+        self.modified = False
         if self.config_yaml['first_time'] is True:
             self.modified = True
             self.config_yaml['first_time'] = False
@@ -90,8 +81,8 @@ class DatasetHandler:
 
     def __tokenize_pad(self, code: str, text: str) -> tuple[list[int], list[int]]:
 
-        return (code_padding_handler.padding(self.codeTokenizer.tokenize(code)),
-                text_padding_handler.padding(self.englishTokenizer.tokenize('[CLS]') + self.englishTokenizer.tokenize(text)
+        return (self.code_padding_handler.padding(self.codeTokenizer.tokenize(code)),
+                self.text_padding_handler.padding(self.englishTokenizer.tokenize('[CLS]') + self.englishTokenizer.tokenize(text)
                                              + self.englishTokenizer.tokenize('[SEP]')))
 
     def create_dataset(self):
