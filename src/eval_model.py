@@ -11,7 +11,7 @@ bleu = e.load("bleu")
 
 class ModelEvaluator:
 
-    def __init__(self, saved_data, dataset_handler, split):
+    def __init__(self, saved_data, dataset_handler, split = None):
         self.saved_data = saved_data
 
         self.config = saved_data['config']
@@ -28,7 +28,9 @@ class ModelEvaluator:
         self.model = self.model.to(self.device)
 
         self.dataset_handler = dataset_handler
-        self.dataset = dataset_handler.load_dataset(split)  # mettere opzionali i campi max
+
+        if split is not None:
+            self.dataset = dataset_handler.load_dataset(split)
 
     def evaluate(self):
         generate_summs = []
@@ -45,6 +47,12 @@ class ModelEvaluator:
         rouge_result = None #rouge.compute(predictions=generate_summs, references=target_sentences)
 
         return blue_result, meteor_result, rouge_result
+
+    def summarize(self, code):
+        sample = (code, "")
+        summ_sentence, _ = SampleEvaluator.eval_sample(sample, self.model,
+                                                                     self.dataset_handler.englishTokenizer, self.device)
+        return summ_sentence
 
 class SampleEvaluator:
 

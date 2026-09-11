@@ -4,68 +4,38 @@ import torch
 import os
 import paddingHandler
 from EDTransf import EDTransf
+from eval_model import ModelEvaluator
+from main import DatasetHandler
 from paddingMask import PaddingMask
 from vocabulary_generator import PythonVocabularyGenerator
 import tokenizer as tc
 
-parser = argparse.ArgumentParser(description="TBD")
-parser.add_argument('--input', type=str, required=True, help="Input code: a file .py or a directly a string code")
-parser.add_argument('--checkpoint', type=str, required=True, help="Path best bleu weight file")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="TBD")
+    parser.add_argument('--input', type=str, required=True, help="Input code: a file .py or a directly a string code")
+    parser.add_argument('--checkpoint', type=str, required=True, help="Path best bleu weight file")
 
-args = parser.parse_args()
+    args = parser.parse_args()
 
-code = ""
-if os.path.isfile(args.input):
-    with open(args.input, "r") as f:
-        code = f.read()
-else:
-    code = args.input
+    code = ""
+    if os.path.isfile(args.input):
+        with open(args.input, "r") as f:
+            code = f.read()
+    else:
+        code = args.input
 
-checkpoint_path = args.checkpoint
+    checkpoint_path = args.checkpoint
 
-saved_data = torch.load(checkpoint_path, map_location='cpu')
-config = saved_data['config'] # dentro il check point ci deve essere il riferimento
+    saved_data = torch.load(checkpoint_path, map_location='cpu')
 
-model = EDTransf(embedding_dim=config['model']['embedding_dim'],
-                 input_max_len=config['model']['input_max_len'],
-                 input_vocabulary_size=config['model']['input_vocabulary_size'],
-                 output_max_len=config['model']['output_max_len'],
-                 output_vocabulary_size=config['model']['output_vocabulary_size'])
+    dataset_handler = DatasetHandler(
+        saved_data['config'],
+        saved_data['config']['model']['max_code_len'],
+        saved_data['config']['model']['max_text_len']
+    )
 
-# model.load_state_dict(saved_data['model_state_dict'])
+    model_evaluator = ModelEvaluator(saved_data, dataset_handler, "test")
+    summ_sentence = model_evaluator.summarize(code)
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = model.to(device)
-
-model.eval()
-
-with open(config['model']['python_voc_path'], "r") as f:
-    code_vocabulary = json.load(f)
-
-main_keywords = PythonVocabularyGenerator.get_main_keywords()
-codeTokenizer = tc.CodeTokenizer(code_vocabulary, main_keywords)
-code_padding_handler = paddingHandler.PaddingHandler(config['model']['max_code_len'])
-
-with open(config['model']['english_voc_path'], "r") as f:
-    english_vocabulary = json.load(f)
-
-englishTokenizer = tc.EnglishTextTokenizer(english_vocabulary)
-text_padding_handler = paddingHandler.PaddingHandler(config['model']['max_sum_len'])
-
-# tokenization and padding
-code = code_padding_handler.padding(codeTokenizer.tokenize(code))
-
-model.eval()
-with torch.no_grad():
-    code = torch.tensor(code, device=device)
-    mask = PaddingMask.generate_padding_mask(code).squeeze(1).to(device)
-    cls = englishTokenizer.tokenize("[CLS]")[0]
-    sep = englishTokenizer.tokenize("[SEP]")[0]
-    summ_ids = model.predict(code, mask, cls, sep)
-
-summ_list = summ_ids[0].tolist()
-summ = englishTokenizer.detokenize(summ_list)
-summ_sentence = summ.replace("[CLS]", "").replace("[SEP]", "").replace("[PAD]", "").strip()
-
-print("Input code:\n", code)
-print("Summarization sentence:\n", summ_sentence)
+    print("Input code:\n", code)
+    print("Summarization sentence:\n", summ_sentence)
