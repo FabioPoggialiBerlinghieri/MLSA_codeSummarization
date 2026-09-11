@@ -54,8 +54,11 @@ class DatasetHandler:
         self.englishTokenizer = None
         self.code_padding_handler = None
 
-        with open("../data/main_keywords.json", "r", encoding="utf-8") as file:
-            self.main_keywords = json.load(file)
+        try:
+            with open("../data/main_keywords.json", "r", encoding="utf-8") as file:
+                self.main_keywords = json.load(file)
+        except (json.JSONDecodeError, FileNotFoundError):
+            self.main_keywords = None
 
         self.yaml_path = None
 
