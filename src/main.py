@@ -48,7 +48,6 @@ class DatasetHandler:
         if self.config_yaml['first_time'] is True:
             self.modified = True
             self.config_yaml['first_time'] = False
-            self.__save_config()
 
         self.codeTokenizer = None
         self.text_padding_handler = None
