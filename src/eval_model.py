@@ -2,7 +2,7 @@ import argparse
 import evaluate as e
 import torch
 from EDTransf import EDTransf
-from main import DatasetHandler
+from main import DatasetHandler, VocabularyStoreHandler
 from paddingMask import PaddingMask
 
 bleu = e.load("bleu")
@@ -14,13 +14,13 @@ class ModelEvaluator:
     def __init__(self, saved_data, dataset_handler, split):
         self.saved_data = saved_data
 
-        self.config = saved_data['config']  # dentro il check point ci deve essere il riferimento
+        self.config = saved_data['config']
 
         self.model = EDTransf(embedding_dim=self.config['model']['embedding_dim'],
                          input_max_len=self.config['model']['max_code_len'],
-                         input_vocabulary_size=self.config['model']['input_vocabulary_size'],
+                         input_vocabulary_size= self.config['model']['code_voc_len'],
                          output_max_len=self.config['model']['max_text_len'],
-                         output_vocabulary_size=self.config['model']['output_vocabulary_size'])
+                         output_vocabulary_size= self.config['model']['text_voc_len'])
 
         self.model.load_state_dict(saved_data['model_state_dict'])
 

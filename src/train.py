@@ -24,6 +24,8 @@ class ModelTrainer:
         self.train_dataset = None
         self.validation_dataset = None
         self.model = None
+        self.python_voc_len = 0
+        self.english_voc_len = 0
 
     def initialize_model(self):
         self.train_dataset = self.dataset_handler.load_dataset("train")
@@ -31,11 +33,14 @@ class ModelTrainer:
 
         embedding_dim = self.dataset_handler.config_yaml['model']['embedding_dim']
         python_voc = VocabularyStoreHandler.load_vocabulary(self.dataset_handler.python_voc_path)
-        code_voc = VocabularyStoreHandler.load_vocabulary(self.dataset_handler.english_voc_path)
+        english_voc = VocabularyStoreHandler.load_vocabulary(self.dataset_handler.english_voc_path)
+
+        self.python_voc_len = len(python_voc)
+        self.english_voc_len = len(english_voc)
 
         self.model = EDTransf(embedding_dim,
                               self.input_max_len, len(python_voc),
-                              self.output_max_len, len(code_voc))
+                              self.output_max_len, len(english_voc))
 
     def train(self, save_every):
         if torch.cuda.is_available():
@@ -47,6 +52,8 @@ class ModelTrainer:
         model_config = self.dataset_handler.config_yaml['model']
         model_config['max_code_len'] = self.input_max_len
         model_config['max_text_len'] = self.output_max_len
+        model_config['code_voc_len'] = self.python_voc_len
+        model_config['text_voc_len'] = self.english_voc_len
 
         self.model.to(device)
 
