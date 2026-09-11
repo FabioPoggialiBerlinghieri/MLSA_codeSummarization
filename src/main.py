@@ -54,12 +54,18 @@ class DatasetHandler:
         self.englishTokenizer = None
         self.code_padding_handler = None
 
+        with open("../data/main_keywords.json", "r", encoding="utf-8") as file:
+            self.main_keywords = json.load(file)
+
         self.yaml_path = None
 
     def load_dataset(self, split: Literal['train', 'val', 'test']):
         if self.modified:
             self.__save_config()
             self.create_dataset()
+        else:
+            self.__load_vocabularies()
+
         if split == 'train':
             path = self.dataset_train_path
         elif split == 'val':
@@ -100,6 +106,11 @@ class DatasetHandler:
         dict_text_vocabulary = VocabularyStoreHandler.store_vocabularies(text_vocabulary_generator, self.english_voc_path)
 
         main_keywords = code_vocabulary_generator.get_main_keywords()
+        self.main_keywords = main_keywords
+
+        with open("../data/main_keywords.json", "w", encoding="utf-8") as file:
+            json.dump(self.main_keywords, file, indent=4, ensure_ascii=False)
+
         self.codeTokenizer = CodeTokenizer(dict_code_vocabulary, main_keywords)
         self.code_padding_handler = paddingHandler.PaddingHandler(self.max_code_len)
 
@@ -124,3 +135,14 @@ class DatasetHandler:
             tok_dataset.columns = ["code", "text"]
 
             tok_dataset.to_json(path, orient="records", indent=2)
+
+    def __load_vocabularies(self):
+
+        dict_code_vocabulary = VocabularyStoreHandler.load_vocabulary(self.python_voc_path)
+        dict_text_vocabulary = VocabularyStoreHandler.load_vocabulary(self.english_voc_path)
+
+        self.codeTokenizer = CodeTokenizer(dict_code_vocabulary, self.main_keywords)
+        self.code_padding_handler = paddingHandler.PaddingHandler(self.max_code_len)
+
+        self.englishTokenizer = EnglishTextTokenizer(dict_text_vocabulary)
+        self.text_padding_handler = paddingHandler.PaddingHandler(1 + self.max_sum_len)  # CLS + TEXT LEN

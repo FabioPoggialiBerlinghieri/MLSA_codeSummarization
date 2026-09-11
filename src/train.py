@@ -102,6 +102,7 @@ class ModelTrainer:
                         'step': step
                     }
                     torch.save(checkpoint_latest, self.dataset_handler.config_yaml['checkpoint_path'])
+                    # git push
                     print("Checkpoint saved...")
 
             training_loss /= len(self.train_dataset)
