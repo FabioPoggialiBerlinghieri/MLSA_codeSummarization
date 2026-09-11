@@ -1,5 +1,4 @@
 import sys
-
 import yaml
 from torch import optim, nn
 from torch.utils.data import DataLoader
@@ -185,6 +184,8 @@ except FileNotFoundError:
     sys.exit(1)
 
 dataset_handler = DatasetHandler(config_yaml, max_code_len, max_text_len)
+dataset_handler.set_yaml_path(config_filepath)
+
 model_trainer = ModelTrainer(dataset_handler)
 model_trainer.initialize_model()
 model_trainer.train(save_every)

@@ -1,18 +1,14 @@
 import json
 import os
-import sys
 from typing import Literal
-
 import pandas as pd
 import torch
 import yaml
 from datasets import load_dataset
-
 import paddingHandler
 from dataset import CodeDataset
 from tokenizer import CodeTokenizer, EnglishTextTokenizer
 from vocabulary_generator import EnglishVocabularyGenerator, PythonVocabularyGenerator
-
 
 class VocabularyStoreHandler:
 
@@ -59,10 +55,10 @@ class DatasetHandler:
         self.englishTokenizer = None
         self.code_padding_handler = None
 
+        self.yaml_path = None
+
     def load_dataset(self, split: Literal['train', 'val', 'test']):
         if self.modified:
-            self.config_yaml['max_code_len'] = self.max_code_len
-            self.config_yaml['max_sum_len'] = self.max_sum_len
             self.__save_config()
             self.create_dataset()
         if split == 'train':
@@ -75,8 +71,14 @@ class DatasetHandler:
         return CodeDataset(torch.tensor(dataframe["code"], dtype=torch.long),
                            torch.tensor(dataframe["text"], dtype=torch.long))
 
+    def set_yaml_path(self, yaml_path):
+        self.yaml_path = yaml_path
+
     def __save_config(self):
-        with open(self.config_filepath, 'w') as file:
+        if self.yaml_path is None:
+            raise FileNotFoundError(f"Can't find yaml file: {self.yaml_path}")
+
+        with open(self.yaml_path, 'w') as file:
             yaml.dump(self.config_yaml, file, default_flow_style=False, sort_keys=False)
 
     def __tokenize_pad(self, code: str, text: str) -> tuple[list[int], list[int]]:
@@ -123,15 +125,3 @@ class DatasetHandler:
             tok_dataset.columns = ["code", "text"]
 
             tok_dataset.to_json(path, orient="records", indent=2)
-
-
-
-
-
-
-
-
-
-
-
-
