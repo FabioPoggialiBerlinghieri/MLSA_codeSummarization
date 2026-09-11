@@ -1,0 +1,11 @@
+[
+    "Name",
+    "Constant",
+    "arg",
+    "FunctionDef",
+    "AsyncFunctionDef",
+    "ClassDef",
+    "Attribute",
+    "keyword",
+    "alias"
+]
