@@ -2,7 +2,7 @@ import argparse
 import evaluate as e
 import torch
 from EDTransf import EDTransf
-from main import DatasetHandler, VocabularyStoreHandler
+from datasetHandler import DatasetHandler, VocabularyStoreHandler
 from paddingMask import PaddingMask
 from tokenizer import CodeTokenizer
 

@@ -4,11 +4,12 @@ from torch import optim, nn
 from torch.utils.data import DataLoader
 from EDTransf import EDTransf
 from eval_model import SampleEvaluator
-from main import VocabularyStoreHandler, DatasetHandler
+from datasetHandler import VocabularyStoreHandler, DatasetHandler
 from paddingMask import PaddingMask
 import argparse
 import torch
 import evaluate as e
+import wandb
 
 bleu = e.load("bleu")
 
@@ -76,11 +77,17 @@ class ModelTrainer:
                 self.model.load_state_dict(checkpoint['model_state_dict'])
                 optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
                 start_epoch = checkpoint['epoch'] + 1
+                print("Resume training...")
             except Exception as e:
                 print(f"Error while resume: {e}")
                 sys.exit(1)
 
+        wandb.init(project="CodeSummarization_MLSA", config=self.dataset_handler.config_yaml)
+        print("Start training...")
+
         for epoch in range(start_epoch, epochs + 1):
+            print("Train:")
+            print("Epoch:", epoch)
             training_loss = 0.0
             valid_loss = 0.0
             self.model.train()  # train status for the mode
@@ -88,8 +95,6 @@ class ModelTrainer:
             for step, batch in enumerate(train_loader):
                 optimizer.zero_grad()  # clear gradients for next train
                 inputs, targets = batch
-                print(f'input shape: {inputs.shape}')
-                print(f'target shape: {targets.shape}')
 
                 inputs = inputs.to(device)
                 inputs_mask = PaddingMask.generate_padding_mask(inputs).to(device)
@@ -102,6 +107,10 @@ class ModelTrainer:
                 loss = loss_fn(output, targets[:, 1:])  # target without cls
                 loss.backward()  # backpropagation, compute gradients
                 optimizer.step()  # apply gradients
+
+                current_batch_loss = loss.data.item()
+                wandb.log({"train_batch_loss": current_batch_loss})
+
                 training_loss += loss.data.item() * inputs.size(0)
 
                 if step % save_every == 0 and step > 0:
@@ -117,6 +126,7 @@ class ModelTrainer:
 
             training_loss /= len(self.train_dataset)
 
+            print("Validation:")
             with torch.no_grad():  # we are not updating the model
                 self.model.eval()  # the status of the model is in eval
                 num_correct = 0
@@ -155,6 +165,7 @@ class ModelTrainer:
                 torch.save(checkpoint_loss, self.dataset_handler.config_yaml['best_loss_path'])
                 print(f"New best loss saved ({valid_loss}) ...")
 
+            print("Validation loss done.")
             sample_batch = next(iter(val_loader))
             inputs, targets = sample_batch
 
@@ -177,7 +188,14 @@ class ModelTrainer:
                 }
                 torch.save(checkpoint_loss, self.dataset_handler.config_yaml['best_bleu_path'])
                 print(f"New best bleu saved ({best_bleu}) ...")
+            print("Validation bleu done.")
 
+            wandb.log({
+                "epoch": epoch,
+                "train_epoch_loss": training_loss,
+                "val_loss": valid_loss,
+                "val_bleu": bleu_result
+            })
 
             print('Epoch: {}, Training Loss: {:.4f}, Validation Loss: {:.4f}, accuracy = {:.4f}, bleu = {:.4f}'.format(
                 epoch,training_loss, valid_loss, num_correct / num_examples, bleu_result))

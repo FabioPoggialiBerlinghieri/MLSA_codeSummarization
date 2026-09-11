@@ -67,6 +67,7 @@ class DatasetHandler:
     def load_dataset(self, split: Literal['train', 'val', 'test']):
         if self.modified:
             self.__save_config()
+            print("Creation tokenized dataset...")
             self.create_dataset()
             self.config_yaml['first_time'] = False
         else:

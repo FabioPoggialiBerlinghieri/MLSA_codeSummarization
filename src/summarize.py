@@ -5,7 +5,7 @@ import os
 import paddingHandler
 from EDTransf import EDTransf
 from eval_model import ModelEvaluator
-from main import DatasetHandler
+from datasetHandler import DatasetHandler
 from paddingMask import PaddingMask
 from vocabulary_generator import PythonVocabularyGenerator
 import tokenizer as tc
