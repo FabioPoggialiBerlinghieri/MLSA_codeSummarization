@@ -9,6 +9,7 @@ from paddingMask import PaddingMask
 import argparse
 import torch
 import evaluate as e
+import subprocess
 
 bleu = e.load("bleu")
 
@@ -102,7 +103,7 @@ class ModelTrainer:
                         'step': step
                     }
                     torch.save(checkpoint_latest, self.dataset_handler.config_yaml['checkpoint_path'])
-                    # git push
+                    self.__push()
                     print("Checkpoint saved...")
 
             training_loss /= len(self.train_dataset)
@@ -143,7 +144,7 @@ class ModelTrainer:
                     'model_state_dict': self.model.state_dict()
                 }
                 torch.save(checkpoint_loss, self.dataset_handler.config_yaml['best_loss_path'])
-                # git push
+                self.__push()
                 print(f"New best loss saved ({valid_loss}) ...")
 
             sample_batch = next(iter(val_loader))
@@ -167,12 +168,17 @@ class ModelTrainer:
                     'model_state_dict': self.model.state_dict()
                 }
                 torch.save(checkpoint_loss, self.dataset_handler.config_yaml['best_bleu_path'])
-                # git push
+                self.__push()
                 print(f"New best bleu saved ({best_bleu}) ...")
 
 
             print('Epoch: {}, Training Loss: {:.4f}, Validation Loss: {:.4f}, accuracy = {:.4f}, bleu = {:.4f}'.format(
                 epoch,training_loss, valid_loss, num_correct / num_examples, bleu_result))
+
+    def __push(self):
+        subprocess.run(["git", "add", "."], check=True)
+        subprocess.run(["git", "commit", "-m", "Update weights"], check=True)
+        subprocess.run(["git", "push"], check=True)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="TBD")
@@ -204,11 +210,3 @@ if __name__ == "__main__":
     model_trainer = ModelTrainer(dataset_handler)
     model_trainer.initialize_model()
     model_trainer.train(save_every)
-
-
-
-
-
-
-
-
