@@ -53,6 +53,7 @@ class ModelEvaluator:
         code = self.dataset_handler.codeTokenizer.tokenize(code)
         target = self.dataset_handler.englishTokenizer.tokenize("") # no target
         sample = (code, target)
+        sample = torch.tensor(sample).to(self.device)
         summ_sentence, _ = SampleEvaluator.eval_sample(sample, self.model,
                                                                      self.dataset_handler.englishTokenizer, self.device)
         return summ_sentence
