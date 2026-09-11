@@ -42,7 +42,7 @@ class ModelTrainer:
                               self.input_max_len, len(python_voc),
                               self.output_max_len, len(english_voc))
 
-    def train(self, save_every):
+    def train(self, save_every, resume_path=None):
         if torch.cuda.is_available():
             device = torch.device('cuda')
         else:
@@ -68,8 +68,19 @@ class ModelTrainer:
 
         best_loss = float('inf')
         best_bleu = 0
+        start_epoch = 1
 
-        for epoch in range(1, epochs + 1):
+        if resume_path is not None:
+            try:
+                checkpoint = torch.load(resume_path, map_location=device, weights_only=False)
+                self.model.load_state_dict(checkpoint['model_state_dict'])
+                optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+                start_epoch = checkpoint['epoch'] + 1
+            except Exception as e:
+                print(f"Error while resume: {e}")
+                sys.exit(1)
+
+        for epoch in range(start_epoch, epochs + 1):
             training_loss = 0.0
             valid_loss = 0.0
             self.model.train()  # train status for the mode
@@ -174,9 +185,9 @@ class ModelTrainer:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="TBD")
     parser.add_argument('--config', type=str, required=True, help="YAML file path")
-    parser.add_argument('--max-code-len', type=int, default=None, help="Max code length")
-    parser.add_argument('--max-sum-len', type=int, default=None, help="Max text length")
-    parser.add_argument('--save-every', type=int, default=None, help="Save model weights every n epochs")
+    parser.add_argument('--max-code-len', type=int, default=512, help="Max code length")
+    parser.add_argument('--max-sum-len', type=int, default=128, help="Max text length")
+    parser.add_argument('--save-every', type=int, default=500, help="Save model weights every n epochs")
     parser.add_argument('--resume', type=str, default=None, help="Resume file path")
 
     args = parser.parse_args()
@@ -200,4 +211,4 @@ if __name__ == "__main__":
 
     model_trainer = ModelTrainer(dataset_handler)
     model_trainer.initialize_model()
-    model_trainer.train(save_every)
+    model_trainer.train(save_every, resume)

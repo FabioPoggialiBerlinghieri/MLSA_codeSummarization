@@ -36,6 +36,7 @@ class DatasetHandler:
         self.max_sum_len = max_sum_len
 
         self.dataset_link = self.config_yaml['dataset_link']
+        self.dataset_config = self.config_yaml['dataset_config']
 
         self.dataset_train_path = self.config_yaml['dataset_train_path']
         self.dataset_val_path = self.config_yaml['dataset_val_path']
@@ -128,14 +129,14 @@ class DatasetHandler:
         }
 
         for path, target in splits_map.items():
-            dataset = load_dataset(self.dataset_link, split=target).to_pandas()
+            dataset = load_dataset(self.dataset_link, self.dataset_config, split=target).to_pandas()
 
             tok_dataset = dataset.apply(
-                lambda row: self.__tokenize_pad(row["code"], row["text"]),
+                lambda row: self.__tokenize_pad(row["code"], row["docstring"]),
                 axis=1,
                 result_type="expand"
             )
-            tok_dataset.columns = ["code", "text"]
+            tok_dataset.columns = ["code", "docstring"]
 
             tok_dataset.to_json(path, orient="records", indent=2)
 
