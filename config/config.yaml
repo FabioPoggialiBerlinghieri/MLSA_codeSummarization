@@ -1,4 +1,4 @@
-dataset_link: code_x_glue_ct_code_to_text
+dataset_link: google/code_x_glue_ct_code_to_text
 dataset_config: python
 dataset_train_path: ../data/dataset_train.json
 dataset_val_path: ../data/dataset_validation.json
