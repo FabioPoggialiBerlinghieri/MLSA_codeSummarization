@@ -1,4 +1,4 @@
-dataset_link: google-research-dataset/mbpp
+dataset_link: google-research-datasets/mbpp
 dataset_train_path: ../data/dataset_train.json
 dataset_val_path: ../data/dataset_validation.json
 dataset_test_path: ../data/dataset_test.json
