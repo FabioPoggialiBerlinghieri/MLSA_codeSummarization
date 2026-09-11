@@ -17,9 +17,9 @@ class ModelEvaluator:
         self.config = saved_data['config']  # dentro il check point ci deve essere il riferimento
 
         self.model = EDTransf(embedding_dim=self.config['model']['embedding_dim'],
-                         input_max_len=self.config['model']['input_max_len'],
+                         input_max_len=self.config['model']['max_code_len'],
                          input_vocabulary_size=self.config['model']['input_vocabulary_size'],
-                         output_max_len=self.config['model']['output_max_len'],
+                         output_max_len=self.config['model']['max_text_len'],
                          output_vocabulary_size=self.config['model']['output_vocabulary_size'])
 
         self.model.load_state_dict(saved_data['model_state_dict'])
