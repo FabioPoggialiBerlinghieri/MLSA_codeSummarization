@@ -81,8 +81,8 @@ if __name__ == "__main__":
 
     dataset_handler = DatasetHandler(
         saved_data['config'],
-        saved_data['config']['model']['input_max_len'],
-        saved_data['config']['model']['output_max_len']
+        saved_data['config']['model']['max_code_len'],
+        saved_data['config']['model']['max_text_len']
     )
 
     model_evaluator = ModelEvaluator(saved_data, dataset_handler, split)
