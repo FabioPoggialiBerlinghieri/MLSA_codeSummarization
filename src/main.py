@@ -99,7 +99,7 @@ class DatasetHandler:
     def create_dataset(self):
 
         # create vocabulary
-        dataset = load_dataset(self.dataset_link, split="train").to_pandas()
+        dataset = load_dataset(self.dataset_link, self.dataset_config, split="train").to_pandas()
 
         snippets = dataset["code"]
         texts = dataset["text"]
