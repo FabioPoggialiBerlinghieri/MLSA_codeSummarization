@@ -160,35 +160,36 @@ class ModelTrainer:
             print('Epoch: {}, Training Loss: {:.4f}, Validation Loss: {:.4f}, accuracy = {:.4f}, bleu = {:.4f}'.format(
                 epoch,training_loss, valid_loss, num_correct / num_examples, bleu_result))
 
-parser = argparse.ArgumentParser(description="TBD")
-parser.add_argument('--config', type=str, required=True, help="YAML file path")
-parser.add_argument('--max-code-len', type=int, default=None, help="Max code length")
-parser.add_argument('--max-sum-len', type=int, default=None, help="Max text length")
-parser.add_argument('--save-every', type=int, default=None, help="Save model weights every n epochs")
-parser.add_argument('--resume', type=str, default=None, help="Resume file path")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="TBD")
+    parser.add_argument('--config', type=str, required=True, help="YAML file path")
+    parser.add_argument('--max-code-len', type=int, default=None, help="Max code length")
+    parser.add_argument('--max-sum-len', type=int, default=None, help="Max text length")
+    parser.add_argument('--save-every', type=int, default=None, help="Save model weights every n epochs")
+    parser.add_argument('--resume', type=str, default=None, help="Resume file path")
 
-args = parser.parse_args()
+    args = parser.parse_args()
 
-config_filepath = args.config
-max_code_len = args.max_code_len
-max_text_len = args.max_sum_len
-save_every = args.save_every
-resume = args.resume
+    config_filepath = args.config
+    max_code_len = args.max_code_len
+    max_text_len = args.max_sum_len
+    save_every = args.save_every
+    resume = args.resume
 
-config_filepath = config_filepath
-try:
-    with open(config_filepath, 'r') as file:
-        config_yaml = yaml.safe_load(file)
-except FileNotFoundError:
-    print(f"Fatal error: '{config_filepath}' does not exist!")
-    sys.exit(1)
+    config_filepath = config_filepath
+    try:
+        with open(config_filepath, 'r') as file:
+            config_yaml = yaml.safe_load(file)
+    except FileNotFoundError:
+        print(f"Fatal error: '{config_filepath}' does not exist!")
+        sys.exit(1)
 
-dataset_handler = DatasetHandler(config_yaml, max_code_len, max_text_len)
-dataset_handler.set_yaml_path(config_filepath)
+    dataset_handler = DatasetHandler(config_yaml, max_code_len, max_text_len)
+    dataset_handler.set_yaml_path(config_filepath)
 
-model_trainer = ModelTrainer(dataset_handler)
-model_trainer.initialize_model()
-model_trainer.train(save_every)
+    model_trainer = ModelTrainer(dataset_handler)
+    model_trainer.initialize_model()
+    model_trainer.train(save_every)
 
 
 

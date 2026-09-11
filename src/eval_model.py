@@ -67,27 +67,27 @@ class SampleEvaluator:
         return summ_sentence, target_sentence
 
 
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="TBD")
+    parser.add_argument('--checkpoint', type=str, required=True, help="Path best bleu weight file")
+    parser.add_argument('--split', type=str, default=None, help="Dataset split")
 
-parser = argparse.ArgumentParser(description="TBD")
-parser.add_argument('--checkpoint', type=str, required=True, help="Path best bleu weight file")
-parser.add_argument('--split', type=str, default=None, help="Dataset split")
+    args = parser.parse_args()
 
-args = parser.parse_args()
+    checkpoint_path = args.checkpoint
+    split = args.split
 
-checkpoint_path = args.checkpoint
-split = args.split
+    saved_data = torch.load(checkpoint_path, map_location='cpu')
 
-saved_data = torch.load(checkpoint_path, map_location='cpu')
+    dataset_handler = DatasetHandler(
+        saved_data['config'],
+        saved_data['config']['model']['input_max_len'],
+        saved_data['config']['model']['output_max_len']
+    )
 
-dataset_handler = DatasetHandler(
-    saved_data['config'],
-    saved_data['config']['model']['input_max_len'],
-    saved_data['config']['model']['output_max_len']
-)
+    model_evaluator = ModelEvaluator(saved_data, dataset_handler, split)
+    bleu_result, meteor_result, rouge_result = model_evaluator.evaluate()
 
-model_evaluator = ModelEvaluator(saved_data, dataset_handler, split)
-bleu_result, meteor_result, rouge_result = model_evaluator.evaluate()
-
-print(bleu_result)
-print(meteor_result)
-print(rouge_result)
+    print(bleu_result)
+    print(meteor_result)
+    print(rouge_result)
