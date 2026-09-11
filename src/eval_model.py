@@ -33,7 +33,7 @@ class ModelEvaluator:
     def evaluate(self):
         generate_summs = []
         target_sentences = []
-
+        self.model.eval()
         for sample in self.dataset:
             summ_sentence, target_sentence = SampleEvaluator.eval_sample(sample, self.model, self.dataset_handler.englishTokenizer, self.device)
             generate_summs.append(summ_sentence)
