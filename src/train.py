@@ -177,7 +177,7 @@ class ModelTrainer:
 
     def __push(self):
         subprocess.run(["git", "add", "."], check=True)
-        subprocess.run(["git", "commit", "-m", "Update weights"], check=True)
+        subprocess.run(["git", "commit", "-m", "'Update weights'"], check=True)
         subprocess.run(["git", "push"], check=True)
 
 if __name__ == "__main__":
