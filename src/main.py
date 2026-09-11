@@ -48,7 +48,6 @@ class DatasetHandler:
         self.modified = False
         if self.config_yaml['first_time'] is True:
             self.modified = True
-            self.config_yaml['first_time'] = False
 
         self.codeTokenizer = None
         self.text_padding_handler = None
@@ -67,6 +66,7 @@ class DatasetHandler:
         if self.modified:
             self.__save_config()
             self.create_dataset()
+            self.config_yaml['first_time'] = False
         else:
             self.__load_vocabularies()
 
