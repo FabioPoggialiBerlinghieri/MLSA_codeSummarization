@@ -50,6 +50,7 @@ class ModelEvaluator:
         return blue_result, meteor_result, rouge_result
 
     def summarize(self, code):
+        self.model.eval()
         code = self.dataset_handler.codeTokenizer.tokenize(code)
         code = self.dataset_handler.code_padding_handler.padding(code)
         target = self.dataset_handler.englishTokenizer.tokenize("") # no
