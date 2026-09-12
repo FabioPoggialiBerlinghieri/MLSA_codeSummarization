@@ -95,6 +95,9 @@ class ModelTrainer:
             wandb.init(project="CodeSummarization_MLSA", config=self.dataset_handler.config_yaml)
             wandb_id = wandb.run.id
 
+        bleu_eval_size = min(batch_size, len(self.validation_dataset))
+        bleu_subset = [self.validation_dataset[i] for i in range(bleu_eval_size)]
+
         print("Start training...")
 
         for epoch in range(start_epoch, epochs + 1):
@@ -181,15 +184,13 @@ class ModelTrainer:
                 print(f"New best loss saved ({valid_loss}) ...")
 
             print("Validation loss done.")
-            sample_batch = next(iter(val_loader))
-            inputs, targets = sample_batch
-
             generate_summs = []
             target_sentences = []
 
-            for i in range(inputs.size(0)):
-                sample = (inputs[i], targets[i])
-                summ_sentence, target_sentence = SampleEvaluator.eval_sample(sample, self.model, self.dataset_handler.englishTokenizer, device)
+            for sample in bleu_subset:
+                summ_sentence, target_sentence = SampleEvaluator.eval_sample(sample, self.model,
+                                                                             self.dataset_handler.englishTokenizer,
+                                                                             device)
                 generate_summs.append(summ_sentence)
                 target_sentences.append([target_sentence])
 
