@@ -46,13 +46,16 @@ class EDTransf(nn.Module):
         # preprocessed_inputs: B x L_in x D_emb
         preprocessed_inputs = self.preprocess_inputs(inputs)
 
+        enc_output = self.transformer.encode(preprocessed_inputs, input_mask)
+        self.transformer.init_decoders(enc_output, input_mask)
+
         for i in range(self.output_max_len):
 
             # current_seq_preprocessed: B x L_label x D_emb
             current_seq_preprocessed = self.preprocess_labels(current_seq)
 
             # outputs: B x L_label x D_emb
-            outputs = self.transformer(preprocessed_inputs, input_mask, current_seq_preprocessed)
+            outputs = self.transformer.decode(current_seq_preprocessed)
 
             # outputs: B x L_label x output_vocabulary_size
             outputs = self.linear(outputs)

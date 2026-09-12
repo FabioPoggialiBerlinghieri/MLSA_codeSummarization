@@ -15,6 +15,30 @@ class Transformer(nn.Module):
             Decoder(d_model, n_heads=n_heads) for _ in range(n_layers)
         ])
 
+    def encode(self, inputs: torch.Tensor, inputs_mask: torch.Tensor) -> torch.Tensor:
+        # input : B x L_in x D_Model
+        # input_mask: B x L_in
+
+        # outputs encoder: B x L_in x D_Model
+        enc_output = inputs
+        for encoder in self.encoders:
+            enc_output = encoder(enc_output, inputs_mask)
+        return enc_output
+
+    def init_decoders(self, enc_output: torch.Tensor, inputs_mask: torch.Tensor) -> None:
+        for decoder in self.decoders:
+            decoder.init_state(enc_output, inputs_mask)
+
+    def decode(self, labels: torch.Tensor, labels_mask: torch.Tensor | None = None) -> torch.Tensor:
+        # labels : B x L_label x D_Model
+        # labels_mask: B x L_label
+
+        # output : B x L_label x D_Model
+        dec_output = labels
+        for decoder in self.decoders:
+            dec_output = decoder(dec_output, labels_mask)
+        return dec_output
+
     def forward(self, inputs: torch.Tensor,  inputs_mask: torch.Tensor,
                 labels: torch.Tensor, labels_mask: torch.Tensor | None = None) -> torch.Tensor:
 
@@ -24,19 +48,12 @@ class Transformer(nn.Module):
         # labels_mask: B x L_label
 
         # outputs encoder: B x L_in x D_Model
-        enc_output = inputs
-        for encoder in self.encoders:
-            enc_output = encoder(enc_output, inputs_mask)
+        enc_output = self.encode(inputs, inputs_mask)
 
-        for decoder in self.decoders:
-            decoder.init_state(enc_output, inputs_mask)
+        self.init_decoders(enc_output, inputs_mask)
 
         # output : B x L_label x D_Model
-        dec_output = labels
-        for decoder in self.decoders:
-            dec_output = decoder(dec_output, labels_mask)
-
-        return dec_output
+        return self.decode(labels, labels_mask)
 
 
 
