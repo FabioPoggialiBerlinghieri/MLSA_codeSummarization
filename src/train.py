@@ -29,8 +29,11 @@ class ModelTrainer:
         self.english_voc_len = 0
 
     def initialize_model(self):
-        self.train_dataset = self.dataset_handler.load_dataset("train")
-        self.validation_dataset = self.dataset_handler.load_dataset("val")
+        train = self.dataset_handler.config_yaml['split_train']
+        self.train_dataset = self.dataset_handler.load_dataset(train)
+
+        val = self.dataset_handler.config_yaml['split_val']
+        self.validation_dataset = self.dataset_handler.load_dataset(val)
 
         embedding_dim = self.dataset_handler.config_yaml['model']['embedding_dim']
         python_voc = VocabularyStoreHandler.load_vocabulary(self.dataset_handler.python_voc_path)

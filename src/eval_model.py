@@ -104,6 +104,11 @@ if __name__ == "__main__":
         saved_data['config']['model']['max_text_len']
     )
 
+    if split == "val":
+        split = saved_data['config']['split_val']
+    if split == "test":
+        split = saved_data['config']['split_test']
+
     model_evaluator = ModelEvaluator(saved_data, dataset_handler, split)
     bleu_result, meteor_result, rouge_result = model_evaluator.evaluate()
 

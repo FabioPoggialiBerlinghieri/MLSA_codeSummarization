@@ -34,7 +34,7 @@ if __name__ == "__main__":
         saved_data['config']['model']['max_text_len']
     )
 
-    model_evaluator = ModelEvaluator(saved_data, dataset_handler, "test")
+    model_evaluator = ModelEvaluator(saved_data, dataset_handler, saved_data['config']['split_test'])
     summ_sentence = model_evaluator.summarize(code)
 
     print("Input code:\n", code)

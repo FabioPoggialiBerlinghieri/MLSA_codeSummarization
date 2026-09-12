@@ -47,6 +47,10 @@ class DatasetHandler:
         self.python_voc_path = self.config_yaml['python_voc_path']
         self.english_voc_path = self.config_yaml['english_voc_path']
 
+        self.train = self.config_yaml['split_train']
+        self.val = self.config_yaml['split_val']
+        self.test = self.config_yaml['split_test']
+
         self.modified = False
         if self.config_yaml['first_time'] is True:
             self.modified = True
@@ -73,12 +77,14 @@ class DatasetHandler:
         else:
             self.__load_vocabularies()
 
-        if split == 'train':
+        if split == self.train:
             path = self.dataset_train_path
-        elif split == 'val':
+        elif split == self.val:
             path = self.dataset_val_path
-        else:
+        elif split == self.test:
             path = self.dataset_test_path
+        else:
+            raise ValueError("Invalid split")
         dataframe = pd.read_json(path, orient='records')
         return CodeDataset(torch.tensor(dataframe[self.config_yaml['dataset_x']], dtype=torch.long),
                            torch.tensor(dataframe[self.config_yaml['dataset_y']], dtype=torch.long))
@@ -106,7 +112,7 @@ class DatasetHandler:
     def create_dataset(self):
 
         # create vocabulary
-        dataset = load_dataset(self.dataset_link, self.dataset_config, split="train").to_pandas()
+        dataset = load_dataset(self.dataset_link, self.dataset_config, split=self.train).to_pandas()
 
         snippets = dataset[self.config_yaml['dataset_x']]
         texts = dataset[self.config_yaml['dataset_y']]
@@ -130,9 +136,9 @@ class DatasetHandler:
 
         # then create dataset
         splits_map = {
-            self.dataset_train_path: "train",
-            self.dataset_val_path: "validation",
-            self.dataset_test_path: "test"
+            self.dataset_train_path: self.train,
+            self.dataset_val_path: self.val,
+            self.dataset_test_path: self.test
         }
 
         for path, target in splits_map.items():
