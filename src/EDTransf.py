@@ -5,7 +5,8 @@ from transfomer import Transformer
 
 class EDTransf(nn.Module):
 
-    def __init__(self, embedding_dim: int, input_max_len: int, input_vocabulary_size: int, output_max_len: int, output_vocabulary_size: int) -> None:
+    def __init__(self, embedding_dim: int, input_max_len: int, input_vocabulary_size: int, output_max_len: int, output_vocabulary_size: int,
+                 n_layers: int = 1, n_heads: int = 1) -> None:
         super().__init__()
 
         self.embedding_dim = embedding_dim
@@ -22,7 +23,7 @@ class EDTransf(nn.Module):
             PositionalEncoding(self.output_max_len, self.embedding_dim)
         )
 
-        self.transformer = Transformer(self.embedding_dim)
+        self.transformer = Transformer(self.embedding_dim, n_layers=n_layers, n_heads=n_heads)
 
         # for each element of output seq we have a probabilistic distribution for a vocabulary size classification
         self.linear = nn.Linear(self.embedding_dim, output_vocabulary_size)

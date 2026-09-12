@@ -8,7 +8,7 @@ dataset_test_path: ../data/dataset_test.json
 python_voc_path: ../data/code_vocab.json
 english_voc_path: ../data/english_vocab.json
 first_time: true
-learning_rate: 0.001
+learning_rate: 0.0001
 epochs: 200
 batch_size: 64
 checkpoint_path: ../models/checkpoint_latest.pt
@@ -18,3 +18,5 @@ model:
   embedding_dim: 512
   input_vocabulary_size: 30000
   output_vocabulary_size: 30000
+  num_layers: 4
+  num_heads: 8

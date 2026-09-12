@@ -2,15 +2,19 @@ from attention import Attention
 import torch
 import torch.nn as nn
 
+from multiHeadAttention import MultiHeadAttention
+
+
 class Decoder(nn.Module):
-    def __init__(self, d_model: int, ff_dim: int | None = None) -> None:
+    def __init__(self, d_model: int, n_heads: int = 1, ff_dim: int | None = None) -> None:
         super().__init__()
         self.d_model = d_model
 
         self.ff_dim = d_model if ff_dim is None else ff_dim
 
-        self.self_attention = Attention(d_model)
-        self.cross_attention = Attention(d_model)
+        self.self_attention = MultiHeadAttention(d_model, n_heads=n_heads)
+        self.cross_attention = MultiHeadAttention(d_model, n_heads=n_heads)
+
         self.ff = nn.Sequential(
             nn.Linear(d_model, self.ff_dim),
             nn.ReLU(),

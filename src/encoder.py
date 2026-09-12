@@ -1,16 +1,16 @@
 import torch.nn as nn
 import torch
-from attention import Attention
+from multiHeadAttention import MultiHeadAttention
 
 class SelfAttentionEncoder(nn.Module):
 
-    def __init__(self, d_model: int, ff_dim: int | None = None) -> None:
+    def __init__(self, d_model: int, n_heads: int = 1, ff_dim: int | None = None) -> None:
         super().__init__()
 
         self.d_model = d_model
         self.ff_dim = d_model if ff_dim is None else ff_dim
 
-        self.attention = Attention(d_model)
+        self.attention = MultiHeadAttention(d_model, n_heads=n_heads)
         self.ff = nn.Sequential(
             nn.Linear(d_model, self.ff_dim),
             nn.ReLU(),

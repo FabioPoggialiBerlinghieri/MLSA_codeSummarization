@@ -41,7 +41,9 @@ class ModelTrainer:
 
         self.model = EDTransf(embedding_dim,
                               self.input_max_len, len(python_voc),
-                              self.output_max_len, len(english_voc))
+                              self.output_max_len, len(english_voc),
+                              self.dataset_handler.config_yaml['model']['num_layers'],
+                              self.dataset_handler.config_yaml['model']['num_heads'])
 
     def train(self, save_every, resume_path=None):
         if torch.cuda.is_available():
@@ -59,7 +61,7 @@ class ModelTrainer:
         self.model.to(device)
 
         learning_rate = self.dataset_handler.config_yaml['learning_rate']
-        optimizer = optim.Adam(self.model.parameters(), lr=learning_rate)
+        optimizer = optim.AdamW(self.model.parameters(), lr=learning_rate)
         loss_fn = nn.CrossEntropyLoss(ignore_index=0)  # ignore padding
         epochs = self.dataset_handler.config_yaml['epochs']
 
@@ -70,6 +72,7 @@ class ModelTrainer:
         best_loss = float('inf')
         best_bleu = 0
         start_epoch = 1
+        wandb_id = None
 
         if resume_path is not None:
             try:
@@ -77,12 +80,21 @@ class ModelTrainer:
                 self.model.load_state_dict(checkpoint['model_state_dict'])
                 optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
                 start_epoch = checkpoint['epoch'] + 1
+                best_loss = checkpoint.get('best_loss', float('inf'))
+                best_bleu = checkpoint.get('best_bleu', 0)
+                wandb_id = checkpoint.get('wandb_id')
                 print("Resume training...")
             except Exception as e:
                 print(f"Error while resume: {e}")
                 sys.exit(1)
 
-        wandb.init(project="CodeSummarization_MLSA", config=self.dataset_handler.config_yaml)
+        if wandb_id is not None:
+            wandb.init(project="CodeSummarization_MLSA", config=self.dataset_handler.config_yaml, id=wandb_id,
+                       resume="must")
+        else:
+            wandb.init(project="CodeSummarization_MLSA", config=self.dataset_handler.config_yaml)
+            wandb_id = wandb.run.id
+
         print("Start training...")
 
         for epoch in range(start_epoch, epochs + 1):
@@ -119,7 +131,10 @@ class ModelTrainer:
                         'model_state_dict': self.model.state_dict(),
                         'optimizer_state_dict': optimizer.state_dict(),
                         'epoch': epoch,
-                        'step': step
+                        'step': step,
+                        'best_loss': best_loss,
+                        'best_bleu': best_bleu,
+                        'wandb_id': wandb_id
                     }
                     torch.save(checkpoint_latest, self.dataset_handler.config_yaml['checkpoint_path'])
                     print("Checkpoint saved...")

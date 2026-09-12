@@ -21,7 +21,10 @@ class ModelEvaluator:
                          input_max_len=self.config['model']['max_code_len'],
                          input_vocabulary_size= self.config['model']['code_voc_len'],
                          output_max_len=self.config['model']['max_text_len'],
-                         output_vocabulary_size= self.config['model']['text_voc_len'])
+                         output_vocabulary_size=self.config['model']['text_voc_len'],
+                         n_layers=self.config['model']['num_layers'],
+                         n_heads=self.config['model']['num_heads']
+        )
 
         self.model.load_state_dict(saved_data['model_state_dict'])
 
