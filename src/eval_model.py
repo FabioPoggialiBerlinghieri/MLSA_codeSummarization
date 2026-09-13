@@ -52,6 +52,26 @@ class ModelEvaluator:
 
         return blue_result, rouge_result
 
+    def evaluate(self):
+        generate_summs = []
+        target_sentences = []
+        self.model.eval()
+
+        batch_size = self.config['batch_size']
+        test_loader = torch.utils.data.DataLoader(dataset=self.dataset, batch_size=batch_size, shuffle=False)
+
+        for batch in test_loader:
+            b_summ_sentences, b_target_sentences = SampleEvaluator.eval_sample(batch, self.model,
+                                                                               self.dataset_handler.englishTokenizer,
+                                                                               self.device)
+            generate_summs.extend(b_summ_sentences)
+            target_sentences.extend([[t] for t in b_target_sentences])
+
+        blue_result = bleu.compute(predictions=generate_summs, references=target_sentences)
+        rouge_result = rouge.compute(predictions=generate_summs, references=target_sentences)
+
+        return blue_result, rouge_result
+
     def summarize(self, code):
         self.model.eval()
         code = self.dataset_handler.codeTokenizer.tokenize(code)
@@ -59,31 +79,44 @@ class ModelEvaluator:
         target = self.dataset_handler.englishTokenizer.tokenize("") # no
         target = self.dataset_handler.code_padding_handler.padding(target)
 
-        sample = (code, target)
-        sample = torch.tensor(sample)
-        summ_sentence, _ = SampleEvaluator.eval_sample(sample, self.model,
+        code_tensor = torch.tensor([code])
+        target_tensor = torch.tensor([target])
+        sample_batch = (code_tensor, target_tensor)
+        summ_sentence, _ = SampleEvaluator.eval_sample(sample_batch, self.model,
                                                                      self.dataset_handler.englishTokenizer, self.device)
-        return summ_sentence
+        return summ_sentence[0]
 
 class SampleEvaluator:
 
     @staticmethod
-    def eval_sample(sample, model, tokenizer, device) -> tuple[str, str]:
-        code, target = sample
+    def eval_sample(sample_batch, model, tokenizer, device) -> tuple[list[str], list[str]]:
+        code, target = sample_batch
         with torch.no_grad():
             code = code.to(device)
-            mask = PaddingMask.generate_padding_mask(code).squeeze(1).to(device)
+            mask = PaddingMask.generate_padding_mask(code).to(device)
             cls = tokenizer.tokenize("[CLS]")[0]
             sep = tokenizer.tokenize("[SEP]")[0]
-            summ_ids = model.predict(code, mask, cls, sep)
+            pad = tokenizer.tokenize("[PAD]")[0]
 
-        summ_list = summ_ids[0].tolist()
-        summ = tokenizer.detokenize(summ_list)
-        summ_sentence = summ.replace("[CLS]", "").replace("[SEP]", "").replace("[PAD]", "").strip()
+            summ_ids = model.predict(code, mask, cls, sep, pad)
 
-        target = tokenizer.detokenize(target)
-        target_sentence = target.replace("[CLS]", "").replace("[SEP]", "").replace("[PAD]", "").strip()
-        return summ_sentence, target_sentence
+        summ_sentences = []
+        target_sentences = []
+
+        # for each batch size
+        batch_size = code.size(0)
+        for i in range(batch_size):
+            summ_list = summ_ids[i].tolist()
+            summ = tokenizer.detokenize(summ_list)
+            summ_sentence = summ.replace("[CLS]", "").replace("[SEP]", "").replace("[PAD]", "").strip()
+            summ_sentences.append(summ_sentence)
+
+            target_list = target[i].tolist()
+            target_str = tokenizer.detokenize(target_list)
+            target_sentence = target_str.replace("[CLS]", "").replace("[SEP]", "").replace("[PAD]", "").strip()
+            target_sentences.append(target_sentence)
+
+        return summ_sentences, target_sentences
 
 
 if __name__ == "__main__":

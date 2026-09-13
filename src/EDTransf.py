@@ -29,7 +29,7 @@ class EDTransf(nn.Module):
         self.linear = nn.Linear(self.embedding_dim, output_vocabulary_size)
 
 
-    def predict(self, inputs: torch.Tensor, input_mask: torch.Tensor, cls: int, sep: int) -> torch.Tensor:
+    def predict_seq(self, inputs: torch.Tensor, input_mask: torch.Tensor, cls: int, sep: int) -> torch.Tensor:
 
         assert not self.training
 
@@ -74,6 +74,57 @@ class EDTransf(nn.Module):
 
         # generate_len (upperbound max_output_len)
         return current_seq
+
+    def predict(self, inputs: torch.Tensor, input_mask: torch.Tensor, cls: int, sep: int, pad: int) -> torch.Tensor:
+
+        assert not self.training
+
+        # inputs: B x L_in (code token)
+        # inputs_mask: B x L_in
+
+        batch_size = inputs.size(0)
+        device = inputs.device
+        current_seq = torch.full((batch_size, 1), cls, dtype=torch.long, device=device)
+
+        # preprocessed_inputs: B x L_in x D_emb
+        preprocessed_inputs = self.preprocess_inputs(inputs)
+
+        enc_output = self.transformer.encode(preprocessed_inputs, input_mask)
+        self.transformer.init_decoders(enc_output, input_mask)
+
+        # for every batch
+        is_finished = torch.zeros(batch_size, dtype=torch.bool, device=device)
+
+        for i in range(self.output_max_len):
+
+            # current_seq_preprocessed: B x L_label x D_emb
+            current_seq_preprocessed = self.preprocess_labels(current_seq)
+
+            # outputs: B x L_label x D_emb
+            outputs = self.transformer.decode(current_seq_preprocessed)
+
+            # outputs: B x L_label x output_vocabulary_size
+            outputs = self.linear(outputs)
+
+            # new tokens generated
+            next_tokens = torch.argmax(outputs[:, -1:, :], dim=-1)
+
+            # pad if the sentence is finished
+            next_tokens = next_tokens.masked_fill(is_finished.unsqueeze(1), pad)
+
+            # concatenate at current_seq, L_label++
+            current_seq = torch.cat([current_seq, next_tokens], dim=-1)
+
+            # update who fouds sep
+            just_finished = (next_tokens.squeeze(1) == sep)
+            is_finished = is_finished | just_finished
+
+            if is_finished.all():
+                break
+
+        # generate_len (upperbound max_output_len)
+        return current_seq
+
 
     def forward(self, inputs : torch.Tensor, input_mask : torch.Tensor,
                 labels : torch.Tensor, labels_mask : torch.Tensor) -> torch.Tensor:

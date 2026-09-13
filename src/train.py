@@ -112,7 +112,7 @@ class ModelTrainer:
             wandb.init(project="CodeSummarization_MLSA", config=self.dataset_handler.config_yaml)
             wandb_id = wandb.run.id
 
-        bleu_eval_size = min(20, len(self.validation_dataset))
+        bleu_eval_size = min(batch_size, len(self.validation_dataset))
         bleu_subset = [self.validation_dataset[i] for i in range(bleu_eval_size)]
 
         scaler = torch.amp.GradScaler(device.type)
@@ -222,19 +222,20 @@ class ModelTrainer:
                 print(f"New best loss saved ({valid_loss}) ...")
 
             print("Validation loss done.")
-            generate_summs = []
-            target_sentences = []
 
-            for (i, sample) in enumerate(bleu_subset):
-                summ_sentence, target_sentence = SampleEvaluator.eval_sample(sample, self.model,
-                                                                             self.dataset_handler.englishTokenizer,
-                                                                             device)
-                generate_summs.append(summ_sentence)
-                target_sentences.append([target_sentence])
+            # makes blue subset a batch to pe parallized
+            bleu_loader = DataLoader(dataset=bleu_subset, batch_size=len(bleu_subset), shuffle=False)
+            b_inputs, b_targets = next(iter(bleu_loader))
+            batched_sample = (b_inputs, b_targets)
 
-                if i < 5:
-                    print(i+1, "Target:", target_sentence)
-                    print(i+1, "Summary:", summ_sentence)
+            generate_summs, target_sentences = SampleEvaluator.eval_sample(batched_sample, self.model,
+                                                                         self.dataset_handler.englishTokenizer,
+                                                                         device)
+            target_sentences = [[t] for t in target_sentences]
+
+            for i in range(5):
+                print(i + 1, "Target:", target_sentences[i][0])
+                print(i + 1, "Summary:", generate_summs[i])
 
             bleu_result = bleu.compute(predictions=generate_summs, references=target_sentences)['bleu']
             rouge_result = rouge.compute(predictions=generate_summs, references=target_sentences)['rougeL']
