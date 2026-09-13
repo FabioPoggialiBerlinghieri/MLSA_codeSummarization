@@ -1,3 +1,4 @@
+import os.path
 import sys
 import set_seed as seed
 import rouge
@@ -157,7 +158,7 @@ class ModelTrainer:
                     }
                     latest_path = self.dataset_handler.config_yaml['checkpoint_path']
                     torch.save(checkpoint_latest, latest_path)
-                    wandb.save(latest_path)
+                    wandb.save(latest_path, base_path=os.path.dirname(latest_path))
                     print("Checkpoint saved...")
 
             training_loss /= len(self.train_dataset)
@@ -206,7 +207,7 @@ class ModelTrainer:
                     ".pt", f"_ep{epoch}_loss{valid_loss:.2f}.pt"
                 )
                 torch.save(checkpoint_loss, dyn_loss_path)
-                wandb.save(dyn_loss_path)
+                wandb.save(dyn_loss_path, base_path=os.path.dirname(dyn_loss_path))
 
                 print(f"New best loss saved ({valid_loss}) ...")
 
@@ -239,7 +240,7 @@ class ModelTrainer:
                     ".pt", f"_ep{epoch}_bleu{bleu_result:.2f}.pt"
                 )
                 torch.save(checkpoint_loss, dyn_bleu_path)
-                wandb.save(dyn_bleu_path)
+                wandb.save(dyn_bleu_path, base_path=os.path.dirname(dyn_bleu_path))
 
                 print(f"New best bleu saved ({best_bleu}) ...")
             print("Validation bleu done.")
