@@ -241,8 +241,17 @@ class ModelTrainer:
                 print(i + 1, "Target:", target_sentences[i][0])
                 print(i + 1, "Summary:", generate_summs[i])
 
-            bleu_result = bleu.compute(predictions=generate_summs, references=target_sentences)['bleu']
-            rouge_result = rouge.compute(predictions=generate_summs, references=target_sentences)['rougeL']
+            safe_summs = [summ if summ.strip() else "empty" for summ in generate_summs]
+
+            try:
+                bleu_result = bleu.compute(predictions=safe_summs, references=target_sentences)['bleu']
+            except ZeroDivisionError:
+                bleu_result = 0.0
+
+            try:
+                rouge_result = rouge.compute(predictions=safe_summs, references=target_sentences)['rougeL']
+            except ZeroDivisionError:
+                rouge_result = 0.0
 
             if bleu_result > best_bleu:
                 best_bleu = bleu_result
