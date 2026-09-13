@@ -9,4 +9,4 @@ tqdm
 transformers
 wandb
 absl-py
-rouge-score
+rouge
