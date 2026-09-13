@@ -18,6 +18,7 @@ checkpoint_path: ../models/checkpoint_latest.pt
 best_loss_path: ../models/checkpoint_best_loss.pt
 best_bleu_path: ../models/checkpoint_best_bleu.pt
 model:
+  dropout: 0.2
   embedding_dim: 512
   input_vocabulary_size: 30000
   output_vocabulary_size: 30000

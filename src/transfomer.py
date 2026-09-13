@@ -6,13 +6,13 @@ from decoder import Decoder
 from encoder import SelfAttentionEncoder
 
 class Transformer(nn.Module):
-    def __init__(self, d_model: int, n_layers: int = 1, n_heads: int = 1)-> None:
+    def __init__(self, d_model: int, n_layers: int = 1, n_heads: int = 1, dropout: float = 0.1)-> None:
         super().__init__()
         self.encoders = nn.ModuleList([
-            SelfAttentionEncoder(d_model, n_heads=n_heads) for _ in range(n_layers)
+            SelfAttentionEncoder(d_model, n_heads=n_heads, dropout=dropout) for _ in range(n_layers)
         ])
         self.decoders = nn.ModuleList([
-            Decoder(d_model, n_heads=n_heads) for _ in range(n_layers)
+            Decoder(d_model, n_heads=n_heads, dropout=dropout) for _ in range(n_layers)
         ])
 
     def encode(self, inputs: torch.Tensor, inputs_mask: torch.Tensor) -> torch.Tensor:

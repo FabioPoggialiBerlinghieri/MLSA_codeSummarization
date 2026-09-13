@@ -4,7 +4,7 @@ from multiHeadAttention import MultiHeadAttention
 
 class SelfAttentionEncoder(nn.Module):
 
-    def __init__(self, d_model: int, n_heads: int = 1, ff_dim: int | None = None) -> None:
+    def __init__(self, d_model: int, n_heads: int = 1, dropout: float = 0.1, ff_dim: int | None = None) -> None:
         super().__init__()
 
         self.d_model = d_model
@@ -20,8 +20,6 @@ class SelfAttentionEncoder(nn.Module):
         self.norm1 = nn.LayerNorm(d_model)
         self.norm2 = nn.LayerNorm(d_model)
 
-        # should be a parameter
-        dropout = 0.1
         self.dropout1 = nn.Dropout(dropout)
         self.dropout2 = nn.Dropout(dropout)
 

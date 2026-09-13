@@ -6,7 +6,7 @@ from multiHeadAttention import MultiHeadAttention
 
 
 class Decoder(nn.Module):
-    def __init__(self, d_model: int, n_heads: int = 1, ff_dim: int | None = None) -> None:
+    def __init__(self, d_model: int, n_heads: int = 1, dropout: float = 0.1, ff_dim: int | None = None) -> None:
         super().__init__()
         self.d_model = d_model
 
@@ -25,7 +25,6 @@ class Decoder(nn.Module):
         self.norm2 = nn.LayerNorm(d_model)
         self.norm3 = nn.LayerNorm(d_model)
 
-        dropout = 0.1
         self.dropout1 = nn.Dropout(dropout)
         self.dropout2 = nn.Dropout(dropout)
         self.dropout3 = nn.Dropout(dropout)

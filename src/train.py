@@ -50,7 +50,8 @@ class ModelTrainer:
                               self.input_max_len, len(python_voc),
                               self.output_max_len, len(english_voc),
                               self.dataset_handler.config_yaml['model']['num_layers'],
-                              self.dataset_handler.config_yaml['model']['num_heads'])
+                              self.dataset_handler.config_yaml['model']['num_heads'],
+                              self.dataset_handler.config_yaml['model']['dropout'])
 
     def train(self, save_every, resume_path=None):
         if torch.cuda.is_available():
@@ -68,7 +69,14 @@ class ModelTrainer:
         self.model.to(device)
 
         learning_rate = self.dataset_handler.config_yaml['learning_rate']
-        optimizer = optim.AdamW(self.model.parameters(), lr=learning_rate)
+        optimizer = optim.AdamW(self.model.parameters(), lr=learning_rate, weight_decay=1e-2)
+        scheduler = optim.lr_scheduler.ReduceLROnPlateau(
+            optimizer,
+            mode='min',  # reduce lr when stop do go down
+            factor=0.1,  # divide lr for 10
+            patience=2,  # num of tolerance epochs
+        )
+
         loss_fn = nn.CrossEntropyLoss(ignore_index=0)  # ignore padding
         epochs = self.dataset_handler.config_yaml['epochs']
 
@@ -134,7 +142,7 @@ class ModelTrainer:
 
                 with torch.autocast(device_type=device.type, dtype=torch.float16):
                     output = self.model(inputs, inputs_mask, shifted_target, targets_mask)
-                    loss = loss_fn(output, targets[:, 1:])  # target without cls
+                    loss = loss_fn(output, targets[ :, 1:])  # target without cls
 
                 scaler.scale(loss).backward()
                 scaler.step(optimizer)
@@ -196,6 +204,8 @@ class ModelTrainer:
                     num_examples += torch.sum(valid_tokens_mask).item()
                 valid_loss /= len(self.validation_dataset)
 
+            scheduler.step(valid_loss)
+
             if valid_loss < best_loss:
                 best_loss = valid_loss
                 checkpoint_loss = {
@@ -250,7 +260,8 @@ class ModelTrainer:
                 "train_epoch_loss": training_loss,
                 "val_loss": valid_loss,
                 "val_bleu": bleu_result,
-                "val_rouge": rouge_result
+                "val_rouge": rouge_result,
+                "learning_rate": optimizer.param_groups[0]['lr']
             })
 
             print('Epoch: {}, Training Loss: {:.4f}, Validation Loss: {:.4f}, accuracy = {:.4f}, bleu = {:.4f}, rouge = {:.4f}'.format(
