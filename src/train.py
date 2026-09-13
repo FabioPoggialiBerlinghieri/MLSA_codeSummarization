@@ -144,11 +144,16 @@ class ModelTrainer:
                 shifted_target = targets[:, :-1].to(device)
                 targets_mask = PaddingMask.generate_padding_mask(shifted_target).to(device)
 
-                with torch.autocast(device_type=device.type, dtype=torch.float16):
+                with torch.autocast(device_type=device.type, dtype=torch.bfloat16):
                     output = self.model(inputs, inputs_mask, shifted_target, targets_mask)
-                    loss = loss_fn(output, targets[ :, 1:])  # target without cls
+                    loss = loss_fn(output, targets[:, 1:])  # target without cls
 
                 scaler.scale(loss).backward()
+
+                # avoid overflow
+                scaler.unscale_(optimizer)
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
+
                 scaler.step(optimizer)
                 scaler.update()
 
