@@ -131,6 +131,10 @@ class ModelTrainer:
             self.model.train()  # train status for the mode
 
             for step, batch in enumerate(train_loader):
+
+                if step % 500 == 0:
+                    print("batch:", step)
+
                 optimizer.zero_grad()  # clear gradients for next train
                 inputs, targets = batch
 
