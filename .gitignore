@@ -11,3 +11,9 @@ __pycache__/
 
 # models
 models/
+
+# dump, for smoke test
+dump/
+
+# plot
+wandb/
