@@ -72,8 +72,10 @@ class ModelTrainer:
         epochs = self.dataset_handler.config_yaml['epochs']
 
         batch_size = self.dataset_handler.config_yaml['batch_size']
-        train_loader = DataLoader(dataset=self.train_dataset, batch_size=batch_size, shuffle=True)
-        val_loader = DataLoader(dataset=self.validation_dataset, batch_size=batch_size, shuffle=True)
+        train_loader = DataLoader(dataset=self.train_dataset, batch_size=batch_size, shuffle=True, num_workers=4,
+                                  pin_memory=True)
+        val_loader = DataLoader(dataset=self.validation_dataset, batch_size=batch_size, shuffle=True, num_workers=4,
+                                pin_memory=True)
 
         best_loss = float('inf')
         best_bleu = 0
@@ -101,7 +103,7 @@ class ModelTrainer:
             wandb.init(project="CodeSummarization_MLSA", config=self.dataset_handler.config_yaml)
             wandb_id = wandb.run.id
 
-        bleu_eval_size = min(batch_size // 2, len(self.validation_dataset))
+        bleu_eval_size = min(20, len(self.validation_dataset))
         bleu_subset = [self.validation_dataset[i] for i in range(bleu_eval_size)]
 
         scaler = torch.amp.GradScaler(device.type)
@@ -153,7 +155,9 @@ class ModelTrainer:
                         'best_bleu': best_bleu,
                         'wandb_id': wandb_id
                     }
-                    torch.save(checkpoint_latest, self.dataset_handler.config_yaml['checkpoint_path'])
+                    latest_path = self.dataset_handler.config_yaml['checkpoint_path']
+                    torch.save(checkpoint_latest, latest_path)
+                    wandb.save(latest_path)
                     print("Checkpoint saved...")
 
             training_loss /= len(self.train_dataset)
@@ -202,6 +206,7 @@ class ModelTrainer:
                     ".pt", f"_ep{epoch}_loss{valid_loss:.2f}.pt"
                 )
                 torch.save(checkpoint_loss, dyn_loss_path)
+                wandb.save(dyn_loss_path)
 
                 print(f"New best loss saved ({valid_loss}) ...")
 
@@ -234,6 +239,7 @@ class ModelTrainer:
                     ".pt", f"_ep{epoch}_bleu{bleu_result:.2f}.pt"
                 )
                 torch.save(checkpoint_loss, dyn_bleu_path)
+                wandb.save(dyn_bleu_path)
 
                 print(f"New best bleu saved ({best_bleu}) ...")
             print("Validation bleu done.")

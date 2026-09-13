@@ -10,3 +10,4 @@ transformers
 wandb
 absl-py
 rouge
+rouge-score
