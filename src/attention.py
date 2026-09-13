@@ -31,7 +31,8 @@ class Attention(nn.Module):
 
         # mask : B x L_q x L
         if mask is not None:
-            scores = scores.masked_fill(mask == 0, -1e9)
+            min_val = torch.finfo(scores.dtype).min
+            scores = scores.masked_fill(mask == 0, min_val)
 
         # softmax for last dim
         self.scores = torch.softmax(scores, dim=-1)

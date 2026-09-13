@@ -1,16 +1,14 @@
 import argparse
-import json
 import torch
 import os
-import paddingHandler
-from EDTransf import EDTransf
 from eval_model import ModelEvaluator
 from datasetHandler import DatasetHandler
-from paddingMask import PaddingMask
-from vocabulary_generator import PythonVocabularyGenerator
-import tokenizer as tc
+import set_seed as seed
 
 if __name__ == "__main__":
+
+    seed.set_deterministic_seed(42)
+
     parser = argparse.ArgumentParser(description="TBD")
     parser.add_argument('--input', type=str, required=True, help="Input code: a file .py or a directly a string code")
     parser.add_argument('--checkpoint', type=str, required=True, help="Path best bleu weight file")

@@ -11,7 +11,7 @@ dataset_test_path: ../data/dataset_test.json
 python_voc_path: ../data/code_vocab.json
 english_voc_path: ../data/english_vocab.json
 first_time: false
-learning_rate: 0.0001
+learning_rate: 0.0003
 epochs: 200
 batch_size: 64
 checkpoint_path: ../models/checkpoint_latest.pt

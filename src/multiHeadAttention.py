@@ -60,7 +60,9 @@ class MultiHeadAttention(nn.Module):
         # mask : (B * n_heads) x L_q x L
         if mask is not None:
             mask = mask.repeat_interleave(self.n_heads, dim=0)
-            scores = scores.masked_fill(mask == 0, -1e9)
+            min_val = torch.finfo(scores.dtype).min
+            scores = scores.masked_fill(mask == 0, min_val)
+
 
         # softmax for last dim
         self.scores = torch.softmax(scores, dim=-1)

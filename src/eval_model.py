@@ -1,14 +1,14 @@
 import argparse
 import evaluate as e
+import rouge
 import torch
 from EDTransf import EDTransf
 from datasetHandler import DatasetHandler, VocabularyStoreHandler
 from paddingMask import PaddingMask
-from tokenizer import CodeTokenizer
-
+import set_seed as seed
 bleu = e.load("bleu")
 # meteor = e.load("meteor")
-# rouge = e.load("rouge")
+rouge = e.load("rouge")
 
 class ModelEvaluator:
 
@@ -47,10 +47,9 @@ class ModelEvaluator:
 
         # compute metrix
         blue_result = bleu.compute(predictions=generate_summs, references=target_sentences)
-        meteor_result = None #meteor.compute(predictions=generate_summs, references=target_sentences)
-        rouge_result = None #rouge.compute(predictions=generate_summs, references=target_sentences)
+        rouge_result = rouge.compute(predictions=generate_summs, references=target_sentences)
 
-        return blue_result, meteor_result, rouge_result
+        return blue_result, rouge_result
 
     def summarize(self, code):
         self.model.eval()
@@ -87,6 +86,9 @@ class SampleEvaluator:
 
 
 if __name__ == "__main__":
+
+    seed.set_deterministic_seed(42)
+
     parser = argparse.ArgumentParser(description="TBD")
     parser.add_argument('--checkpoint', type=str, required=True, help="Path best bleu weight file")
     parser.add_argument('--split', type=str, default=None, help="Dataset split")
@@ -110,8 +112,7 @@ if __name__ == "__main__":
         split = saved_data['config']['split_test']
 
     model_evaluator = ModelEvaluator(saved_data, dataset_handler, split)
-    bleu_result, meteor_result, rouge_result = model_evaluator.evaluate()
+    bleu_result, rouge_result = model_evaluator.evaluate()
 
     print(bleu_result)
-    print(meteor_result)
     print(rouge_result)

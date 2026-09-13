@@ -1,4 +1,6 @@
 import sys
+import set_seed as seed
+import rouge
 import yaml
 from torch import optim, nn
 from torch.utils.data import DataLoader
@@ -12,6 +14,7 @@ import evaluate as e
 import wandb
 
 bleu = e.load("bleu")
+rouge = e.load("rouge")
 
 class ModelTrainer:
 
@@ -98,12 +101,18 @@ class ModelTrainer:
             wandb.init(project="CodeSummarization_MLSA", config=self.dataset_handler.config_yaml)
             wandb_id = wandb.run.id
 
-        bleu_eval_size = min(batch_size, len(self.validation_dataset))
+        bleu_eval_size = min(batch_size // 2, len(self.validation_dataset))
         bleu_subset = [self.validation_dataset[i] for i in range(bleu_eval_size)]
 
+        scaler = torch.amp.GradScaler(device.type)
+        wandb.watch(self.model, log="all", log_freq=10)
         print("Start training...")
 
         for epoch in range(start_epoch, epochs + 1):
+
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+
             print("Train:")
             print("Epoch:", epoch)
             training_loss = 0.0
@@ -120,11 +129,13 @@ class ModelTrainer:
                 shifted_target = targets[:, :-1].to(device)
                 targets_mask = PaddingMask.generate_padding_mask(shifted_target).to(device)
 
-                output = self.model(inputs, inputs_mask, shifted_target, targets_mask)
+                with torch.autocast(device_type=device.type, dtype=torch.float16):
+                    output = self.model(inputs, inputs_mask, shifted_target, targets_mask)
+                    loss = loss_fn(output, targets[:, 1:])  # target without cls
 
-                loss = loss_fn(output, targets[:, 1:])  # target without cls
-                loss.backward()  # backpropagation, compute gradients
-                optimizer.step()  # apply gradients
+                scaler.scale(loss).backward()
+                scaler.step(optimizer)
+                scaler.update()
 
                 current_batch_loss = loss.data.item()
                 wandb.log({"train_batch_loss": current_batch_loss})
@@ -146,6 +157,9 @@ class ModelTrainer:
                     print("Checkpoint saved...")
 
             training_loss /= len(self.train_dataset)
+
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
 
             print("Validation:")
             with torch.no_grad():  # we are not updating the model
@@ -183,21 +197,31 @@ class ModelTrainer:
                     'config': self.dataset_handler.config_yaml,
                     'model_state_dict': self.model.state_dict()
                 }
-                torch.save(checkpoint_loss, self.dataset_handler.config_yaml['best_loss_path'])
+
+                dyn_loss_path = self.dataset_handler.config_yaml['best_loss_path'].replace(
+                    ".pt", f"_ep{epoch}_loss{valid_loss:.2f}.pt"
+                )
+                torch.save(checkpoint_loss, dyn_loss_path)
+
                 print(f"New best loss saved ({valid_loss}) ...")
 
             print("Validation loss done.")
             generate_summs = []
             target_sentences = []
 
-            for sample in bleu_subset:
+            for (i, sample) in enumerate(bleu_subset):
                 summ_sentence, target_sentence = SampleEvaluator.eval_sample(sample, self.model,
                                                                              self.dataset_handler.englishTokenizer,
                                                                              device)
                 generate_summs.append(summ_sentence)
                 target_sentences.append([target_sentence])
 
+                if i < 5:
+                    print(i+1, "Target:", target_sentence)
+                    print(i+1, "Summary:", summ_sentence)
+
             bleu_result = bleu.compute(predictions=generate_summs, references=target_sentences)['bleu']
+            rouge_result = rouge.compute(predictions=generate_summs, references=target_sentences)['rougeL']
 
             if bleu_result > best_bleu:
                 best_bleu = bleu_result
@@ -205,7 +229,12 @@ class ModelTrainer:
                     'config': self.dataset_handler.config_yaml,
                     'model_state_dict': self.model.state_dict()
                 }
-                torch.save(checkpoint_loss, self.dataset_handler.config_yaml['best_bleu_path'])
+
+                dyn_bleu_path = self.dataset_handler.config_yaml['best_bleu_path'].replace(
+                    ".pt", f"_ep{epoch}_bleu{bleu_result:.2f}.pt"
+                )
+                torch.save(checkpoint_loss, dyn_bleu_path)
+
                 print(f"New best bleu saved ({best_bleu}) ...")
             print("Validation bleu done.")
 
@@ -213,13 +242,17 @@ class ModelTrainer:
                 "epoch": epoch,
                 "train_epoch_loss": training_loss,
                 "val_loss": valid_loss,
-                "val_bleu": bleu_result
+                "val_bleu": bleu_result,
+                "val_rouge": rouge_result
             })
 
-            print('Epoch: {}, Training Loss: {:.4f}, Validation Loss: {:.4f}, accuracy = {:.4f}, bleu = {:.4f}'.format(
-                epoch,training_loss, valid_loss, num_correct / num_examples, bleu_result))
+            print('Epoch: {}, Training Loss: {:.4f}, Validation Loss: {:.4f}, accuracy = {:.4f}, bleu = {:.4f}, rouge = {:.4f}'.format(
+                epoch,training_loss, valid_loss, num_correct / num_examples, bleu_result, rouge_result))
 
 if __name__ == "__main__":
+
+    seed.set_deterministic_seed(42)
+
     parser = argparse.ArgumentParser(description="TBD")
     parser.add_argument('--config', type=str, required=True, help="YAML file path")
     parser.add_argument('--max-code-len', type=int, default=512, help="Max code length")

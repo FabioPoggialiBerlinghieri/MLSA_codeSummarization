@@ -13,6 +13,7 @@ dependencies = [
     "evaluate>=0.4.6",
     "nltk>=3.10.3",
     "onnxscript>=0.7.1",
+    "rouge>=1.0.1",
     "torch>=2.14.0",
     "transformers>=5.16.1",
     "wandb>=0.30.0",
