@@ -17,3 +17,6 @@ dump/
 
 # plot
 wandb/
+
+# backup dataset
+backup/
