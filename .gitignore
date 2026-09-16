@@ -20,3 +20,6 @@ wandb/
 
 # backup dataset
 backup/
+
+# data
+data/
