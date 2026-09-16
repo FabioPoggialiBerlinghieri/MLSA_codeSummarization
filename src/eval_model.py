@@ -37,7 +37,7 @@ class ModelEvaluator:
         if split is not None:
             self.dataset = dataset_handler.load_dataset(split)
 
-    def evaluate(self, batch_size):
+    def evaluate(self, batch_size, generate_mode, beam_size):
         generate_summs = []
         target_sentences = []
         self.model.eval()
@@ -47,7 +47,7 @@ class ModelEvaluator:
         for batch in test_loader:
             b_summ_sentences, b_target_sentences = SampleEvaluator.eval_sample(batch, self.model,
                                                                                self.dataset_handler.englishTokenizer,
-                                                                               self.device)
+                                                                               self.device, generate_mode, beam_size)
             generate_summs.extend(b_summ_sentences)
             target_sentences.extend([[t] for t in b_target_sentences])
 
@@ -56,7 +56,7 @@ class ModelEvaluator:
 
         return blue_result, rouge_result
 
-    def summarize(self, code):
+    def summarize(self, code, generate_mode = "greedy", beam_size = 3):
         self.model.eval()
         code = self.dataset_handler.codeTokenizer.tokenize(code)
         code = self.dataset_handler.code_padding_handler.padding(code)
@@ -67,13 +67,13 @@ class ModelEvaluator:
         target_tensor = torch.tensor([target])
         sample_batch = (code_tensor, target_tensor)
         summ_sentence, _ = SampleEvaluator.eval_sample(sample_batch, self.model,
-                                                                     self.dataset_handler.englishTokenizer, self.device)
+                                                                     self.dataset_handler.englishTokenizer, self.device, generate_mode, beam_size)
         return summ_sentence[0]
 
 class SampleEvaluator:
 
     @staticmethod
-    def eval_sample(sample_batch, model, tokenizer, device) -> tuple[list[str], list[str]]:
+    def eval_sample(sample_batch, model, tokenizer, device, generate_mode = "greedy", beam_size = 3) -> tuple[list[str], list[str]]:
         code, target = sample_batch
         with torch.no_grad():
             code = code.to(device)
@@ -82,7 +82,10 @@ class SampleEvaluator:
             sep = tokenizer.tokenize("[SEP]")[0]
             pad = tokenizer.tokenize("[PAD]")[0]
 
-            summ_ids = model.predict_bs(code, mask, cls, sep, pad)
+            if generate_mode == "greedy":
+                summ_ids = model.predict(code, mask, cls, sep, pad)
+            if generate_mode == "beam":
+                summ_ids = model.predict_bs(code, mask, cls, sep, pad, beam_size)
 
         summ_sentences = []
         target_sentences = []
@@ -111,12 +114,18 @@ if __name__ == "__main__":
     parser.add_argument('--checkpoint', type=str, required=True, help="Path best bleu weight file")
     parser.add_argument('--split', type=str, default=None, help="Dataset split")
     parser.add_argument('--batch_size', type=int, default=1, help="Batch size")
+    parser.add_argument('--generate_mode', type=str, choices=['greedy', 'beam'], default='greedy',
+                        help="Generate mode (default: greedy)")
+    parser.add_argument('--beam_size', type=int, default=3, help="Beam size (default: 3)")
+
 
     args = parser.parse_args()
 
     checkpoint_path = args.checkpoint
     split = args.split
     batch_size = args.batch_size
+    generate_mode = args.generate_mode
+    beam_size = args.beam_size
 
     saved_data = torch.load(checkpoint_path, map_location='cpu')
 
@@ -132,7 +141,7 @@ if __name__ == "__main__":
         split = saved_data['config']['split_test']
 
     model_evaluator = ModelEvaluator(saved_data, dataset_handler, split)
-    bleu_result, rouge_result = model_evaluator.evaluate(batch_size)
+    bleu_result, rouge_result = model_evaluator.evaluate(batch_size, generate_mode, beam_size)
 
     print(bleu_result)
     print(rouge_result)
