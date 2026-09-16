@@ -16,7 +16,7 @@ Install the required dependencies:
 pip install -r requirements.txt
 ```
 
-Download the pre-trained model weights from [Google Drive](?) and place them in:
+Download the pre-trained model weights from [Google Drive](https://drive.google.com/drive/folders/1E1HfQHBSiO5K4AIzRP2F-0FgrUa2qnPg?usp=drive_link) and place them in:
 
 ```text
 /models
@@ -52,7 +52,7 @@ The batch size can be changed using `--batch` (default: `128`).
 
 ## Training
 
-The tokenized dataset and vocabularies are available on [Google Drive](?) and should be placed in:
+The tokenized dataset and vocabularies are available on [Google Drive](https://drive.google.com/drive/folders/1E1HfQHBSiO5K4AIzRP2F-0FgrUa2qnPg?usp=drive_link) and should be placed in:
 
 ```text
 /data
