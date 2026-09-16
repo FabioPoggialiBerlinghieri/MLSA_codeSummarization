@@ -1,14 +1,14 @@
 import os.path
 import sys
-import set_seed as seed
+from utils import set_seed as seed
 import rouge
 import yaml
 from torch import optim, nn
 from torch.utils.data import DataLoader
-from EDTransf import EDTransf
+from architecture.EDTransf import EDTransf
 from eval_model import SampleEvaluator
-from datasetHandler import VocabularyStoreHandler, DatasetHandler
-from paddingMask import PaddingMask
+from data_processing.datasetHandler import VocabularyStoreHandler, DatasetHandler
+from data_processing.paddingMask import PaddingMask
 import argparse
 import torch
 import evaluate as e
@@ -33,6 +33,8 @@ class ModelTrainer:
         self.english_voc_len = 0
 
     def initialize_model(self):
+        """Loads datasets, vocabularies, and initializes the EDTransf architecture."""
+
         train = self.dataset_handler.config_yaml['split_train']
         self.train_dataset = self.dataset_handler.load_dataset(train)
 
@@ -68,6 +70,7 @@ class ModelTrainer:
 
         self.model.to(device)
 
+        # reduce learning rate when validation loss stops improving
         learning_rate = self.dataset_handler.config_yaml['learning_rate']
         optimizer = optim.AdamW(self.model.parameters(), lr=learning_rate, weight_decay=1e-2)
         scheduler = optim.lr_scheduler.ReduceLROnPlateau(
@@ -144,13 +147,14 @@ class ModelTrainer:
                 shifted_target = targets[:, :-1].to(device)
                 targets_mask = PaddingMask.generate_padding_mask(shifted_target).to(device)
 
+                # mixed precision training block
                 with torch.autocast(device_type=device.type, dtype=torch.bfloat16):
                     output = self.model(inputs, inputs_mask, shifted_target, targets_mask)
                     loss = loss_fn(output, targets[:, 1:])  # target without cls
 
                 scaler.scale(loss).backward()
 
-                # avoid overflow
+                # gradient clipping to prevent exploding gradients
                 scaler.unscale_(optimizer)
                 torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
 
@@ -162,6 +166,7 @@ class ModelTrainer:
 
                 training_loss += loss.data.item() * inputs.size(0)
 
+                # save periodic latest checkpoint
                 if step % save_every == 0 and step > 0:
                     checkpoint_latest = {
                         'config': self.dataset_handler.config_yaml,
@@ -183,6 +188,7 @@ class ModelTrainer:
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
 
+            # validation loop
             print("Validation:")
             with torch.no_grad():  # we are not updating the model
                 self.model.eval()  # the status of the model is in eval
@@ -215,6 +221,7 @@ class ModelTrainer:
 
             scheduler.step(valid_loss)
 
+            # save best loss model checkpoint
             if valid_loss < best_loss:
                 best_loss = valid_loss
                 checkpoint_loss = {
@@ -232,7 +239,7 @@ class ModelTrainer:
 
             print("Validation loss done.")
 
-            # makes blue subset a batch to pe parallized
+            # BLEU and ROUGE evaluation on a subset batch
             bleu_loader = DataLoader(dataset=bleu_subset, batch_size=len(bleu_subset), shuffle=False)
             b_inputs, b_targets = next(iter(bleu_loader))
             batched_sample = (b_inputs, b_targets)
@@ -258,6 +265,7 @@ class ModelTrainer:
             except ZeroDivisionError:
                 rouge_result = 0.0
 
+            # save best BLEU model checkpoint
             if bleu_result > best_bleu:
                 best_bleu = bleu_result
                 checkpoint_loss = {

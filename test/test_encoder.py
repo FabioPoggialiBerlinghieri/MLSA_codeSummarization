@@ -1,6 +1,6 @@
 import unittest
 import torch
-from encoder import SelfAttentionEncoder
+from architecture.encoder import SelfAttentionEncoder
 
 class EncoderTest(unittest.TestCase):
 

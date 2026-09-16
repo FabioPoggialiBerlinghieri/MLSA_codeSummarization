@@ -34,9 +34,8 @@ class Attention(nn.Module):
             min_val = torch.finfo(scores.dtype).min
             scores = scores.masked_fill(mask == 0, min_val)
 
-        # softmax for last dim
+        # softmax over the last dimension
         self.scores = torch.softmax(scores, dim=-1)
 
         # Context: B x L_q x L * B x L x D_Model = B x L_q x D_Model
         return torch.bmm(self.scores, self.v)
-

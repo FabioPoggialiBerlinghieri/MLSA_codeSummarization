@@ -1,5 +1,5 @@
 import unittest
-import SBTParse as SBT
+from data_processing import SBTParse as SBT
 
 class SBTParseTest(unittest.TestCase):
 

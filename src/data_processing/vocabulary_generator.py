@@ -1,5 +1,5 @@
 import itertools
-import SBTParse as a
+from . import SBTParse as a
 import nltk
 from abc import ABC, abstractmethod
 
@@ -24,11 +24,11 @@ class VocabularyGenerator(ABC):
                 continue
         occ_dict = dict.fromkeys(voc, 0)
 
-        # Contiamo le occorrenze
+        # count occurrence
         for v in voc:
             occ_dict[v] += 1
 
-        # Ordinaimo e ci teniamo solo i più probabili
+        # sort by frequency and keep only the most probable tokens
         occ_dict = dict(sorted(occ_dict.items(), key=lambda x: x[1], reverse=True))
 
         len_special_tokens = len(self.special_tokens)
@@ -47,15 +47,15 @@ class VocabularyGenerator(ABC):
 class PythonVocabularyGenerator(VocabularyGenerator):
 
     special_tokens = {
-        "Name_UNK": 2,  # Nomi di variabili o chiamate a funzione (se non l'hai rinominato in Variable)
-        "Constant_UNK": 3,  # Valori letterali (numeri come 2, 3.14, o stringhe come "Hello")
-        "arg_UNK": 4,  # Parametri passati a una funzione
-        "FunctionDef_UNK": 5,  # Nomi di funzioni definite
-        "AsyncFunctionDef_UNK": 6,  # Nomi di funzioni asincrone
-        "ClassDef_UNK": 7,  # Nomi di classi
-        "Attribute_UNK": 8,  # Attributi di oggetti (es. 'render' in self.render)
-        "keyword_UNK": 9,  # Argomenti passati per nome (kwargs)
-        "alias_UNK": 10,  # Nomi di moduli importati (es. import pandas as pd)
+        "Name_UNK": 2,
+        "Constant_UNK": 3,
+        "arg_UNK": 4,
+        "FunctionDef_UNK": 5,
+        "AsyncFunctionDef_UNK": 6,
+        "ClassDef_UNK": 7,
+        "Attribute_UNK": 8,
+        "keyword_UNK": 9,
+        "alias_UNK": 10,
     }
 
     def __init__(self, codes: list[str], len_max: int = 30000) -> None:
@@ -67,6 +67,7 @@ class PythonVocabularyGenerator(VocabularyGenerator):
 
     @staticmethod
     def get_main_keywords() -> list[str]:
+        """Extracts main keyword prefixes from special tokens."""
         main_keywords = []
         for word in PythonVocabularyGenerator.special_tokens.keys():
             main_keywords.append(word.split("_")[0])

@@ -2,12 +2,12 @@ import argparse
 import evaluate as e
 import rouge
 import torch
-from EDTransf import EDTransf
-from datasetHandler import DatasetHandler, VocabularyStoreHandler
-from paddingMask import PaddingMask
-import set_seed as seed
+from architecture.EDTransf import EDTransf
+from data_processing.datasetHandler import DatasetHandler
+from data_processing.paddingMask import PaddingMask
+from utils import set_seed as seed
+
 bleu = e.load("bleu")
-# meteor = e.load("meteor")
 rouge = e.load("rouge")
 
 class ModelEvaluator:
@@ -38,6 +38,7 @@ class ModelEvaluator:
             self.dataset = dataset_handler.load_dataset(split)
 
     def evaluate(self, batch_size, generate_mode, beam_size):
+        """Evaluates the model on the loaded dataset split using BLEU and ROUGE metrics."""
         generate_summs = []
         target_sentences = []
         self.model.eval()
@@ -57,6 +58,7 @@ class ModelEvaluator:
         return blue_result, rouge_result
 
     def summarize(self, code, generate_mode = "greedy", beam_size = 3):
+        """Generates a summary for a single code snippet string."""
         self.model.eval()
         code = self.dataset_handler.codeTokenizer.tokenize(code)
         code = self.dataset_handler.code_padding_handler.padding(code)
@@ -71,6 +73,7 @@ class ModelEvaluator:
         return summ_sentence[0]
 
 class SampleEvaluator:
+    """Helper class to perform batch generation and text post-processing (detokenization)."""
 
     @staticmethod
     def eval_sample(sample_batch, model, tokenizer, device, generate_mode = "greedy", beam_size = 3) -> tuple[list[str], list[str]]:
@@ -93,11 +96,13 @@ class SampleEvaluator:
         # for each batch size
         batch_size = code.size(0)
         for i in range(batch_size):
+            # process predicted summary
             summ_list = summ_ids[i].tolist()
             summ = tokenizer.detokenize(summ_list)
             summ_sentence = summ.replace("[CLS]", "").replace("[SEP]", "").replace("[PAD]", "").strip()
             summ_sentences.append(summ_sentence)
 
+            # process ground truth target
             target_list = target[i].tolist()
             target_str = tokenizer.detokenize(target_list)
             target_sentence = target_str.replace("[CLS]", "").replace("[SEP]", "").replace("[PAD]", "").strip()
@@ -112,7 +117,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="TBD")
     parser.add_argument('--checkpoint', type=str, required=True, help="Path best bleu weight file")
-    parser.add_argument('--split', type=str, default=None, help="Dataset split")
+    parser.add_argument('--split', type=str, default='test', help="Dataset split")
     parser.add_argument('--batch_size', type=int, default=1, help="Batch size")
     parser.add_argument('--generate_mode', type=str, choices=['greedy', 'beam'], default='greedy',
                         help="Generate mode (default: greedy)")

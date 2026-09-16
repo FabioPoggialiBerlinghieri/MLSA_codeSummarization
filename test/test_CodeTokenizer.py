@@ -1,19 +1,17 @@
 import unittest
-import SBTParse as SBT
-from tokenizer import CodeTokenizer, InvalidUknownIdentifierException, InvalidMainKeywordsException
-
+from data_processing.tokenizer import CodeTokenizer, InvalidUnknownIdentifierException, InvalidMainKeywordsException
 
 class SBTParseTest(unittest.TestCase):
 
     def setUp(self):
         self.cd = CodeTokenizer({'a_c' : 1, 'b_c' : 2, '[c]' : 3, 'd' : 4, 'e' : 5, 'a' : 6}, ['a'], uknown_identifier = 'c')
 
-    def test_init_with_wrong_uknown_identifier_should_raise_error(self):
+    def test_init_with_wrong_unknown_identifier_should_raise_error(self):
 
-        with self.assertRaises(InvalidUknownIdentifierException) as e:
+        with self.assertRaises(InvalidUnknownIdentifierException) as e:
             CodeTokenizer({'a' : 1, 'b' : '2'}, uknown_identifier = 'c')
 
-        self.assertEqual("uknown identifier must be a key in the vocabulary", str(e.exception))
+        self.assertEqual("unknown identifier must be a key in the vocabulary", str(e.exception))
 
     def test_init_with_wrong_main_keywords_should_raise_error(self):
         main_keywords = ['x', 'y']

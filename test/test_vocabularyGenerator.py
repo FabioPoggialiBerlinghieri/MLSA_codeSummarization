@@ -1,5 +1,5 @@
 import unittest
-import vocabulary_generator as vg
+from data_processing import vocabulary_generator as vg
 
 class TestVocabularyGenerator(unittest.TestCase):
 
@@ -73,5 +73,3 @@ class TestVocabularyGenerator(unittest.TestCase):
         expected_special_tokens = {"Name", "Constant", "arg", "FunctionDef", "AsyncFunctionDef",
             "ClassDef", "Attribute", "keyword", "alias"}
         self.assertEqual(expected_special_tokens, set(self.vocgen.get_main_keywords()))
-
-

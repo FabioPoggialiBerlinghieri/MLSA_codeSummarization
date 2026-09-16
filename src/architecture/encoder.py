@@ -1,6 +1,6 @@
 import torch.nn as nn
 import torch
-from multiHeadAttention import MultiHeadAttention
+from .multiHeadAttention import MultiHeadAttention
 
 class SelfAttentionEncoder(nn.Module):
 

@@ -2,8 +2,8 @@ import argparse
 import torch
 import os
 from eval_model import ModelEvaluator
-from datasetHandler import DatasetHandler
-import set_seed as seed
+from data_processing.datasetHandler import DatasetHandler
+from utils import set_seed as seed
 
 if __name__ == "__main__":
 

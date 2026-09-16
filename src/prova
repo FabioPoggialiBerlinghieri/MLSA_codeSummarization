@@ -1,5 +1,0 @@
-def func(a):
-    b = 0
-    for i in range(a):
-        b += a * i
-    return b

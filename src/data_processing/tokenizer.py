@@ -1,7 +1,6 @@
 from transformers import BertTokenizer
 from typing import cast
-import SBTParse as a
-
+from . import SBTParse as a
 from abc import ABC, abstractmethod
 
 class Tokenizer(ABC):
@@ -13,8 +12,7 @@ class Tokenizer(ABC):
     def tokenize(self, input: str) -> list[int]:
         pass
 
-
-class InvalidUknownIdentifierException(Exception):
+class InvalidUnknownIdentifierException(Exception):
     pass
 
 class InvalidMainKeywordsException(Exception):
@@ -42,7 +40,7 @@ class CodeTokenizer(Tokenizer):
 
     def __check_unkownidentifier(self) -> None:
         if "[" + self.uknown_identifier + "]" not in self.vocabulary.keys():
-            raise InvalidUknownIdentifierException("uknown identifier must be a key in the vocabulary")
+            raise InvalidUnknownIdentifierException("unknown identifier must be a key in the vocabulary")
 
     def tokenize(self, input: str) -> list[int]:
         """ Tokenize an indented Python source code string into a list of tokens """
@@ -53,8 +51,8 @@ class CodeTokenizer(Tokenizer):
         """ Translate a list of words into a list of indices (tokens) """
         tokens = []
         for (word, i) in zip(words, range(len(words))):
-            # if the word is not in the vocabulary, the word is replaced with a sepcial tokne
-            # es: fun_uknown ---> FunctionDef_UNK
+            # if the word is not in the vocabulary, the word is replaced with a special token
+            # es: fun_unknown ---> FunctionDef_UNK
             if word not in self.vocabulary:
                 if i > 1 and words[i-2] in self.main_keywords:
                     tokens.append(self.vocabulary[words[i-2] + "_" + self.uknown_identifier])
@@ -77,4 +75,3 @@ class EnglishTextTokenizer(Tokenizer):
 
     def detokenize(self, tokens: list[int]) -> str:
         return ' '.join(self.tokenizer.convert_ids_to_tokens(tokens))
-

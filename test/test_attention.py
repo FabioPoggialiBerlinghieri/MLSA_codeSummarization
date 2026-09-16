@@ -1,7 +1,7 @@
 import unittest
 import torch
 import torch.nn.functional as F
-from attention import Attention
+from architecture.attention import Attention
 import torch.nn as nn
 import numpy as np
 

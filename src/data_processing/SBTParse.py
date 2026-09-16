@@ -55,5 +55,3 @@ class SBTParse:
         tokens.extend([")", node_type])
 
         return tokens
-
-

@@ -3,7 +3,7 @@ import torch
 import torch.nn.functional as F
 import torch.nn as nn
 import numpy as np
-from multiHeadAttention import MultiHeadAttention
+from architecture.multiHeadAttention import MultiHeadAttention
 
 class MultiHeadAttentionTest(unittest.TestCase):
     def setUp(self):

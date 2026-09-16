@@ -1,9 +1,7 @@
-import warnings
 import torch.nn as nn
 import torch
-from torch import Tensor
-from decoder import Decoder
-from encoder import SelfAttentionEncoder
+from .decoder import Decoder
+from .encoder import SelfAttentionEncoder
 
 class Transformer(nn.Module):
     def __init__(self, d_model: int, n_layers: int = 1, n_heads: int = 1, dropout: float = 0.1)-> None:
@@ -16,8 +14,8 @@ class Transformer(nn.Module):
         ])
 
     def encode(self, inputs: torch.Tensor, inputs_mask: torch.Tensor) -> torch.Tensor:
-        # input : B x L_in x D_Model
-        # input_mask: B x L_in
+        # inputs : B x L_in x D_Model
+        # inputs_mask: B x L_in
 
         # outputs encoder: B x L_in x D_Model
         enc_output = inputs
@@ -42,8 +40,8 @@ class Transformer(nn.Module):
     def forward(self, inputs: torch.Tensor,  inputs_mask: torch.Tensor,
                 labels: torch.Tensor, labels_mask: torch.Tensor | None = None) -> torch.Tensor:
 
-        # input : B x L_in x D_Model
-        # input_mask: B x L_in
+        # inputs : B x L_in x D_Model
+        # inputs_mask: B x L_in
         # labels : B x L_label x D_Model
         # labels_mask: B x L_label
 
@@ -54,7 +52,3 @@ class Transformer(nn.Module):
 
         # output : B x L_label x D_Model
         return self.decode(labels, labels_mask)
-
-
-
-
