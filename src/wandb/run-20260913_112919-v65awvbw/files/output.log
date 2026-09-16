@@ -1,0 +1,52 @@
+Start training...
+Train:
+Epoch: 1
+Traceback (most recent call last):
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 284, in <module>
+    model_trainer.train(save_every, resume)
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 133, in train
+    output = self.model(inputs, inputs_mask, shifted_target, targets_mask)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1889, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1837, in inner
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/src/EDTransf.py", line 93, in forward
+    outputs = self.transformer(preprocessed_inputs, input_mask, preprocessed_labels, labels_mask)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/src/transfomer.py", line 51, in forward
+    enc_output = self.encode(inputs, inputs_mask)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/src/transfomer.py", line 25, in encode
+    enc_output = encoder(enc_output, inputs_mask)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/src/encoder.py", line 36, in forward
+    context = self.attention(inputs, inputs_mask)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/src/multiHeadAttention.py", line 63, in forward
+    scores = scores.masked_fill(mask == 0, -1e9)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: value cannot be converted to type c10::Half without overflow

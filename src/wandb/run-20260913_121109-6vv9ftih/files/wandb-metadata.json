@@ -1,0 +1,27 @@
+{
+  "os": "Linux-7.0.0-31-generic-x86_64-with-glibc2.39",
+  "python": "CPython 3.11.16",
+  "startedAt": "2026-09-13T10:11:09.396764Z",
+  "args": [
+    "--config",
+    "../config/smoke_config.yaml",
+    "--max-code-len",
+    "512",
+    "--max-sum-len",
+    "96",
+    "--save-every",
+    "500"
+  ],
+  "program": "/home/pier/MLSA_codeSummarization/src/train.py",
+  "codePath": "src/train.py",
+  "codePathLocal": "train.py",
+  "git": {
+    "remote": "git@github.com:FabioPoggialiBerlinghieri/MLSA_codeSummarization.git",
+    "commit": "d0d33510fccaa2a07b8a000e4ebf6db3c9619470"
+  },
+  "email": "pigidanti@gmail.com",
+  "root": "/home/pier/MLSA_codeSummarization/src",
+  "host": "pier-ThinkPad-P14s-Gen-2i",
+  "executable": "/home/pier/MLSA_codeSummarization/.venv/bin/python3",
+  "writerId": "3gmxrem7hn9bl4vllyd4vajcz5faakhx"
+}

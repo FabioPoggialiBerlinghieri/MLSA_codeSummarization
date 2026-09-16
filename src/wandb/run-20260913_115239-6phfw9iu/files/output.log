@@ -1,0 +1,808 @@
+Start training...
+Train:
+Epoch: 1
+Validation:
+New best loss saved (4.61449613571167) ...
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Validation bleu done.
+Epoch: 1, Training Loss: 5.9083, Validation Loss: 4.6145, accuracy = 0.0415, bleu = 0.0000, rouge = 0.0000
+Train:
+Epoch: 2
+Validation:
+New best loss saved (4.420323848724365) ...
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: the the the : the : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: the the the the : the : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: the the the the . . . : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: the the the the : the : the : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: the the the the : the : the : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
+Validation bleu done.
+Epoch: 2, Training Loss: 5.1992, Validation Loss: 4.4203, accuracy = 0.0615, bleu = 0.0000, rouge = 0.0403
+Train:
+Epoch: 3
+Validation:
+New best loss saved (3.997084951400757) ...
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+New best bleu saved (0.06614486534611787) ...
+Validation bleu done.
+Epoch: 3, Training Loss: 5.0179, Validation Loss: 3.9971, accuracy = 0.3492, bleu = 0.0661, rouge = 0.1454
+Train:
+Epoch: 4
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] the the the . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the the the . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] the the the . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the the the [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] the the the . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+New best bleu saved (0.06911178643563658) ...
+Validation bleu done.
+Epoch: 4, Training Loss: 4.7907, Validation Loss: 4.1209, accuracy = 0.1554, bleu = 0.0691, rouge = 0.1461
+Train:
+Epoch: 5
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] the specified . [UNK] [UNK] [UNK] [UNK] .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the specified . [UNK] [UNK] [UNK] [UNK] .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] the specified . [UNK] [UNK] [UNK] [UNK] [UNK] .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the specified . [UNK] [UNK] [UNK] [UNK] [UNK] .
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] the the specified . [UNK] [UNK] [UNK] .
+New best bleu saved (0.12328333973780468) ...
+Validation bleu done.
+Epoch: 5, Training Loss: 4.5968, Validation Loss: 4.3968, accuracy = 0.0985, bleu = 0.1233, rouge = 0.3865
+Train:
+Epoch: 6
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] .
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] .
+New best bleu saved (0.3209404504501474) ...
+Validation bleu done.
+Epoch: 6, Training Loss: 4.1753, Validation Loss: 4.0451, accuracy = 0.2600, bleu = 0.3209, rouge = 0.3790
+Train:
+Epoch: 7
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] the document .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the document .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] the document .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the specified . arguments : the specified type , and a ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` `
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] the document .
+Validation bleu done.
+Epoch: 7, Training Loss: 3.8263, Validation Loss: 4.2380, accuracy = 0.2092, bleu = 0.0000, rouge = 0.1764
+Train:
+Epoch: 8
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] a list of all to the document .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] a list of all to the document .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a list of all to the document .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the document .
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a list of all to the document .
+Validation bleu done.
+Epoch: 8, Training Loss: 3.4452, Validation Loss: 4.1955, accuracy = 0.2092, bleu = 0.0000, rouge = 0.1659
+Train:
+Epoch: 9
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] a list of all its contents to a list of all its to json .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] a list of all its contents to json .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a list of all its to a list of all its to json .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] a force - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] -
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] -
+Validation bleu done.
+Epoch: 9, Training Loss: 3.1000, Validation Loss: 4.4338, accuracy = 0.1615, bleu = 0.0380, rouge = 0.1863
+Train:
+Epoch: 10
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] the [UNK] element and all its contents to the text
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the [UNK] element and all its contents to the text
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] the [UNK] element and all its contents to the text
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the [UNK] element and all its contents to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to the text to
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] -
+Validation bleu done.
+Epoch: 10, Training Loss: 2.7494, Validation Loss: 4.3968, accuracy = 0.1723, bleu = 0.0438, rouge = 0.1877
+Train:
+Epoch: 11
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] a new annotation type to the document .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] a force - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] -
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a force - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] -
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] a force the document to the document .
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] -
+Validation bleu done.
+Epoch: 11, Training Loss: 2.4389, Validation Loss: 4.5044, accuracy = 0.1723, bleu = 0.0352, rouge = 0.1941
+Train:
+Epoch: 12
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] an item to the [UNK]
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] a login response back to the client .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] a login response back to the client .
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a login response back to the client .
+Validation bleu done.
+Epoch: 12, Training Loss: 2.2225, Validation Loss: 4.8224, accuracy = 0.1154, bleu = 0.0000, rouge = 0.1710
+Train:
+Epoch: 13
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] a login response back to the client .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] a login response back to the client .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the document to be .
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a login response back to the client .
+Validation bleu done.
+Epoch: 13, Training Loss: 1.9723, Validation Loss: 4.9476, accuracy = 0.1292, bleu = 0.0000, rouge = 0.1548
+Train:
+Epoch: 14
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] the document to a ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` `
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the document to the document to the document to json .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a force - [UNK] algorithm on a force - [UNK] algorithm on the input graph , . args : the document to run in coordinate generation force applied to run in coordinate generation force applied to run in coordinate generation force applied to run in coordinate generation force applied to run in coordinate generation force applied to run in coordinate generation force applied to run in coordinate generation force applied to run in coordinate generation force applied to run in coordinate generation force applied to run in coordinate generation force applied to run in coordinate
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the document to the specified . arguments : the type of annotation , or by passing the type and if the type and if the type and if the type and if the type and if the type and if set ( str ) : the type of the type of the type and if set to the type and if set to the type and if set to the type and if set to the type and if set to the type and if set to the type and if set to the type
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] algorithm
+Validation bleu done.
+Epoch: 14, Training Loss: 1.7541, Validation Loss: 5.1775, accuracy = 0.1385, bleu = 0.0259, rouge = 0.1471
+Train:
+Epoch: 15
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] a new annotation type to be used in the document . arguments : the document . if not a [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . . . . . . . . . . . . . if not a [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the document to a ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` `
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a force - [UNK] algorithm on a graph , and return the maximum distance .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the document to the document . arguments : the class ( str ) : the class : the class : the class : the class : ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] `
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] - [UNK] algorithm on a force - [UNK] algorithm on a force - [UNK] - [UNK] algorithm on the input graph , . . . . . . . . . . . . . . . . . . . . [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK]
+Validation bleu done.
+Epoch: 15, Training Loss: 1.5588, Validation Loss: 4.8278, accuracy = 0.1846, bleu = 0.0887, rouge = 0.2005
+Train:
+Epoch: 16
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] a new annotation type to be used in the document . arguments : the document . if is conveyed by passing the n ' [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] : class : class : class : class : ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` `
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] a force - [UNK] algorithm on the input graph .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a force - [UNK] algorithm on a graph , returning a graph , as the input graph .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the document to a ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` `
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on a graph , and returns a list of all permutations .
+Validation bleu done.
+Epoch: 16, Training Loss: 1.4034, Validation Loss: 5.2225, accuracy = 0.1092, bleu = 0.0279, rouge = 0.1754
+Train:
+Epoch: 17
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] a new annotation element . a further restriction can be made based on set . arguments : class ( str ) : the class : the class : the class : the class : the class : class : class : class : ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK]
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] a new annotation type to be used in the document . arguments : the document . if multiple classes ( str ) : the class : the class : the class : ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` )
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a force - [UNK] algorithm on a graph , the input graph . args : an integer , . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . if : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] a new element and all its contents to a tuple of a tuple of this element . arguments : * class : class : class : class : ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` ) : the set to the set to the set to the set to the set to the set to the set to the set to the set to the set to the set to the set to the set
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on a graph , the input graph . args : an adjacency list of [UNK] ( optional )
+Validation bleu done.
+Epoch: 17, Training Loss: 1.2949, Validation Loss: 5.3805, accuracy = 0.1108, bleu = 0.0412, rouge = 0.1704
+Train:
+Epoch: 18
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] a single annotation element . arguments : class : ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` `
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] a force - [UNK] algorithm on the input graph . . . . . [UNK] - [UNK] - [UNK] - number of [UNK] [UNK] - [UNK] [UNK] [UNK] [UNK] [UNK] - [UNK] [UNK] [UNK] [UNK] [UNK] - [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] - number of [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] - number of [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a force - [UNK] algorithm on the input graph . . . . [UNK] - [UNK] - number of [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - number of [UNK] - [UNK] - [UNK] - [UNK] - number of [UNK] - [UNK] - number of [UNK] - [UNK] - [UNK] - number of [UNK] - number of [UNK] - [UNK] - [UNK] - [UNK] - number of [UNK] - [UNK] - [UNK] - number of [UNK] - [UNK] - [UNK] - [UNK] - number of [UNK] - [UNK] - [UNK] -
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the default annotator for the specified annotation type and set . arguments : * ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` `
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on a graph , the input graph . . [UNK] - number of [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] iterations to run in coordinate generation force [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] - maximum distance a string . . . . . . . . . . . . . [UNK] [UNK] [UNK] [UNK] - number of [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] - number
+Validation bleu done.
+Epoch: 18, Training Loss: 1.1614, Validation Loss: 5.2179, accuracy = 0.1231, bleu = 0.0754, rouge = 0.2119
+Train:
+Epoch: 19
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] a single annotation element . a further restriction can be made based on set . arguments : class ( class ) : class to select ; any python class to select ; any python class to select ; any python class to this set to this set to this set to this set to this set to this set to this set to this set to this set to this set to this set to this set to this set to this set to this set to this set to this set to this set
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] for every object .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - [UNK] - [UNK] - [UNK] - number of [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - like . .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the default set for the specified annotation type and set . arguments : annotationtype : annotationtype : the type of annotation , this is conveyed by passing the type of the type of the type of the type of the type of the type , or [UNK] ( str ) , or [UNK] ) , or [UNK] ) , or [UNK] ) , or [UNK] ) , or [UNK] ) , or [UNK] ) , or [UNK] ) , or [UNK] ) , or [UNK] ) , or [UNK] ) , or [UNK] ) ,
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations to run in coordinate generation force [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] - [UNK] - maximum distance between nodes [UNK] - maximum distance between nodes [UNK] [UNK] - maximum distance between nodes [UNK] - maximum distance between nodes [UNK] - maximum distance between nodes [UNK] - maximum distance between nodes [UNK] - maximum distance between nodes [UNK] - maximum distance between nodes [UNK] - maximum distance between nodes [UNK] - maximum distance between nodes [UNK] -
+Validation bleu done.
+Epoch: 19, Training Loss: 1.0586, Validation Loss: 5.2759, accuracy = 0.1215, bleu = 0.0569, rouge = 0.1855
+Train:
+Epoch: 20
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] the document to a ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` `
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the document to a ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` `
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a new element and all its contents to the text content of a python dictionary suitable for serialisation to the type and all its own line .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the [UNK] element and all its contents to a python dictionary suitable for serialisation to the type and returns : import . [UNK] element [UNK] elements are never returned . [UNK] elements are never returned . [UNK] elements : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - [UNK] - number of [UNK] - [UNK] - [UNK] - number of [UNK] - number of [UNK] - [UNK] - number of [UNK] - [UNK] - number of [UNK] - number of [UNK] - [UNK] - number of [UNK] - number of [UNK] - number of [UNK] iterations to run in coordinate generation force [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] and [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 20, Training Loss: 0.9904, Validation Loss: 5.3817, accuracy = 0.1400, bleu = 0.0459, rouge = 0.2128
+Train:
+Epoch: 21
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] an item to the [UNK]
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] and validate the [UNK] content ' [UNK] reference . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] when invalid
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a new element of this class back to the ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` for serialisation to json . example : : : : : : : : : :
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] a new element of this class can be added to the ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` the set for serialisation to the ` ` ` ` ` ` ` `
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations to run in coordinate generation force [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - [UNK] - maximum distance between . args : [UNK] - like . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Validation bleu done.
+Epoch: 21, Training Loss: 0.8682, Validation Loss: 5.5217, accuracy = 0.0985, bleu = 0.0280, rouge = 0.1813
+Train:
+Epoch: 22
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] a force - [UNK] algorithm on the input graph . args : context : context . [UNK] path - like . [UNK] path - like . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths . [UNK] paths .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the document to a ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` `
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations : param regexps : the input [UNK] algorithm ( optional )
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the [UNK] element and all its contents to a python dictionary suitable for serialisation to json . example : : import json . [UNK] ( word . [UNK] ( word . [UNK] ) ) ) ) ) returns : dict
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations : ( optional ) : [UNK] iterations : [UNK] iterations : ( optional ) : [UNK] iterations : ( optional ) : [UNK] iterations : ( optional ) : [UNK] iterations : [UNK] iterations : [UNK] iterations : [UNK] iterations : [UNK] iterations : [UNK] iterations : ( [UNK] iterations : [UNK] iterations : [UNK] iterations : ( [UNK] iterations : ( [UNK] iterations : [UNK] iterations : [UNK] iterations : ( [UNK] iterations : [UNK] iterations : [UNK] iterations : [UNK] iterations :
+Validation bleu done.
+Epoch: 22, Training Loss: 0.7620, Validation Loss: 5.8179, accuracy = 0.1015, bleu = 0.0345, rouge = 0.1953
+Train:
+Epoch: 23
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to parse metadata
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] for every object .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a force - [UNK] algorithm on the input graph .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] a force - [UNK] - [UNK] algorithm on the input graph . iterations to run in coordinate generation force [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations to run in coordinate generation force [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 23, Training Loss: 0.7192, Validation Loss: 5.6991, accuracy = 0.0985, bleu = 0.1070, rouge = 0.1855
+Train:
+Epoch: 24
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] a variable sized pattern to all patterns of a certain fixed size
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] and parse the pipeline definition yaml . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] pipeline yaml . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] pipeline - name . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a force - [UNK] algorithm on a graph , returning a data structure . args : an adjacency list of tuples ( ie . [UNK] ) number of [UNK] ) number of [UNK] ) number of [UNK] ) iterations to run in coordinate generation force [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] and parse the pipeline definition yaml . [UNK] pipeline yaml and returns dictionary representing the pipeline . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on a graph , returning a data structure . args : an adjacency list of tuples ( ie . [UNK] ) number of [UNK] ) : ( optional ) : ( optional ) : ( optional ) : ( optional ) : ( optional ) : ( optional ) : ( optional ) : ( optional ) : ( optional ) : ( optional ) : ( optional ) : ( optional ) : ( optional ) [UNK] ) [UNK] ) [UNK] ) [UNK] ) [UNK] ) [UNK] ) [UNK]
+Validation bleu done.
+Epoch: 24, Training Loss: 0.6223, Validation Loss: 5.7846, accuracy = 0.1108, bleu = 0.0763, rouge = 0.1718
+Train:
+Epoch: 25
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to serialize metadata to xml
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the lexer .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations to run in coordinate generation force [UNK] - specific keys in coordinate generation force [UNK] - the input graph . args : ( edit this to run in coordinate generation force [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] whether a new element of this class can be added to the parent . this method is mostly for internal use . this will use . this will use . this will use . this will use . this will use . this will use . this will use . this will use . this will use . args : class : ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] ` [UNK] `
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations to run in coordinate generation force [UNK] - [UNK] - [UNK] - specific keys in coordinate generation force [UNK] - the input graph . args : ( edit this is found in coordinate generation force [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 25, Training Loss: 0.5956, Validation Loss: 5.9881, accuracy = 0.0800, bleu = 0.0639, rouge = 0.1433
+Train:
+Epoch: 26
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: return all declarations in a form ready to be serialised to json . returns : list of all predicted senses
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the lexer .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a swap operation on a sequence of tokens , exhaustively swapping all tokens up to the maximum specified distance .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] json without whitespace .
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] and [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 26, Training Loss: 0.5692, Validation Loss: 5.9482, accuracy = 0.0969, bleu = 0.0000, rouge = 0.1135
+Train:
+Epoch: 27
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] a string and returns a list of tokens : param text : the text : type text : type text : type text : type text : type text : type text : type text : type text : type text : type text : type text : type text : type text : type text : type text : type text : type text : type text : the text : type text : type text : type text : type text : type text : type regexps : type regexps : type regexps
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the lexer .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations - number of [UNK] iterations to run in coordinate generation force [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] and [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] forces ( edit this to nodes ) dampening - maximum distance between nodes [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] and [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] forces ( edit this to nodes ) dampening - [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on a graph , returning a data structure . args : ( edit this ) number of [UNK] ) number of [UNK] ) number of [UNK] ) number of [UNK] ) number of [UNK] ) number of [UNK] ) number of [UNK] ) number of [UNK] ) number of [UNK] ) number of [UNK] ) number of [UNK] ) iterations : ( edit this to run in coordinate generation force applied to nodes ) dampening : ( edit this to nodes [UNK] : ( edit this to nodes [UNK] :
+Validation bleu done.
+Epoch: 27, Training Loss: 0.5193, Validation Loss: 6.0124, accuracy = 0.0831, bleu = 0.0600, rouge = 0.1409
+Train:
+Epoch: 28
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to serialize metadata to xml
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the lexer .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a string and returns a list of tokens : the text : param regexps : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text : the text
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] log method . will prepend timestamp . keyword arguments : system - name of indentation streams to stream - name of streams to stream to stream to stream to ( singleton version of streams ) . if set to stream to stream to stream to stream to output to output to stream to stream to stream to stream to output to output to output to output to ( singleton version of streams )
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] [UNK] of [UNK] of [UNK] and [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] - maximum distance between nodes ) dampening - maximum distance between nodes [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] - maximum distance between nodes [UNK] [UNK] [UNK] - maximum distance between nodes [UNK] - maximum distance between nodes [UNK] -
+Validation bleu done.
+Epoch: 28, Training Loss: 0.4791, Validation Loss: 6.0406, accuracy = 0.0938, bleu = 0.0000, rouge = 0.1000
+Train:
+Epoch: 29
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to serialize metadata to xml
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the document to a ` ` dict ` ready for serialisation to json . example : : : : import json ( doc . [UNK] ( ) ) ) ) ) ) [UNK] ( str ) ) [UNK] ( str ) [UNK] ( str ) [UNK] ( str ) ) [UNK] ( str ) [UNK] ( str ) [UNK] ( str ) [UNK] ( str ) [UNK] . if there [UNK] . if not found in which selects ) [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a string and returns a list of tokens : param text : the text : the text : the text : type text : param regexps : the text : type text : type text : type text : type text : type text : type text : type text : type text : type text : type text : type text : type text : the text : type text : type text : type text : type text : type text : the text : type text : type text : type text
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] json without whitespace . returns : meth : ` [UNK] `
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations to run in coordinate generation force [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] - [UNK] and [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] - maximum distance between nodes [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] - maximum distance between nodes [UNK] [UNK] [UNK] -
+Validation bleu done.
+Epoch: 29, Training Loss: 0.4772, Validation Loss: 6.1711, accuracy = 0.0938, bleu = 0.0252, rouge = 0.0984
+Train:
+Epoch: 30
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: generator creating a deep copy of the children of this element . if idsuffix is a string , if idsuffix will be generated including a random idsuffix will be generated including a random [UNK] - [UNK] hash
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] forces and updates node data .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a string and returns a list of tokens : param text to tokenise : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps : param regexps :
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] forces and updates node data .
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: check if the user is authenticated for the given request . the include [UNK] paths are first checked . if authentication is required then the [UNK] paths are given then the [UNK] paths are given then the [UNK] paths are given then the [UNK] paths are given then the [UNK] paths are given then we assume that authentication is required then we assume that authentication is required then we assume that authentication is required for all paths .
+Validation bleu done.
+Epoch: 30, Training Loss: 0.4380, Validation Loss: 6.2056, accuracy = 0.0969, bleu = 0.0364, rouge = 0.1286
+Train:
+Epoch: 31
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: generator creating a deep copy of the children of this element . if idsuffix is a string , if idsuffix will be generated including a random idsuffix will be generated including a random idsuffix will be generated including a [UNK] - [UNK] hash
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the lexer .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the child element
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] and [UNK] forces ( edit this to reduce force applied to nodes )
+Validation bleu done.
+Epoch: 31, Training Loss: 0.4199, Validation Loss: 6.2208, accuracy = 0.0892, bleu = 0.0576, rouge = 0.1409
+Train:
+Epoch: 32
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to serialize metadata to xml
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] and parse the pipeline definition yaml . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] pipeline yaml and returns dictionary representing the pipeline [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] whether a new element of this class can be added to the parent . this method is mostly for internal use the ` ` ` [UNK] ` property , but may be overidden by subclasses for more customised behaviour . parameters : parent ( : class : ` ) : the element that is being added to set ( str or [UNK] ) : the set ( str or [UNK] ) : the set ( str or [UNK] ) : the set raiseexceptions ( bool ) : [UNK] ) : [UNK] ) : [UNK] )
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on a graph , returning a data structure . args : an adjacency list of tuples ( ie . [ ( 1 , [UNK] ) , [UNK] ) , [UNK] iterations : ( optional ) , [UNK] iterations : ( optional ) number of [UNK] iterations : ( optional ) number of [UNK] iterations to run in coordinate generation force [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 32, Training Loss: 0.3828, Validation Loss: 6.1760, accuracy = 0.0815, bleu = 0.0273, rouge = 0.0972
+Train:
+Epoch: 33
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] span annotation elements of the specified type that include this word . arguments : type : type : the annotation type , can be passed as using any of the : class : ` annotationtype ` [UNK] ` member , or by passing the relevant : ` or : ` or : ` or : ` [UNK] ` or : ` or : ` or : class : ` or : ` or : ` or : ` [UNK] ` or : ` or : ` or : ` or : ` [UNK] ` or
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] and parse the pipeline definition yaml . [UNK] pipeline yaml and returns dictionary representing the pipeline [UNK] dir [UNK] dir : pipeline [UNK] name . yaml should be in . yaml should be the working [UNK] name of pipeline [UNK] dir : string . yaml should be the working [UNK] name of pipeline [UNK] dir : dict
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] whether a new element of this class can be added to the parent . this method is mostly for internal use . this will use . this will use . this will use the ` [UNK] ` ` property , but may be overidden by subclasses for more customised behaviour . parameters : parent ( : class : ` [UNK] ` ) : the element that is being added to the element that is being added to set ( str or [UNK] ) : the element can ' [UNK] be added to the element can
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] and [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] and [UNK] of [UNK] of [UNK] of [UNK] and [UNK] forces ( edit this to nodes ) dampening - maximum distance between
+Validation bleu done.
+Epoch: 33, Training Loss: 0.3511, Validation Loss: 6.4235, accuracy = 0.0954, bleu = 0.1007, rouge = 0.1539
+Train:
+Epoch: 34
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to parse metadata
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] [UNK] [UNK] forces and updates node data .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a variable sized pattern to all patterns of a certain fixed size
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: return a generator of all sentence found in the document . [UNK] for sentences in quotes . if an index is specified , return the n ' [UNK] sentence only ( starting at 0 )
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] - [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] and [UNK] forces ( edit this to reduce force applied to reduce force applied to reduce force applied to reduce force applied to nodes ) dampening - maximum distance between nodes [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 34, Training Loss: 0.3347, Validation Loss: 6.2249, accuracy = 0.0877, bleu = 0.0416, rouge = 0.1483
+Train:
+Epoch: 35
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to parse metadata
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the lexer .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] - [UNK] of [UNK] of [UNK] of [UNK] of [UNK] and [UNK] forces ( edit this to scale the distance between nodes )
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] whether a new element of this class can be added to the parent . this method is mostly for internal use . this will use the ` ` ` property , but may be overidden by subclasses for more customised behaviour . parameters : class : ` [UNK] ` [UNK] ` or [UNK] ` or [UNK] ` or [UNK] ` or [UNK] ` or [UNK] ` or if the element that is being added to set ( : the element that is being added to set ( bool ) : raise an exception if the
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] - [UNK] and [UNK] forces ( edit this to scale the distance between nodes ) dampening - [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 35, Training Loss: 0.3170, Validation Loss: 6.6137, accuracy = 0.0785, bleu = 0.1195, rouge = 0.1812
+Train:
+Epoch: 36
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to parse metadata
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] and parse the pipeline definition yaml . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] pipeline yaml and returns dictionary representing the pipeline [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a string and returns a list of tokens : param text : the text to tokenise : type text : regular expressions to use as tokeniser rules in tokenisation ( default = [UNK] [UNK] [UNK] [UNK] [UNK] ) : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype : rtype :
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] whether a new element of this class can be added to the parent . this method is mostly for internal use . this will use the ` ` [UNK] ` ` ` property , but may be overidden by subclasses for more customised behaviour . parameters : class : ` [UNK] ` ` ` ` ` ` or [UNK] ` ` or [UNK] ` ` or if the element that is being added to set raiseexceptions ( bool ) : raise an exception if the element can ' [UNK] be overidden by set raiseexceptions (
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: check if the user is authenticated for the given request . the include [UNK] paths are first checked . if authentication is required then the [UNK] paths are first checked against the [UNK] http header is required then the [UNK] http header is required then the credentials .
+Validation bleu done.
+Epoch: 36, Training Loss: 0.3302, Validation Loss: 6.0174, accuracy = 0.0908, bleu = 0.0552, rouge = 0.1095
+Train:
+Epoch: 37
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to parse metadata
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the lexer .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] whether a new element of this class can be added to the parent . the parent . the parent . the parent . the parent . the parent . the parent ( : class : ` [UNK] ` ) : the set ( str or if the set , default ) : the set to [UNK] ( bool ) : raise an exception if the set to [UNK] ( instance set to [UNK] ( instance set to [UNK] ( instance ) [UNK] ( instance ) [UNK] ( instance ) [UNK] ( instance ) [UNK] (
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK]
+Validation bleu done.
+Epoch: 37, Training Loss: 0.3398, Validation Loss: 6.5086, accuracy = 0.0846, bleu = 0.0449, rouge = 0.1591
+Train:
+Epoch: 38
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] span annotation elements of the specified type that include this word . arguments : type , or by passing the annotation type , or a member of all inputs support formatting expressions : * class : class : class : class : class : class : ` [UNK] ` or : class : class : class : class : class : class : class : class : class : class : class : class : class : class : class : class : class : ` [UNK] ` [UNK] ` or : class : class
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] [UNK] and parse the pipeline definition yaml . [UNK] pipeline yaml should be in the working [UNK] directory . args : string . name : string . name : string . name of the pipeline [UNK] name of the pipeline [UNK] name of the pipeline [UNK] name of the pipeline [UNK] name of pipeline [UNK] name of pipeline [UNK] name of pipeline [UNK] name of the pipeline [UNK] name of pipeline [UNK] name of pipeline [UNK] name of pipeline [UNK] name of pipeline [UNK] name of pipeline [UNK] name of pipeline [UNK] name of pipeline
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a force - [UNK] algorithm on a graph , returning a data structure . args : data : an adjacency list of tuples ( ie . [ ( 1 , . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] whether a new element of this class can be added to the parent . this method is mostly for internal use . this will use the ` ` ` [UNK] ` ` property , but may be overidden by subclasses for more customised behaviour . parameters : parent ( : class : ` [UNK] ` ) : the element that is being added to set ( str or [UNK] ) : the set definition returns : the set ( [UNK] : the set ( [UNK] : the element that is being added to [UNK] :
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on a graph , returning a data structure . args : an adjacency list of tuples ( ie . [ ( 1 , . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Validation bleu done.
+Epoch: 38, Training Loss: 0.3409, Validation Loss: 5.9306, accuracy = 0.1185, bleu = 0.0907, rouge = 0.1497
+Train:
+Epoch: 39
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to serialize metadata to xml
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the lexer .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the child element
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: check if the user is authenticated for the given request . the include [UNK] paths and [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 39, Training Loss: 0.3505, Validation Loss: 6.4347, accuracy = 0.0815, bleu = 0.1196, rouge = 0.1476
+Train:
+Epoch: 40
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to serialize metadata to xml
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] payload out to json file . args : context : pypyr . context . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory . mandatory
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] and parse the pipeline definition yaml . [UNK] pipeline yaml and returns dictionary representing the pipeline . pipeline . pipeline . pipeline [UNK] name . yaml should be the pipeline [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] directory . args : string . this will be the pipeline [UNK] name . this will be the pipeline [UNK] name . this will be the pipeline [UNK] name . [UNK] name . [UNK] name . [UNK] name . [UNK] name
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] and [UNK] forces ( edit this to scale the distance between nodes ) dampening - [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 40, Training Loss: 0.3473, Validation Loss: 6.0285, accuracy = 0.0985, bleu = 0.0967, rouge = 0.1349
+Train:
+Epoch: 41
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to serialize metadata to xml
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the lexer .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] json with formatting edits + object handling .
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on a graph , returning a data structure . args : data : an adjacency list of tuples ( ie . [ ( optional ) number of [UNK] ) number of [UNK] ) number of [UNK] iterations to run in coordinate generation force [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK]
+Validation bleu done.
+Epoch: 41, Training Loss: 0.2864, Validation Loss: 6.1458, accuracy = 0.1015, bleu = 0.1716, rouge = 0.1747
+Train:
+Epoch: 42
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to parse metadata
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] json with formatting edits + object handling .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] json with formatting edits + object handling .
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations to run in coordinate generation force [UNK] [UNK] and [UNK] [UNK] [UNK] - maximum distance between nodes [UNK] forces ( edit this to scale the maximum distance between nodes ) dampening - maximum distance between nodes [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 42, Training Loss: 0.2654, Validation Loss: 6.3256, accuracy = 0.0846, bleu = 0.1121, rouge = 0.1206
+Train:
+Epoch: 43
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to serialize metadata to xml
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] json with formatting edits + object handling .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] json with formatting edits + object handling .
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations to run in coordinate generation force [UNK] [UNK] [UNK] and [UNK] [UNK] [UNK] - the distance between . iterations to reduce force applied to scale the distance between nodes [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] - the maximum distance a node can move in coordinate generation force applied to reduce force applied to reduce force applied to nodes ) dampening - the maximum distance a node can move in one step [UNK] [UNK] [UNK] [UNK] - the maximum distance a node
+Validation bleu done.
+Epoch: 43, Training Loss: 0.2469, Validation Loss: 6.1634, accuracy = 0.0969, bleu = 0.0581, rouge = 0.1605
+Train:
+Epoch: 44
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to parse metadata
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the lexer .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] json with formatting edits + object handling .
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] - [UNK] of [UNK] of [UNK] and [UNK] forces ( edit this to scale the distance between nodes ) dampening - [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] to nodes [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 44, Training Loss: 0.2191, Validation Loss: 6.2127, accuracy = 0.0938, bleu = 0.1370, rouge = 0.1760
+Train:
+Epoch: 45
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to parse metadata
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the lexer .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] and parse the pipeline definition yaml . [UNK] pipeline yaml and returns dictionary representing the pipeline [UNK] name . yaml should be in the working [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] dir [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] [UNK] [UNK] [UNK] [UNK] - [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] and [UNK] forces ( edit this to scale the distance between nodes ) dampening - [UNK] to reduce force applied to nodes [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 45, Training Loss: 0.2148, Validation Loss: 6.3430, accuracy = 0.1077, bleu = 0.1408, rouge = 0.1750
+Train:
+Epoch: 46
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to parse metadata
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the lexer .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] whether a new element of this class can be added to the parent . this method is mostly for internal use . this will use the ` ` [UNK] ` property , but may be overidden by subclasses for more customised behaviour . parameters : parent ( : class : ` [UNK] ` ) : the element that is being added to set ( str or [UNK] ) : raise an exception if the set raiseexceptions ( bool ) : bool ) : bool ) : bool ) : bool ) : bool ) :
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] and [UNK] [UNK] [UNK] - [UNK] forces ( edit this to scale the distance between nodes ) dampening - [UNK] to reduce force applied to nodes [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 46, Training Loss: 0.2019, Validation Loss: 6.5388, accuracy = 0.1000, bleu = 0.1234, rouge = 0.1811
+Train:
+Epoch: 47
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to serialize metadata to xml
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the lexer .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a string and returns a list of tokens : param text : the text to tokenise : type text : string : regular expressions to use as tokeniser rules in tokenisation ( default = [UNK] . [UNK] . [UNK] ) this is a test . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] whether a new element of this class can be added to the parent . this method is mostly for internal use . this will use the ` ` [UNK] ` property , but may be overidden by subclasses for more customised behaviour . parameters : parent ( : class : ` [UNK] ` ) : the element that is being added to set ( str or [UNK] ) : the set raiseexceptions ( bool ) : the set raiseexceptions ( bool ) : the set raiseexceptions ( bool ) : raise an exception if the
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] - [UNK] of [UNK] of [UNK] of [UNK] and [UNK] forces ( edit this to scale the distance between nodes ) dampening - the maximum distance a node can move in one step [UNK] to reduce force applied to nodes [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 47, Training Loss: 0.1793, Validation Loss: 6.6114, accuracy = 0.0954, bleu = 0.0755, rouge = 0.1742
+Train:
+Epoch: 48
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to serialize metadata to xml
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] and a login response back to the client .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] whether a new element of this class can be added to the parent . this method is mostly for internal use . this will use the ` [UNK] ` property , but may be overidden by subclasses for more customised behaviour . parameters : parent ( : class : ` [UNK] ` ) : the element that is being added to set ( bool ) : the set ( bool ) : raise an exception if the element that is being added to [UNK] be added to [UNK] be added to [UNK] be added to
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] - [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] and [UNK] forces ( edit this to scale the distance between nodes ) dampening - [UNK] [UNK] [UNK] to reduce force applied to nodes [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 48, Training Loss: 0.1782, Validation Loss: 6.3718, accuracy = 0.1046, bleu = 0.1260, rouge = 0.1614
+Train:
+Epoch: 49
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to serialize metadata to xml
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the lexer .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] whether a new element of this class can be added to the parent . this method is mostly for internal use . this will use the ` ` [UNK] ` property , but may be overidden by subclasses for more customised behaviour . parameters : parent ( : class : ` [UNK] ` ) : the element that is being added to set ( str or [UNK] ) : the set raiseexceptions ( str or [UNK] ) : the set raiseexceptions ( bool ) : the set raiseexceptions ( bool ) : the set raiseexceptions
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] - [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] of [UNK] and [UNK] forces ( edit this to scale the distance between nodes ) dampening - [UNK] to reduce force applied to reduce force applied to nodes [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] to nodes [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+Validation bleu done.
+Epoch: 49, Training Loss: 0.1749, Validation Loss: 6.7321, accuracy = 0.0831, bleu = 0.1452, rouge = 0.1656
+Train:
+Epoch: 50
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: internal method to serialize metadata to xml
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] [UNK] [UNK] and parse the pipeline definition yaml . [UNK] pipeline yaml and returns dictionary representing the pipeline . pipeline [UNK] name . yaml should be in the working [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK]
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] a login response back to the client .
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] whether a new element of this class can be added to the parent . this method is mostly for internal use . this will use the ` [UNK] ` property , but may be overidden by subclasses for more customised behaviour . parameters : parent ( : class : ` [UNK] ` ) : the element that is being added to set ( str or [UNK] ) : the set raiseexceptions ( bool ) : the element can ' [UNK] be added to [UNK] be added to [UNK] be added ? returns : raise [UNK]
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] a force - [UNK] - [UNK] algorithm on the input graph . iterations - number of [UNK] iterations to run in coordinate generation force [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] - [UNK] and [UNK] forces ( edit this to scale the distance between nodes ) dampening - maximum distance a node can move in one step
+Validation bleu done.
+Epoch: 50, Training Loss: 0.1723, Validation Loss: 6.4531, accuracy = 0.1092, bleu = 0.1208, rouge = 0.1519

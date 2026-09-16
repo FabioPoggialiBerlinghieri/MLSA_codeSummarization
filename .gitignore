@@ -10,16 +10,21 @@ __pycache__/
 .env
 
 # models
-models/
+models/*
 
 # dump, for smoke test
-dump/
+dump/*
 
 # plot
-wandb/
+wandb/*
 
 # backup dataset
 backup/
 
 # data
-data/
+data/*
+
+!data/.gitkeep
+!dump/.gitkeep
+!model/.gitkeep
+!wandb/.gitkeep

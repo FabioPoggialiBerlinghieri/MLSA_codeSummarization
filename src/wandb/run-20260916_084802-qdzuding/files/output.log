@@ -1,0 +1,56 @@
+Start training...
+Train:
+Epoch: 1
+batch: 0
+Traceback (most recent call last):
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 321, in <module>
+    model_trainer.train(save_every, resume)
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 148, in train
+    output = self.model(inputs, inputs_mask, shifted_target, targets_mask)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1889, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1837, in inner
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/src/EDTransf.py", line 231, in forward
+    outputs = self.transformer(preprocessed_inputs, input_mask, preprocessed_labels, labels_mask)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/src/transfomer.py", line 51, in forward
+    enc_output = self.encode(inputs, inputs_mask)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/src/transfomer.py", line 25, in encode
+    enc_output = encoder(enc_output, inputs_mask)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/src/encoder.py", line 34, in forward
+    context = self.attention(inputs, inputs_mask)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/src/multiHeadAttention.py", line 58, in forward
+    scores = torch.bmm(self.q, self.k.permute(0, 2, 1)) / np.sqrt(self.head_dim)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/_native/registry.py", line 958, in eager_router
+    return _fallback.call_boxed(keyset, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 512.00 MiB. GPU 0 has a total capacity of 3.63 GiB of which 186.25 MiB is free. Including non-PyTorch memory, this process has 3.44 GiB memory in use. Of the allocated memory 3.34 GiB is allocated by PyTorch, and 29.27 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)

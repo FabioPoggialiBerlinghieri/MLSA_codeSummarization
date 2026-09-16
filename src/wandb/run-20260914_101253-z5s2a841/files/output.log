@@ -1,0 +1,19 @@
+Start training...
+Train:
+Epoch: 1
+batch: 0
+Traceback (most recent call last):
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 321, in <module>
+    model_trainer.train(save_every, resume)
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 157, in train
+    scaler.step(optimizer)
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/amp/grad_scaler.py", line 478, in step
+    retval = self._maybe_opt_step(optimizer, optimizer_state, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/amp/grad_scaler.py", line 371, in _maybe_opt_step
+    if not sum(v.item() for v in optimizer_state["found_inf_per_device"].values()):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/amp/grad_scaler.py", line 371, in <genexpr>
+    if not sum(v.item() for v in optimizer_state["found_inf_per_device"].values()):
+               ^^^^^^^^
+KeyboardInterrupt

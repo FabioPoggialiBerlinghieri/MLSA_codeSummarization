@@ -1,0 +1,57 @@
+Start training...
+Train:
+Epoch: 1
+batch: 0
+Validation:
+[34m[1mwandb[0m: [33mWARNING[0m Symlinked 1 file into the W&B run directory; call wandb.save again to sync new files.
+New best loss saved (4.370833873748779) ...
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK]
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] . [UNK] [UNK] . [UNK] . [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK]
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] . [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK]
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] . [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK]
+[34m[1mwandb[0m: [33mWARNING[0m Symlinked 1 file into the W&B run directory; call wandb.save again to sync new files.
+New best bleu saved (0.06853214953242777) ...
+Validation bleu done.
+Epoch: 1, Training Loss: 5.9105, Validation Loss: 4.3708, accuracy = 0.1917, bleu = 0.0685, rouge = 0.1586
+Train:
+Epoch: 2
+batch: 0
+Validation:
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` `
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` `
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` `
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` `
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` ` `
+Validation bleu done.
+Epoch: 2, Training Loss: 5.1873, Validation Loss: 4.3898, accuracy = 0.0192, bleu = 0.0000, rouge = 0.1770
+Train:
+Epoch: 3
+batch: 0
+Traceback (most recent call last):
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 329, in <module>
+    model_trainer.train(save_every, resume)
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 161, in train
+    scaler.step(optimizer)
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/amp/grad_scaler.py", line 478, in step
+    retval = self._maybe_opt_step(optimizer, optimizer_state, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/amp/grad_scaler.py", line 371, in _maybe_opt_step
+    if not sum(v.item() for v in optimizer_state["found_inf_per_device"].values()):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/amp/grad_scaler.py", line 371, in <genexpr>
+    if not sum(v.item() for v in optimizer_state["found_inf_per_device"].values()):
+               ^^^^^^^^
+KeyboardInterrupt

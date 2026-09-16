@@ -1,0 +1,19 @@
+Start training...
+Train:
+Epoch: 1
+Checkpoint saved...
+Validation:
+New best loss saved (4.56089973449707) ...
+Validation loss done.
+New best bleu saved (0.14110674824342676) ...
+Validation bleu done.
+Epoch: 1, Training Loss: 6.1937, Validation Loss: 4.5609, accuracy = 0.0815, bleu = 0.1411
+Train:
+Epoch: 2
+Traceback (most recent call last):
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 251, in <module>
+    model_trainer.train(save_every, resume)
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 129, in train
+    current_batch_loss = loss.data.item()
+                         ^^^^^^^^^^^^^^^^
+KeyboardInterrupt

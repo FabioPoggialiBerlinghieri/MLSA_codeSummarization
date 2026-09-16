@@ -1,0 +1,314 @@
+Start training...
+Train:
+Epoch: 1
+Validation:
+New best loss saved (4.887970352172852) ...
+Validation loss done.
+New best bleu saved (0.016403053459853642) ...
+Validation bleu done.
+Epoch: 1, Training Loss: 6.1687, Validation Loss: 4.8880, accuracy = 0.0708, bleu = 0.0164
+Train:
+Epoch: 2
+Validation:
+New best loss saved (4.356485271453858) ...
+Validation loss done.
+New best bleu saved (0.07213713710753578) ...
+Validation bleu done.
+Epoch: 2, Training Loss: 5.3886, Validation Loss: 4.3565, accuracy = 0.3462, bleu = 0.0721
+Train:
+Epoch: 3
+Validation:
+Validation loss done.
+New best bleu saved (0.09758438913939817) ...
+Validation bleu done.
+Epoch: 3, Training Loss: 5.2276, Validation Loss: 4.4790, accuracy = 0.1031, bleu = 0.0976
+Train:
+Epoch: 4
+Validation:
+New best loss saved (4.181715583801269) ...
+Validation loss done.
+Validation bleu done.
+Epoch: 4, Training Loss: 5.0728, Validation Loss: 4.1817, accuracy = 0.3492, bleu = 0.0721
+Train:
+Epoch: 5
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 5, Training Loss: 4.9368, Validation Loss: 4.3843, accuracy = 0.1492, bleu = 0.0721
+Train:
+Epoch: 6
+Validation:
+New best loss saved (4.162639904022217) ...
+Validation loss done.
+Validation bleu done.
+Epoch: 6, Training Loss: 4.7346, Validation Loss: 4.1626, accuracy = 0.2938, bleu = 0.0721
+Train:
+Epoch: 7
+Validation:
+New best loss saved (4.146078205108642) ...
+Validation loss done.
+Validation bleu done.
+Epoch: 7, Training Loss: 4.5507, Validation Loss: 4.1461, accuracy = 0.2815, bleu = 0.0781
+Train:
+Epoch: 8
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 8, Training Loss: 4.3549, Validation Loss: 4.1737, accuracy = 0.1969, bleu = 0.0856
+Train:
+Epoch: 9
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 9, Training Loss: 4.1541, Validation Loss: 4.3022, accuracy = 0.2015, bleu = 0.0450
+Train:
+Epoch: 10
+Validation:
+New best loss saved (4.132018089294434) ...
+Validation loss done.
+Validation bleu done.
+Epoch: 10, Training Loss: 3.9478, Validation Loss: 4.1320, accuracy = 0.2462, bleu = 0.0845
+Train:
+Epoch: 11
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 11, Training Loss: 3.7448, Validation Loss: 4.1982, accuracy = 0.2369, bleu = 0.0888
+Train:
+Epoch: 12
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 12, Training Loss: 3.5682, Validation Loss: 4.2501, accuracy = 0.2046, bleu = 0.0568
+Train:
+Epoch: 13
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 13, Training Loss: 3.3771, Validation Loss: 4.1590, accuracy = 0.2323, bleu = 0.0667
+Train:
+Epoch: 14
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 14, Training Loss: 3.2157, Validation Loss: 4.2474, accuracy = 0.2092, bleu = 0.0738
+Train:
+Epoch: 15
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 15, Training Loss: 3.0062, Validation Loss: 4.2010, accuracy = 0.2646, bleu = 0.0672
+Train:
+Epoch: 16
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 16, Training Loss: 2.8880, Validation Loss: 4.3612, accuracy = 0.2338, bleu = 0.0811
+Train:
+Epoch: 17
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 17, Training Loss: 2.7176, Validation Loss: 4.3959, accuracy = 0.1892, bleu = 0.0912
+Train:
+Epoch: 18
+Validation:
+Validation loss done.
+New best bleu saved (0.114378179867052) ...
+Validation bleu done.
+Epoch: 18, Training Loss: 2.5567, Validation Loss: 4.5873, accuracy = 0.1631, bleu = 0.1144
+Train:
+Epoch: 19
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 19, Training Loss: 2.4092, Validation Loss: 4.6042, accuracy = 0.1954, bleu = 0.0886
+Train:
+Epoch: 20
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 20, Training Loss: 2.2889, Validation Loss: 4.7309, accuracy = 0.1677, bleu = 0.1104
+Train:
+Epoch: 21
+Validation:
+Validation loss done.
+New best bleu saved (0.13074012953780959) ...
+Validation bleu done.
+Epoch: 21, Training Loss: 2.1749, Validation Loss: 4.9437, accuracy = 0.1477, bleu = 0.1307
+Train:
+Epoch: 22
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 22, Training Loss: 2.0524, Validation Loss: 4.7943, accuracy = 0.1800, bleu = 0.0666
+Train:
+Epoch: 23
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 23, Training Loss: 1.9286, Validation Loss: 5.0698, accuracy = 0.1523, bleu = 0.1229
+Train:
+Epoch: 24
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 24, Training Loss: 1.8219, Validation Loss: 5.2355, accuracy = 0.1369, bleu = 0.0365
+Train:
+Epoch: 25
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 25, Training Loss: 1.7225, Validation Loss: 5.3911, accuracy = 0.1215, bleu = 0.0794
+Train:
+Epoch: 26
+Validation:
+Validation loss done.
+New best bleu saved (0.1449190656836568) ...
+Validation bleu done.
+Epoch: 26, Training Loss: 1.6234, Validation Loss: 5.1473, accuracy = 0.1508, bleu = 0.1449
+Train:
+Epoch: 27
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 27, Training Loss: 1.5855, Validation Loss: 5.5214, accuracy = 0.1431, bleu = 0.0599
+Train:
+Epoch: 28
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 28, Training Loss: 1.4865, Validation Loss: 5.2116, accuracy = 0.1400, bleu = 0.1254
+Train:
+Epoch: 29
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 29, Training Loss: 1.3967, Validation Loss: 5.3769, accuracy = 0.1354, bleu = 0.0381
+Train:
+Epoch: 30
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 30, Training Loss: 1.3357, Validation Loss: 5.6354, accuracy = 0.1277, bleu = 0.0614
+Train:
+Epoch: 31
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 31, Training Loss: 1.2521, Validation Loss: 5.3234, accuracy = 0.1585, bleu = 0.0205
+Train:
+Epoch: 32
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 32, Training Loss: 1.2021, Validation Loss: 5.5743, accuracy = 0.1262, bleu = 0.0445
+Train:
+Epoch: 33
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 33, Training Loss: 1.1156, Validation Loss: 5.7425, accuracy = 0.1246, bleu = 0.0391
+Train:
+Epoch: 34
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 34, Training Loss: 1.0696, Validation Loss: 5.6681, accuracy = 0.1215, bleu = 0.0112
+Train:
+Epoch: 35
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 35, Training Loss: 1.0160, Validation Loss: 5.8720, accuracy = 0.1323, bleu = 0.0384
+Train:
+Epoch: 36
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 36, Training Loss: 0.9895, Validation Loss: 5.6153, accuracy = 0.1385, bleu = 0.0414
+Train:
+Epoch: 37
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 37, Training Loss: 0.9522, Validation Loss: 5.9547, accuracy = 0.1215, bleu = 0.0086
+Train:
+Epoch: 38
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 38, Training Loss: 0.9010, Validation Loss: 5.8711, accuracy = 0.1138, bleu = 0.0234
+Train:
+Epoch: 39
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 39, Training Loss: 0.8570, Validation Loss: 6.2297, accuracy = 0.1108, bleu = 0.0307
+Train:
+Epoch: 40
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 40, Training Loss: 0.8162, Validation Loss: 5.9279, accuracy = 0.1292, bleu = 0.1352
+Train:
+Epoch: 41
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 41, Training Loss: 0.7563, Validation Loss: 6.0835, accuracy = 0.1231, bleu = 0.0059
+Train:
+Epoch: 42
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 42, Training Loss: 0.7503, Validation Loss: 5.8428, accuracy = 0.1369, bleu = 0.1398
+Train:
+Epoch: 43
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 43, Training Loss: 0.7135, Validation Loss: 6.2033, accuracy = 0.1277, bleu = 0.0208
+Train:
+Epoch: 44
+Validation:
+Validation loss done.
+New best bleu saved (0.1488843798285111) ...
+Validation bleu done.
+Epoch: 44, Training Loss: 0.6713, Validation Loss: 5.9847, accuracy = 0.1169, bleu = 0.1489
+Train:
+Epoch: 45
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 45, Training Loss: 0.6396, Validation Loss: 6.4000, accuracy = 0.1215, bleu = 0.0447
+Train:
+Epoch: 46
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 46, Training Loss: 0.6049, Validation Loss: 5.9945, accuracy = 0.1185, bleu = 0.0700
+Train:
+Epoch: 47
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 47, Training Loss: 0.5845, Validation Loss: 6.5101, accuracy = 0.1092, bleu = 0.0464
+Train:
+Epoch: 48
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 48, Training Loss: 0.5797, Validation Loss: 6.6452, accuracy = 0.1092, bleu = 0.0139
+Train:
+Epoch: 49
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 49, Training Loss: 0.6040, Validation Loss: 5.6878, accuracy = 0.1292, bleu = 0.1082
+Train:
+Epoch: 50
+Validation:
+Validation loss done.
+Validation bleu done.
+Epoch: 50, Training Loss: 0.5908, Validation Loss: 6.4630, accuracy = 0.1077, bleu = 0.0659

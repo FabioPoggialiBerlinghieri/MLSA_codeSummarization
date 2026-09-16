@@ -1,0 +1,51 @@
+Start training...
+Train:
+Epoch: 1
+Validation:
+New best loss saved (4.5537440299987795) ...
+Validation loss done.
+New best bleu saved (0.07309531677629165) ...
+Validation bleu done.
+Epoch: 1, Training Loss: 6.1300, Validation Loss: 4.5537, accuracy = 0.2785, bleu = 0.0731
+Train:
+Epoch: 2
+Validation:
+New best loss saved (4.512917804718017) ...
+Validation loss done.
+Traceback (most recent call last):
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 251, in <module>
+    model_trainer.train(save_every, resume)
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 194, in train
+    summ_sentence, target_sentence = SampleEvaluator.eval_sample(sample, self.model,
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/src/eval_model.py", line 78, in eval_sample
+    summ_ids = model.predict(code, mask, cls, sep)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/src/EDTransf.py", line 58, in predict
+    outputs = self.transformer.decode(current_seq_preprocessed)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/src/transfomer.py", line 39, in decode
+    dec_output = decoder(dec_output, labels_mask)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/src/decoder.py", line 61, in forward
+    context = self.norm1(self.dropout1(context) + labels)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/normalization.py", line 228, in forward
+    return F.layer_norm(
+           ^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/functional.py", line 2993, in layer_norm
+    return torch.layer_norm(
+           ^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

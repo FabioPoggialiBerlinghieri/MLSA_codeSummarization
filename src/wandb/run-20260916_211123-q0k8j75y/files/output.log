@@ -1,0 +1,71 @@
+Start training...
+Train:
+Epoch: 1
+batch: 0
+Validation:
+[34m[1mwandb[0m: [33mWARNING[0m Symlinked 1 file into the W&B run directory; call wandb.save again to sync new files.
+New best loss saved (4.3708343505859375) ...
+Validation loss done.
+1 Target: save [UNK] to a [UNK] [UNK] at ` path `
+1 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK]
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] .
+3 Target: [UNK] - only [UNK] parameters : - - - - - - - - - - [UNK] : list of [UNK] ( [UNK] [UNK] number , [UNK] [UNK] size , [UNK] ) [UNK] parameters for each layer . returns : function that takes [UNK] [UNK] as input and returns the output of the [UNK] [UNK] layer
+3 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] . [UNK] [UNK] . [UNK] . [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK]
+4 Target: create a [UNK] , [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] [UNK] . [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK]
+5 Target: parse arguments not [UNK] by arg [UNK] into a [UNK]
+5 Summary: [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] . [UNK] [UNK] . [UNK] [UNK] . [UNK] . [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] [UNK] [UNK] [UNK] [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] . [UNK] [UNK] [UNK] . [UNK] [UNK] [UNK] [UNK]
+[34m[1mwandb[0m: [33mWARNING[0m Symlinked 1 file into the W&B run directory; call wandb.save again to sync new files.
+New best bleu saved (0.06853214953242777) ...
+Validation bleu done.
+Epoch: 1, Training Loss: 5.9105, Validation Loss: 4.3708, accuracy = 0.1917, bleu = 0.0685, rouge = 0.1587
+Train:
+Epoch: 2
+batch: 0
+Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x7ddd00a004a0>
+Traceback (most recent call last):
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 1706, in __del__
+    self._shutdown_workers()
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 1656, in _shutdown_workers
+    w.join(timeout=_utils.MP_STATUS_CHECK_INTERVAL)
+  File "/home/pier/.local/share/uv/python/cpython-3.11.16-linux-x86_64-gnu/lib/python3.11/multiprocessing/process.py", line 149, in join
+    res = self._popen.wait(timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/.local/share/uv/python/cpython-3.11.16-linux-x86_64-gnu/lib/python3.11/multiprocessing/popen_fork.py", line 40, in wait
+    if not wait([self.sentinel], timeout):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/.local/share/uv/python/cpython-3.11.16-linux-x86_64-gnu/lib/python3.11/multiprocessing/connection.py", line 948, in wait
+    ready = selector.select(timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/.local/share/uv/python/cpython-3.11.16-linux-x86_64-gnu/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt:
+Traceback (most recent call last):
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 329, in <module>
+    model_trainer.train(save_every, resume)
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 152, in train
+    output = self.model(inputs, inputs_mask, shifted_target, targets_mask)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1889, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1850, in inner
+    hook_result = hook(self, args, result)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/wandb/integration/torch/wandb_torch.py", line 115, in <lambda>
+    lambda mod, inp, outp: parameter_log_hook(
+                           ^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/wandb/integration/torch/wandb_torch.py", line 110, in parameter_log_hook
+    self.log_tensor_stats(data.cpu(), "parameters/" + prefix + name)
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/wandb/integration/torch/wandb_torch.py", line 213, in log_tensor_stats
+    flat = self._remove_infs_nans(flat)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/wandb/integration/torch/wandb_torch.py", line 302, in _remove_infs_nans
+    if not torch.isfinite(tensor).all():
+           ^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

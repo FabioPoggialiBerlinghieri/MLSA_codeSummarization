@@ -1,0 +1,100 @@
+_wandb:
+    value:
+        cli_version: 0.30.0
+        e:
+            3gmxrem7hn9bl4vllyd4vajcz5faakhx:
+                args:
+                    - --config
+                    - ../config/smoke_config.yaml
+                    - --max-code-len
+                    - "512"
+                    - --max-sum-len
+                    - "96"
+                    - --save-every
+                    - "500"
+                codePath: src/train.py
+                codePathLocal: train.py
+                email: pigidanti@gmail.com
+                executable: /home/pier/MLSA_codeSummarization/.venv/bin/python3
+                git:
+                    commit: d0d33510fccaa2a07b8a000e4ebf6db3c9619470
+                    remote: git@github.com:FabioPoggialiBerlinghieri/MLSA_codeSummarization.git
+                host: pier-ThinkPad-P14s-Gen-2i
+                os: Linux-7.0.0-31-generic-x86_64-with-glibc2.39
+                program: /home/pier/MLSA_codeSummarization/src/train.py
+                python: CPython 3.11.16
+                root: /home/pier/MLSA_codeSummarization/src
+                startedAt: "2026-09-13T10:11:09.396764Z"
+                writerId: 3gmxrem7hn9bl4vllyd4vajcz5faakhx
+        m: []
+        python_version: 3.11.16
+        t:
+            "1":
+                - 1
+                - 11
+                - 49
+                - 51
+                - 100
+            "2":
+                - 1
+                - 11
+                - 49
+                - 51
+                - 100
+            "3":
+                - 1
+                - 16
+            "4": 3.11.16
+            "5": 0.30.0
+            "6": 5.16.1
+            "12": 0.30.0
+            "13": linux-x86_64
+batch_size:
+    value: 16
+best_bleu_path:
+    value: ../dump/checkpoint_best_bleu.pt
+best_loss_path:
+    value: ../dump/checkpoint_best_loss.pt
+checkpoint_path:
+    value: ../dump/checkpoint_latest.pt
+dataset_config:
+    value: python
+dataset_link:
+    value: google/code_x_glue_ct_code_to_text
+dataset_test_path:
+    value: ../dump/dataset_test.json
+dataset_train_path:
+    value: ../dump/dataset_train.json
+dataset_val_path:
+    value: ../dump/dataset_validation.json
+dataset_x:
+    value: code
+dataset_y:
+    value: docstring
+english_voc_path:
+    value: ../data/english_vocab.json
+epochs:
+    value: 50
+first_time:
+    value: false
+learning_rate:
+    value: 0.0003
+model:
+    value:
+        code_voc_len: 1068
+        embedding_dim: 512
+        input_vocabulary_size: 30000
+        max_code_len: 512
+        max_text_len: 96
+        num_heads: 8
+        num_layers: 4
+        output_vocabulary_size: 30000
+        text_voc_len: 607
+python_voc_path:
+    value: ../data/code_vocab.json
+split_test:
+    value: test[:1]
+split_train:
+    value: train[:1]
+split_val:
+    value: validation[:1]

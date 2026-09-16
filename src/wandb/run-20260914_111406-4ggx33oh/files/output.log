@@ -1,0 +1,159 @@
+Start training...
+Train:
+Epoch: 1
+batch: 0
+Validation:
+[34m[1mwandb[0m: [33mWARNING[0m Symlinked 1 file into the W&B run directory; call wandb.save again to sync new files.
+New best loss saved (3.700040340423584) ...
+Validation loss done.
+1 Target: [UNK] [UNK] to a [UNK] [UNK] at path
+1 Summary: [UNK] [UNK] the the the the the .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] [UNK] the the the the the the .
+3 Target: [UNK] - only [UNK]
+3 Summary: [UNK] [UNK] the the the the the .
+4 Target: create a [UNK] [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] [UNK] the the the the the the .
+5 Target: parse arguments not [UNK] by [UNK] [UNK] [UNK] a [UNK]
+5 Summary: [UNK] [UNK] the the the the the .
+[34m[1mwandb[0m: [33mWARNING[0m Symlinked 1 file into the W&B run directory; call wandb.save again to sync new files.
+New best bleu saved (0.11933816175215904) ...
+Validation bleu done.
+Epoch: 1, Training Loss: 5.3141, Validation Loss: 3.7000, accuracy = 0.1622, bleu = 0.1193, rouge = 0.3096
+Train:
+Epoch: 2
+batch: 0
+Validation:
+Validation loss done.
+1 Target: [UNK] [UNK] to a [UNK] [UNK] at path
+1 Summary: [UNK] the document .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the document .
+3 Target: [UNK] - only [UNK]
+3 Summary: [UNK] the document .
+4 Target: create a [UNK] [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the document .
+5 Target: parse arguments not [UNK] by [UNK] [UNK] [UNK] a [UNK]
+5 Summary: [UNK] the document .
+Validation bleu done.
+Epoch: 2, Training Loss: 4.4818, Validation Loss: 3.8905, accuracy = 0.1622, bleu = 0.0060, rouge = 0.2205
+Train:
+Epoch: 3
+batch: 0
+Validation:
+Validation loss done.
+1 Target: [UNK] [UNK] to a [UNK] [UNK] at path
+1 Summary: [UNK] the specified .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the specified .
+3 Target: [UNK] - only [UNK]
+3 Summary: [UNK] the document to the specified .
+4 Target: create a [UNK] [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the specified .
+5 Target: parse arguments not [UNK] by [UNK] [UNK] [UNK] a [UNK]
+5 Summary: [UNK] the specified .
+Validation bleu done.
+Epoch: 3, Training Loss: 3.8906, Validation Loss: 3.7402, accuracy = 0.2770, bleu = 0.0069, rouge = 0.2090
+Train:
+Epoch: 4
+batch: 0
+Validation:
+[34m[1mwandb[0m: [33mWARNING[0m Symlinked 1 file into the W&B run directory; call wandb.save again to sync new files.
+New best loss saved (3.457871198654175) ...
+Validation loss done.
+1 Target: [UNK] [UNK] to a [UNK] [UNK] at path
+1 Summary: [UNK] the document to the document to xml .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the document to the document to xml .
+3 Target: [UNK] - only [UNK]
+3 Summary: [UNK] the document to the document to xml .
+4 Target: create a [UNK] [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the document to the document to the document to the specified .
+5 Target: parse arguments not [UNK] by [UNK] [UNK] [UNK] a [UNK]
+5 Summary: [UNK] the document to the document to the document to the specified type .
+Validation bleu done.
+Epoch: 4, Training Loss: 3.3852, Validation Loss: 3.4579, accuracy = 0.3041, bleu = 0.0369, rouge = 0.2116
+Train:
+Epoch: 5
+batch: 0
+Validation:
+Validation loss done.
+1 Target: [UNK] [UNK] to a [UNK] [UNK] at path
+1 Summary: [UNK] a list of all declarations
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] a list of all declarations .
+3 Target: [UNK] - only [UNK]
+3 Summary: [UNK] a list of all declarations
+4 Target: create a [UNK] [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] a force - directed - directed - directed - directed - directed - directed - directed - directed - directed - directed - directed - directed - directed - directed - directed - directed - directed - directed - directed - directed - directed - directed - directed -
+5 Target: parse arguments not [UNK] by [UNK] [UNK] [UNK] a [UNK]
+5 Summary: [UNK] a list of all declarations .
+Validation bleu done.
+Epoch: 5, Training Loss: 2.9412, Validation Loss: 3.9406, accuracy = 0.1892, bleu = 0.0358, rouge = 0.1496
+Train:
+Epoch: 6
+batch: 0
+Validation:
+Validation loss done.
+1 Target: [UNK] [UNK] to a [UNK] [UNK] at path
+1 Summary: [UNK] the document .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the document .
+3 Target: [UNK] - only [UNK]
+3 Summary: [UNK] the document .
+4 Target: create a [UNK] [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the document .
+5 Target: parse arguments not [UNK] by [UNK] [UNK] [UNK] a [UNK]
+5 Summary: [UNK] the document .
+Validation bleu done.
+Epoch: 6, Training Loss: 2.5064, Validation Loss: 4.1891, accuracy = 0.2162, bleu = 0.0060, rouge = 0.2205
+Train:
+Epoch: 7
+batch: 0
+Validation:
+Validation loss done.
+1 Target: [UNK] [UNK] to a [UNK] [UNK] at path
+1 Summary: [UNK] the document to xml .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the document to xml .
+3 Target: [UNK] - only [UNK]
+3 Summary: [UNK] the document to xml .
+4 Target: create a [UNK] [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the default set for the specified annotation type .
+5 Target: parse arguments not [UNK] by [UNK] [UNK] [UNK] a [UNK]
+5 Summary: [UNK] the document to xml .
+Validation bleu done.
+Epoch: 7, Training Loss: 2.1351, Validation Loss: 4.2765, accuracy = 0.2297, bleu = 0.0164, rouge = 0.2395
+Train:
+Epoch: 8
+batch: 0
+Validation:
+Validation loss done.
+1 Target: [UNK] [UNK] to a [UNK] [UNK] at path
+1 Summary: [UNK] the document to xml .
+2 Target: [UNK] from [UNK] [UNK] .
+2 Summary: [UNK] the document to xml .
+3 Target: [UNK] - only [UNK]
+3 Summary: [UNK] the document to xml .
+4 Target: create a [UNK] [UNK] [UNK] for [UNK] and [UNK] .
+4 Summary: [UNK] the document to xml .
+5 Target: parse arguments not [UNK] by [UNK] [UNK] [UNK] a [UNK]
+5 Summary: [UNK] the document to xml .
+Validation bleu done.
+Epoch: 8, Training Loss: 1.8502, Validation Loss: 4.0963, accuracy = 0.2838, bleu = 0.0149, rouge = 0.2314
+Train:
+Epoch: 9
+batch: 0
+Traceback (most recent call last):
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 321, in <module>
+    model_trainer.train(save_every, resume)
+  File "/home/pier/MLSA_codeSummarization/src/train.py", line 151, in train
+    scaler.scale(loss).backward()
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/_tensor.py", line 623, in backward
+    torch.autograd.backward(
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/autograd/__init__.py", line 395, in backward
+    _engine_run_backward(
+  File "/home/pier/MLSA_codeSummarization/.venv/lib/python3.11/site-packages/torch/autograd/graph.py", line 1072, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
