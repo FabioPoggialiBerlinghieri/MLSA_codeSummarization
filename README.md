@@ -35,6 +35,7 @@ python3 summarize.py \
     --input 'python snippet' \
     --checkpoint '../models/[model_weights.pt]'
 ```
+By default, the model uses **greedy search** for text generation. The generation strategy can be selected with `--generate_mode`, allowing either **greedy search** or **beam search**. When using beam search, the number of beams can be configured through `--beam_size` (default: `3`).
 
 Example snippets to use with the **Summarize** functionality are available in the `snippets_test/` directory.
 
@@ -76,8 +77,9 @@ The dataset will then be processed automatically.
 
 ### Command-line parameters
 
-| Parameter        | Default | Description                       |
-| ---------------- | ------: | --------------------------------- |
-| `--max-code-len` |     512 | Maximum input code length         |
-| `--max-sum-len`  |     128 | Maximum output description length |
-| `--save-every`   |     500 | Model checkpoint saving frequency |
+| Parameter          | Default | Description |
+| ------------------ | ------: | ----------- |
+| `--max-code-len`   | 512 | Maximum input code length |
+| `--max-sum-len`    | 128 | Maximum output description length |
+| `--save-every`     | 500 | Model checkpoint saving frequency |
+| `--resume`         | — | Resume training from a previous checkpoint |
