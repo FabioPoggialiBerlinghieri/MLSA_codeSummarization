@@ -26,31 +26,6 @@ Download the pre-trained model weights from [Google Drive](https://drive.google.
 
 Run the following commands from the `/src` directory.
 
-### Summarize
-
-Generate a description for a Python snippet:
-
-```bash
-python3 summarize.py \
-    --input 'python snippet' \
-    --checkpoint '../models/[model_weights.pt]'
-```
-By default, the model uses **greedy search** for text generation. The generation strategy can be selected with `--generate_mode`, allowing either **greedy search** or **beam search**. When using beam search, the number of beams can be configured through `--beam_size` (default: `3`).
-
-Example snippets to use with the **Summarize** functionality are available in the `snippets_test/` directory.
-
-### Evaluate
-
-Evaluate the model on the validation set:
-
-```bash
-python3 evaluate.py \
-    --checkpoint '../models/[model_weights.pt]' \
-    --split val
-```
-
-The batch size can be changed using `--batch` (default: `128`).
-
 ## Training
 
 The tokenized dataset and vocabularies are available on [Google Drive](https://drive.google.com/drive/folders/1E1HfQHBSiO5K4AIzRP2F-0FgrUa2qnPg?usp=drive_link) and should be placed in:
@@ -83,3 +58,29 @@ The dataset will then be processed automatically.
 | `--max-sum-len`    | 128 | Maximum output description length |
 | `--save-every`     | 500 | Model checkpoint saving frequency |
 | `--resume`         | — | Resume training from a previous checkpoint |
+
+
+### Summarize
+
+Generate a description for a Python snippet:
+
+```bash
+python3 summarize.py \
+    --input 'python snippet' \
+    --checkpoint '../models/[model_weights.pt]'
+```
+By default, the model uses **greedy search** for text generation. The generation strategy can be selected with `--generate_mode`, allowing either **greedy search** or **beam search**. When using beam search, the number of beams can be configured through `--beam_size` (default: `3`).
+
+Example snippets to use with the **Summarize** functionality are available in the `snippets_test/` directory.
+
+### Evaluate
+
+Evaluate the model on the validation set:
+
+```bash
+python3 evaluate.py \
+    --checkpoint '../models/[model_weights.pt]' \
+    --split val
+```
+
+The batch size can be changed using `--batch` (default: `128`).
