@@ -83,4 +83,15 @@ python3 evaluate.py \
     --split val
 ```
 
-The batch size can be changed using `--batch` (default: `128`).
+The batch size can be changed using `--batch_size` (default: `128`).
+
+Text generation options are the same as for **Summarize**.
+
+### Smoke test
+To quickly verify that the training loop, data pipeline, and model architecture work correctly without waiting through a full training session, you can run a smoke test using the dedicated configuration file:
+```bash
+python3 train.py --config config/smoke_config.yaml
+```
+
+The available options are the same as for the standard **Train** command. 
+All temporary output data will be stored in the `/dump` directory.
